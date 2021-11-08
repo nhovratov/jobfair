@@ -294,7 +294,13 @@
 			<trans-unit id="flexform.application.fromEmail">
 				<source>Mail address of mail sender</source>
 			</trans-unit>
-			<trans-unit id="flexform.application.requireAttachment">
+			<trans-unit id="flexform.application.validation.email.required">
+				<source>An email address is required</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.validation.email.validEmail">
+				<source>Check if email is valid</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.validation.attachment.required">
 				<source>An attachment is required</source>
 			</trans-unit>
 			<trans-unit id="flexform.application.dontSaveAttachment">

@@ -5,7 +5,7 @@
 
 <h1><span><f:translate key="listJob" /></span></h1>
 
-<f:flashMessages renderMode="div" />
+<f:flashMessages />
 
 <f:if condition="{settings.filter.hideFilter} == 0">
     <f:if condition="{jobs -> f:count()} >= {settings.filter.filterlimit}">

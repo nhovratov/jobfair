@@ -1,9 +1,9 @@
 <?php
 namespace Dan\Jobfair\ViewHelpers\Security;
 
-use TYPO3\CMS\Fluid\Core\Compiler\TemplateCompiler;
-use TYPO3\CMS\Fluid\Core\Parser\SyntaxTree\AbstractNode;
-use TYPO3\CMS\Fluid\ViewHelpers\IfViewHelper;
+use TYPO3Fluid\Fluid\ViewHelpers\IfViewHelper;
+use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
+use TYPO3Fluid\Fluid\Core\Compiler\TemplateCompiler;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -32,43 +32,53 @@ class EditLinkViewHelper extends IfViewHelper {
 	protected $accessControlService;
 
 	/**
+	 * Register argument "job" so that it can be passed to viewhelper
+	 */
+	public function initializeArguments()
+	{
+		$this->registerArgument('job', 'Dan\Jobfair\Domain\Model\Job', 'Object of the job', TRUE);
+	}
+
+	/**
 	 * View helper to display edit or delete link if logged in user is owner of the job
 	 *
-	 * @param null $job
-	 * @return bool
+	 * @param \Dan\Jobfair\Domain\Model\Job $job The job to be tested for ownership
+	 * @return string The output
 	 */
-	public function render($job = NULL) {
+	public function render() {
+		//\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->arguments['job']);
+		$job = $this->arguments['job'];
 		if ($this->accessControlService->isOwner($job)) {
 			return $this->renderThenChild();
 		} else {
 			return $this->renderElseChild();
 		}
 	}
+
 	/**
 	 * The compiled ViewHelper adds two new ViewHelper arguments: __thenClosure and __elseClosure.
 	 * These contain closures which are be executed to render the then(), respectively else() case.
 	 *
-	 * @param string $argumentsVariableName
-	 * @param string $renderChildrenClosureVariableName
+	 * @param string $argumentsName
+	 * @param string $closureName
 	 * @param string $initializationPhpCode
-	 * @param \TYPO3\CMS\Fluid\Core\Parser\SyntaxTree\AbstractNode $syntaxTreeNode
-	 * @param \TYPO3\CMS\Fluid\Core\Compiler\TemplateCompiler $templateCompiler
+	 * @param ViewHelperNode $node
+	 * @param TemplateCompiler $compiler
 	 * @return string
-	 * @internal
 	 */
 	public function compile(
-			$argumentsVariableName,
-			$renderChildrenClosureVariableName,
+			$argumentsName,
+			$closureName,
 			&$initializationPhpCode,
-			AbstractNode $syntaxTreeNode,
-			TemplateCompiler $templateCompiler
+			ViewHelperNode $node,
+			TemplateCompiler $compiler
 	) {
 		parent::compile(
-				$argumentsVariableName,
-				$renderChildrenClosureVariableName,
+				$argumentsName,
+				$closureName,
 				$initializationPhpCode,
-				$syntaxTreeNode,
-				$templateCompiler
+				$node,
+				$compiler
 		);
 		return TemplateCompiler::SHOULD_GENERATE_VIEWHELPER_INVOCATION;
 	}

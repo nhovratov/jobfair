@@ -94,6 +94,21 @@ Properties
 Property details
 ^^^^^^^^^^^^^^^^
 
+.. _ts-plugin-tx-jobfair-settings-seoOptimizationLevel:
+
+seoOptimizationLevel
+""""""""""""""""""""
+.. container:: table-row
+
+	Property
+		plugin.tx_jobfair.settings.seoOptimizationLevel
+	Data type
+		integer
+	Default
+		0
+	Description
+		Sets the level of SEO optimization. Level 1 uses job title and short job description as title and meta description tag.
+
 .. _ts-plugin-tx-jobfair-view-templateRootPaths:
 
 templateRootPaths
@@ -603,12 +618,12 @@ fromEmail
 Sets the email address of the email sender for applications.
 
 
-.. _ts-plugin-tx-jobfair-settings-application-requireAttachment:
+.. _ts-plugin-tx-jobfair-settings-application-validation-attachment-required:
 
 requireAttachment
 """""""""""""""""
 
-:typoscript:`plugin.tx_jobfair.settings.application.requireAttachment  =` :ref:`t3tsref:data-type-boolean`
+:typoscript:`plugin.tx_jobfair.settings.application.validation.attachment.required  =` :ref:`t3tsref:data-type-boolean`
 
 If set to 1 attachments are mandatory in applications.
 

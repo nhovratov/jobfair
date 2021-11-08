@@ -3,8 +3,29 @@
 
 <f:section name="main">
     <h1><span><f:translate key="applyJob" />{job.jobTitle}</span></h1>
-
-    <f:flashMessages renderMode="div" />
+    <f:flashMessages />
+    <f:form.validationResults for="newApplication">
+    <f:if condition="{validationResults.flattenedErrors}">
+            <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
+                <div class="typo3-messages">
+                    <div class="alert alert-danger">
+                        <div class="media">
+                            <div class="media-left">
+						<span class="fa-stack fa-lg">
+							<i class="fa fa-circle fa-stack-2x"></i>
+							<i class="fa fa-times fa-stack-1x"></i>
+						</span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="alert-title">{propertyPath}</h4>
+                                <div class="alert-message">{error}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </f:for>
+    </f:if>
+    </f:form.validationResults>
 
     <f:form class="form-horizontal" action="createApplication" name="newApplication" object="{newApplication}" arguments="{job : job, user : user}" enctype="multipart/form-data">
         <div class="form-group">
@@ -12,7 +33,7 @@
                 <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.name" /></label>
             </div>
             <div class="col-sm-5">
-                <f:form.textfield class="form-control" property="name" size="40" value="{user.firstName} {user.lastName}" required="required" />
+                <f:form.textfield class="form-control" property="name" size="40" value="{user.firstName} {user.lastName}" required="0" />
             </div>
         </div>
         <div class="form-group">
@@ -20,7 +41,7 @@
                 <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.email" /></label>
             </div>
             <div class="col-sm-5">
-                <f:form.textfield class="form-control" size="40" property="email" value="{user.email}" type="email" required="required" />
+                <f:form.textfield class="form-control" size="40" property="email" value="{user.email}" />
             </div>
         </div>
         <div class="form-group">
@@ -28,7 +49,7 @@
                 <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.message" /></label>
             </div>
             <div class="col-sm-5">
-                <f:form.textarea class="form-control" rows="20" cols="60" property="message" value=""  />
+                <f:form.textarea class="form-control" rows="20" cols="60" property="message" value="{newApplication.message}" />
             </div>
         </div>
         <div class="form-group">
@@ -36,7 +57,7 @@
                 <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.attachment" /></label>
             </div>
             <div class="col-sm-5">
-                <f:form.upload property="attachment" />
+                <f:form.upload property="attachment" value="{newApplication.attachment}"/>
             </div>
         </div>
         <f:form.hidden name="job" name="{job}" />

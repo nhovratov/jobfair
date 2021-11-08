@@ -11,6 +11,15 @@
 ChangeLog
 =========
 
+**2.0.0**
+----------
+| Compatibility with TYPO3 8
+
+
+**1.0.13**
+----------
+| SEO Optimization: job title and short job description can be set as title and meta description tag
+
 **1.0.12**
 ----------
 | Added option to avoid saving attachments in file system

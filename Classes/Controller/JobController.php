@@ -299,10 +299,14 @@ class JobController extends ActionController {
 	* @return void
 	*/
 	public function showAction(Job $job = NULL) {
+		if ($this->settings['seoOptimizationLevel']) {
+			$this->response->addAdditionalHeaderData('<title>'.$job->getJobTitle().'</title>');
+			$this->response->addAdditionalHeaderData('<meta name="description" content="'.$job->getShortJobDescription().'"/>');
+		}
 		if ($job == NULL && $this->settings['show']['displayErrorMessageIfNotFound']) {
 			$this->flashMessageService('notFoundMessage','notFoundStatus','INFO' );
 		}
-		if ($job == NULL && $this->settings['show']['rediectIfNotFound']) {
+		if ($job == NULL && $this->settings['show']['redirectIfNotFound']) {
 			$this->redirect('list');
 		}
 		if ($job !== NULL) {
@@ -549,6 +553,7 @@ class JobController extends ActionController {
 	*
 	* @param \Dan\Jobfair\Domain\Model\Application $newApplication
 	* @param \Dan\Jobfair\Domain\Model\Job $job
+	* @validate $newApplication \Dan\Jobfair\Domain\Validator\ApplicationCreateValidator
 	* @return void
 	*/
 	public function createApplicationAction(Application $newApplication, Job $job) {
@@ -556,14 +561,14 @@ class JobController extends ActionController {
 
 		$attachmentFile = $newApplication->getAttachment();
 		// Check if attachment is missing
-		if (empty($attachmentFile['name']) && $this->settings['application']['requireAttachment']) {
+		if (empty($attachmentFile['name']) && $this->settings['application']['validation']['attachment']['required']) {
 			$this->flashMessageService('applicationAttachmentMissing','applicationAttachmentMissingStatus','ERROR' );
-			$this->redirect('show', 'Job', NULL, array('job' => $job));
+			$this->forward('newApplication', 'Job', NULL, array('job' => $job));
 		}
 		// Check file extension
 		if (!empty($attachmentFile['name']) && (!Div::checkExtension($attachmentFile['name']) || !GeneralUtility::verifyFilenameAgainstDenyPattern ($attachmentFile['name']))) {
 			$this->flashMessageService('applicationExtensionError','applicationExtensionErrorStatus','ERROR' );
-			$this->redirect('show', 'Job', NULL, array('job' => $job));
+			$this->forward('newApplication', 'Job', NULL, array('job' => $job));
 		}
 		/** @var $fileName mixed false or file.xyz (name of the attached file) */
 		$fileName = $this->div->uploadFile($attachmentFile);

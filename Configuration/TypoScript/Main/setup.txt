@@ -1,5 +1,6 @@
 plugin.tx_jobfair {
 	settings {
+		seoOptimizationLevel = 0
 		application {
 			fromEmail = {$plugin.tx_jobfair.settings.application.fromEmail}
 			fromName = {$plugin.tx_jobfair.settings.application.fromName}
