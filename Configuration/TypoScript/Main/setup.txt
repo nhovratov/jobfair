@@ -1,0 +1,31 @@
+plugin.tx_jobfair {
+	settings {
+		application {
+			fromEmail = {$plugin.tx_jobfair.settings.application.fromEmail}
+			fromName = {$plugin.tx_jobfair.settings.application.fromName}
+		}
+		list.ordering = sorting
+		list.sorting = ASC
+		new.dateFormat = d.m.Y
+		edit.dateFormat = d.m.Y
+	}
+	view {
+		templateRootPaths {
+			100 = EXT:jobfair/Resources/Private/Templates/
+		}
+		partialRootPaths {
+			100 = EXT:jobfair/Resources/Private/Partials/
+		}
+		layoutRootPaths {
+			100 = EXT:jobfair/Resources/Private/Layouts/
+		}
+	}
+	persistence {
+		storagePid = {$plugin.tx_jobfair.persistence.storagePid}
+	}
+	divider = TEXT
+	divider {
+		value = |
+		noTrimWrap = | | |
+	}
+}

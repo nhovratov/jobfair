@@ -1,0 +1,19 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{settings.feuser.editorUsergroupUid}">
+    <div class="form-group tx_jobfair tx_jobfair_filter_item" id="tx_jobfair_filter_item_own">
+        <div class="col-sm-3 control-label">
+            <label><f:translate key="own" default="{field}" /></label>
+        </div>
+        <div class="col-sm-5 tx_jobfair-filter-content">
+            <f:form.select
+                    id="own"
+                    property="own"
+                    options="{
+                    0: '{f:translate(key:\'no\')}',
+                    1: '{f:translate(key:\'yes\')}'}"
+                    additionalAttributes="{onChange : 'document.filter.submit();'}"
+                    class="form-control tx_jobfair-filter-select">
+            </f:form.select>
+        </div>
+    </div>
+</f:if>

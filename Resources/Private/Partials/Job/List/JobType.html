@@ -1,0 +1,9 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+<f:if condition="{job.jobType} == 0">
+    <f:translate key="tx_jobfair_domain_model_job.job_type.0" />
+</f:if>
+<f:if condition="{job.jobType} == 1">
+    <f:translate key="tx_jobfair_domain_model_job.job_type.1" />
+</f:if>
+</td>

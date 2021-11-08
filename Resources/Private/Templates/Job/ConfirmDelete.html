@@ -1,0 +1,21 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    <h1><span><f:translate key="deleteJob" />{job.jobTitle}</span></h1>
+
+    <f:flashMessages renderMode="div" />
+
+    <f:form id="tx_jobfair-form-confirmDelete" action="delete" name="job" object="{job}">
+        <fieldset>
+            <legend>
+                <f:translate key="titleCreateJob" />
+            </legend>
+            <p><f:translate key="deleteJobNotice" /></p>
+            <f:render partial="Job/ConfirmDelete/Submit" arguments="{_all}" />
+        </fieldset>
+    </f:form>
+    <div id="tx_jobfair-confirmDelete-actionlist">
+        <f:link.action controller="Job" action="show" arguments="{job : job}"><f:translate key="backToJob" /></f:link.action><br />
+    </div>
+</f:section>

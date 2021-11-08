@@ -1,0 +1,44 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    <h1><span><f:translate key="editJob" />{job.jobTitle}</span></h1>
+
+    <f:flashMessages renderMode="div" />
+
+    <f:form class="form-horizontal" id="tx_jobfair-form-edit" action="update" name="job" object="{job}" >
+        <fieldset>
+            <legend>
+                <f:translate key="titleEditJob" />
+            </legend>
+            <f:if condition="{settings.edit.fields}">
+                <f:then>
+                    <f:for each="{jobfair:misc.explode(string:'{settings.edit.fields}')}" as="field">
+                        <f:render partial="Job/Edit/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                    </f:for>
+                </f:then>
+                <f:else>
+                    <f:render partial="Job/Edit/JobTitle" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Employer" arguments="{_all}" />
+                    <f:render partial="Job/Edit/EmployerDescription" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Location" arguments="{_all}" />
+                    <f:render partial="Job/Edit/JobDescription" arguments="{_all}" />
+                    <f:render partial="Job/Edit/ShortJobDescription" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Experience" arguments="{_all}" />
+                    <f:render partial="Job/Edit/JobRequirements" arguments="{_all}" />
+                    <f:render partial="Job/Edit/JobBenefits" arguments="{_all}" />
+                    <f:render partial="Job/Edit/ApplyInformation" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Salary" arguments="{_all}" />
+                    <f:render partial="Job/Edit/JobType" arguments="{_all}" />
+                    <f:render partial="Job/Edit/ContractType" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Region" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Sector" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Category" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Discipline" arguments="{_all}" />
+                    <f:render partial="Job/Edit/Education" arguments="{_all}" />
+                </f:else>
+            </f:if>
+            <f:render partial="Job/Edit/Submit" arguments="{_all}" />
+        </fieldset>
+    </f:form>
+</f:section>

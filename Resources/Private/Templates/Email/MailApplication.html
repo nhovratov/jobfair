@@ -1,0 +1,32 @@
+<f:layout name="Email" />
+
+Email / MailApplication
+
+This mail will be send to the contacts and FE-users related to a job.
+
+Available variables:
+{newApplication} Application object
+{job} Job object
+
+<f:section name="main">
+    <p><f:translate key="tx_jobfair_domain_model_application.email_introduction" extensionName="jobfair" />:</p>
+
+    <p>
+        <f:translate key="tx_jobfair_domain_model_job.job_title" extensionName="jobfair" />:<br>
+        {job.jobTitle}
+    </p>
+
+    <p>
+      <f:translate key="tx_jobfair_domain_model_application.name" extensionName="jobfair" />:<br>
+      {newApplication.name}
+    </p>
+
+    <p>
+        <f:translate key="tx_jobfair_domain_model_application.email" extensionName="jobfair" />:<br>
+        {newApplication.email}
+    </p>
+    <p>
+        <f:translate key="tx_jobfair_domain_model_application.message" extensionName="jobfair" />:<br>
+        {newApplication.message}
+    </p>
+</f:section>

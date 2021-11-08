@@ -1,0 +1,7 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+    <f:if condition="{job.jobImage.originalResource.originalFile.uid}">
+        <f:then><f:image src="{job.jobImage.originalResource.originalFile.uid}" alt="{job.jobImage.originalResource.originalFile.alternative}" maxWidth="{settings.latest.imageMaxWidth}" maxHeight="{settings.latest.imageMaxHeight}" /></f:then>
+        <f:else></f:else>
+    </f:if>
+</td>

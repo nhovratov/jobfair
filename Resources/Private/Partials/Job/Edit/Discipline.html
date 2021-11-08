@@ -1,0 +1,20 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair-edit-item" id="tx_jobfair-edit-item-discipline">
+    <div class="col-sm-3 control-label"><label for="jobfair_item_discipline" class="tx_jobfair-edit-label">
+        <f:translate key="tx_jobfair_domain_model_job.discipline" />
+    </label></div>
+    <div class="col-sm-5 tx_jobfair-edit-content">
+        <f:form.select
+                id="jobfair_item_discipline"
+                property="discipline"
+                options="{disciplines}"
+                multiple="true"
+                optionValueField="uid"
+                optionLabelField="name"
+                prependOptionValue=""
+                prependOptionLabel="{f:translate(key:'emptySelectNew')}"
+                class="form-control tx_jobfair-edit-select">
+            <select><option>###dummy###</option></select>
+        </f:form.select>
+    </div>
+</div>

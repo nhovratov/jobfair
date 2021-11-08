@@ -1,0 +1,98 @@
+/* JOBFAIR MAIN CSS */
+div.tx_jobfair form fieldset legend {
+    display: none;
+}
+
+#tx_jobfair-show-actionlist, #tx_jobfair-list-actionlist, #tx_jobfair-apply-actionlist, #tx_jobfair-confirmDelete-actionlist {
+    margin: 20px 0 20px 0;
+}
+
+/* JOBFAIR SHOW VIEW */
+div.tx_jobfair dt, div.tx_jobfair dd {
+    margin-bottom: 15px;
+    overflow: auto;
+}
+div.tx_jobfair dt {
+    float: left;
+    font-weight: bold;
+    margin-right: 15px;
+    width: 140px;
+    text-align:right;
+    -moz-hyphens: auto;
+    -o-hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+/* JOBFAIR LIST VIEW */
+.tx_jobfair table {
+    border-collapse:collapse;
+    width:100%;
+}
+
+.tx_jobfair table td {
+    vertical-align:top;
+}
+
+.tx_jobfair table th {
+    font-weight:bold;
+    line-height: 22px;
+    font-size: 14px;
+    color: #5f5e5e;
+    margin: 20px 0px 5px;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.tx_jobfair table tr {
+    line-height: 22px;
+}
+
+.tx_jobfair table tr:nth-child(2n+3) {
+    background-color: #eeeeee;
+}
+
+.tx_jobfair table tr:hover {
+    background-color: #CCCCCC;
+}
+
+div.tx_jobfair_filter_item {
+    display: inline-block;
+    margin: 0 20px 0 0;
+    vertical-align: top;
+}
+
+div.tx_jobfair_filter_item label {
+    display: block;
+    font-weight: bold;
+}
+
+/* JOBFAIR NEW AND EDIT VIEW */
+form#tx_jobfair-form-new, form#tx_jobfair-form-edit {
+    width: 400px;
+}
+
+.tx_jobfair-label {
+    display: block;
+    font-weight: bold;
+}
+
+div.tx_jobfair-edit-item {
+    margin-bottom: 10px;
+}
+
+input.tx_jobfair-edit-input, input.tx_jobfair-new-input {
+    width: 100%;
+}
+
+textarea.tx_jobfair-edit-textarea, textarea.tx_jobfair-new-textarea {
+    width: 100%;
+    height: 150px;
+}
+
+/* JOBFAIR CONFIRM DELETE VIEW */
+#tx_jobfair-delete-item-notice {
+    margin-bottom: 10px;
+}
+
+/* JOBFAIR APPLY VIEW */

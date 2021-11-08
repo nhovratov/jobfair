@@ -1,0 +1,29 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>{settings.feed.title}</title>
+    <id>{settings.feed.link}</id>
+    <updated><f:cObject typoscriptObjectPath="lib.ll_pubdate_RFC3339" data="{f:format.date(format:'U' date:'{jobs.0.tstamp}')}{settings.feed.utcOffset}" /></updated>
+    <link href="{f:uri.page(absolute:'1' additionalParams:{type:settings.feed.feedTypeNum})}" rel="self" />
+    <generator>{settings.feed.generator}</generator>
+    <f:if condition="{settings.feed.copyright}">
+        <rights>{settings.feed.copyright}</rights>
+    </f:if>
+    <f:if condition="{settings.feed.category}">
+        <category term ="{settings.feed.category}"/>
+    </f:if>
+    <f:if condition="{f:count(subject:'{jobs}')} > 0">
+        <f:for each="{jobs}" as="job" iteration="iterator">
+            <f:if condition="{iterator.index} <= {settings.feed.maxRecords}">
+                <entry>
+                    <title>{job.jobTitle}</title>
+                    <link href="{f:uri.action(action:'show', arguments:{job : job}, absolute:'1', noCacheHash:'TRUE') -> f:format.htmlentities()}" />
+                    <id><f:format.htmlentities><f:uri.action action="show" arguments="{job : job}" absolute="1" noCacheHash="TRUE"/></f:format.htmlentities></id>
+                    <updated><f:cObject typoscriptObjectPath="lib.ll_pubdate_RFC3339" data="{f:format.date(format:'U' date:'{job.tstamp}')}{settings.feed.utcOffset}" /></updated>
+                    <author>
+                        <name>{settings.feed.author}</name>
+                    </author>
+                    <content type="html"><f:format.cdata><f:format.nl2br>{job.jobDescription}</f:format.nl2br></f:format.cdata></content>
+                </entry>
+            </f:if>
+        </f:for>
+    </f:if>
+</feed>

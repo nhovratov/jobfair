@@ -1,0 +1,43 @@
+# customsubcategory=Feed=Feed
+plugin.tx_jobfair {
+	settings {
+		feed {
+
+			# cat=plugin.tx_jobfair/Feed/100; type=options[Rss091,Rss2,Atom1]; label=Type of the feed
+			feedType = Rss2
+
+			# cat=plugin.tx_jobfair/Feed/101; type=int+; label=TypeNum of the feed for easy linking
+			feedTypeNum = 100
+
+			# cat=plugin.tx_jobfair/Feed/200; type=string; label=Name of the feed
+			title = Jobfair RSS Feed
+
+			# cat=plugin.tx_jobfair/Feed/201; type=string; label=Author of the feed
+			author = Jobfair (TYPO3 Extension)
+
+			# cat=plugin.tx_jobfair/Feed/202; type=string; label=Link to your feed
+			link = http://your-domain.tld/
+
+			# cat=plugin.tx_jobfair/Feed/203; type=string; label=Description of your feed
+			description = Description of your feed
+
+			# cat=plugin.tx_jobfair/Feed/204; type=string; label=Language
+			language = de-de
+
+			# cat=plugin.tx_jobfair/Feed/205; type=string; label=Copyright notice (optional)
+			copyright =
+
+			# cat=plugin.tx_jobfair/Feed/206; type=string; label=Category (optional)
+			category =
+
+			# cat=plugin.tx_jobfair/Feed/300; type=int+; label=Cache period of the feed
+			cachePeriod = 1800
+
+			# cat=plugin.tx_jobfair/Feed/400; type=options[-3600 (Berlin=-3600,0=, Other=+3600]; label=Calculation offset in seconds to UTC (for Atom feed only, e.g. -3600 for Berlin)
+            		utcOffset = -3600
+
+			# cat=plugin.tx_jobfair/Feed/500; type=int+; label=Max items in feed
+            		maxRecords = 50
+		}
+	}
+}

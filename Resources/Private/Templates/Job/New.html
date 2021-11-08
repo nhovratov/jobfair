@@ -1,0 +1,45 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1><span><f:translate key="newJob" /></span></h1>
+
+<f:flashMessages renderMode="div" />
+
+
+<f:form class="form-horizontal" id="tx_jobfair-form-new" action="create" name="newJob" object="{newJob}">
+    <fieldset>
+        <legend>
+            <f:translate key="titleCreateJob" />
+        </legend>
+        <f:if condition="{settings.new.fields}">
+            <f:then>
+                <f:for each="{jobfair:misc.explode(string:'{settings.new.fields}')}" as="field">
+                    <f:render partial="Job/New/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                </f:for>
+            </f:then>
+            <f:else>
+                <f:render partial="Job/New/JobTitle" arguments="{_all}" />
+                <f:render partial="Job/New/Employer" arguments="{_all}" />
+                <f:render partial="Job/New/EmployerDescription" arguments="{_all}" />
+                <f:render partial="Job/New/Location" arguments="{_all}" />
+                <f:render partial="Job/New/JobDescription" arguments="{_all}" />
+                <f:render partial="Job/New/ShortJobDescription" arguments="{_all}" />
+                <f:render partial="Job/New/Experience" arguments="{_all}" />
+                <f:render partial="Job/New/JobRequirements" arguments="{_all}" />
+                <f:render partial="Job/New/JobBenefits" arguments="{_all}" />
+                <f:render partial="Job/New/ApplyInformation" arguments="{_all}" />
+                <f:render partial="Job/New/Salary" arguments="{_all}" />
+                <f:render partial="Job/New/JobType" arguments="{_all}" />
+                <f:render partial="Job/New/ContractType" arguments="{_all}" />
+                <f:render partial="Job/New/Region" arguments="{_all}" />
+                <f:render partial="Job/New/Sector" arguments="{_all}" />
+                <f:render partial="Job/New/Category" arguments="{_all}" />
+                <f:render partial="Job/New/Discipline" arguments="{_all}" />
+                <f:render partial="Job/New/Education" arguments="{_all}" />
+            </f:else>
+        </f:if>
+        <f:render partial="Job/New/Submit" arguments="{_all}" />
+    </fieldset>
+</f:form>
+</f:section>

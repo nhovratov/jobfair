@@ -1,0 +1,21 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty,1:job.contractType} == {0:'1',1:''}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.contract_type" /></dt>
+        <dd>
+            <f:if condition="{job.contractType} == 0">
+                <f:translate key="tx_jobfair_domain_model_job.contract_type.0" />
+            </f:if>
+            <f:if condition="{job.contractType} == 1">
+                <f:translate key="tx_jobfair_domain_model_job.contract_type.1" />
+            </f:if>
+            <f:if condition="{job.contractType} == 2">
+                <f:translate key="tx_jobfair_domain_model_job.contract_type.2" />
+            </f:if>
+            <f:if condition="{job.contractType} == 3">
+                <f:translate key="tx_jobfair_domain_model_job.contract_type.3" />
+            </f:if>
+        </dd>
+    </f:else>
+</f:if>

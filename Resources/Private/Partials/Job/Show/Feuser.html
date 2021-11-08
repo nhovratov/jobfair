@@ -1,0 +1,24 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty, 1: '{f:count(subject: job.feuser)}'} == {0:'1',1:'0'}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.feuser" /></dt>
+        <dd>
+            <f:for each="{job.feuser}" as="feuser" iteration="i">
+                <f:if condition="{i.isFirst}">
+                    <f:else>
+                        <br />
+                    </f:else>
+                </f:if>
+                <f:if condition="{settings.feuser.pageId}">
+                    <f:then>
+                        <f:link.page pageUid="{settings.feuser.pageId}" additionalParams="{jobfair:misc.feuserlink(uid:'{feuser.uid}',name:'{settings.feuser.pluginName}',field:'{settings.feuser.pluginField}')}">{feuser.lastName}<f:if condition="{feuser.lastName}">,</f:if> {feuser.firstName}</f:link.page>
+                    </f:then>
+                    <f:else>
+                        {feuser.lastName}<f:if condition="{feuser.lastName}">,</f:if> {feuser.firstName}
+                    </f:else>
+                </f:if>
+            </f:for>
+        </dd>
+    </f:else>
+</f:if>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-04-30T21:09:58Z" product-name="jobfair">
+		<header/>
+		<body>
+			<trans-unit id="job_title.description">
+				<source>jobTitle</source>
+			</trans-unit>
+			<trans-unit id="employer.description">
+				<source>employer</source>
+			</trans-unit>
+			<trans-unit id="employer_description.description">
+				<source>employerDescription</source>
+			</trans-unit>
+			<trans-unit id="location.description">
+				<source>location</source>
+			</trans-unit>
+			<trans-unit id="short_job_description.description">
+				<source>shortJobDescription</source>
+			</trans-unit>
+			<trans-unit id="job_description.description">
+				<source>jobDescription</source>
+			</trans-unit>
+			<trans-unit id="experience.description">
+				<source>experience</source>
+			</trans-unit>
+			<trans-unit id="job_requirements.description">
+				<source>jobRequirements</source>
+			</trans-unit>
+			<trans-unit id="job_benefits.description">
+				<source>jobBenefits</source>
+			</trans-unit>
+			<trans-unit id="apply_information.description">
+				<source>applyInformation</source>
+			</trans-unit>
+			<trans-unit id="salary.description">
+				<source>salary</source>
+			</trans-unit>
+			<trans-unit id="job_type.description">
+				<source>jobType</source>
+			</trans-unit>
+			<trans-unit id="contract_type.description">
+				<source>contractType</source>
+			</trans-unit>
+			<trans-unit id="region.description">
+				<source>region</source>
+			</trans-unit>
+			<trans-unit id="contact.description">
+				<source>contact</source>
+			</trans-unit>
+			<trans-unit id="sector.description">
+				<source>sector</source>
+			</trans-unit>
+			<trans-unit id="category.description">
+				<source>category</source>
+			</trans-unit>
+			<trans-unit id="discipline.description">
+				<source>discipline</source>
+			</trans-unit>
+			<trans-unit id="education.description">
+				<source>education</source>
+			</trans-unit>
+			<trans-unit id="feuser.description">
+				<source>feuser</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

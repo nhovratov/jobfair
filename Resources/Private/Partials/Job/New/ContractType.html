@@ -1,0 +1,19 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair-new-item" id="tx_jobfair-new-item-contractType">
+    <div class="col-sm-3 control-label"><label for="jobfair_item_contractType" class="tx_jobfair-new-label">
+        <f:translate key="tx_jobfair_domain_model_job.contract_type" />
+    </label></div>
+    <div class="col-sm-5 tx_jobfair-new-content">
+        <f:form.select
+            id="jobfair_item_contractType"
+            property="contractType"
+            options="{
+                0: '{f:translate(key:\'tx_jobfair_domain_model_job.contract_type.0\')}',
+                1: '{f:translate(key:\'tx_jobfair_domain_model_job.contract_type.1\')}',
+                2: '{f:translate(key:\'tx_jobfair_domain_model_job.contract_type.2\')}',
+                3: '{f:translate(key:\'tx_jobfair_domain_model_job.contract_type.3\')}'}"
+            class="form-control tx_jobfair-new-select">
+            <select><option>###dummy###</option></select>
+        </f:form.select>
+    </div>
+</div>

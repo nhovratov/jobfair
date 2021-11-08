@@ -1,0 +1,17 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty, 1: '{f:count(subject: job.category)}'} == {0:'1',1:'0'}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.category" /></dt>
+        <dd>
+            <f:for each="{job.category}" as="category" iteration="i">
+                <f:if condition="{i.isFirst}">
+                    <f:else>
+                        <br />
+                    </f:else>
+                </f:if>
+                {category.name}
+            </f:for>
+        </dd>
+    </f:else>
+</f:if>

@@ -1,0 +1,8 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty,1:job.employer} == {0:'1',1:''}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.employer" /></dt>
+        <dd>{job.employer}</dd>
+    </f:else>
+</f:if>

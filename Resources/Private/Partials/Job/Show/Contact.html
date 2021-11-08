@@ -1,0 +1,18 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty,1:job.contact} == {0:'1',1:''}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.contact" /></dt>
+        <dd>
+            <f:if condition="{job.contact.contactImage.originalResource.originalFile.uid}">
+                <f:then><f:image src="{job.contact.contactImage.originalResource.originalFile.uid}" alt="{job.contact.contactImage.originalResource.originalFile.alternative}" maxWidth="{settings.show.imageContactMaxWidth}" maxHeight="{settings.show.imageContactMaxHeight}" /><br></f:then>
+                <f:else></f:else>
+            </f:if>
+            {job.contact.name}<f:if condition="{job.contact.name}"><br></f:if>
+            <f:format.nl2br>{job.contact.address}<f:if condition="{job.contact.address}"><br></f:if></f:format.nl2br>
+            {job.contact.phone}<f:if condition="{job.contact.phone}"><br></f:if>
+            <f:link.email email="{job.contact.email}" /><f:if condition="{job.contact.email}"><br></f:if>
+            <f:link.external uri="{job.contact.www}">{job.contact.www}</f:link.external>
+        </dd>
+    </f:else>
+</f:if>

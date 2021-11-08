@@ -1,0 +1,13 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair-edit-item" id="tx_jobfair-edit-item-starttime">
+    <div class="col-sm-3 control-label"><label for="jobfair_item_starttime" class="tx_jobfair-edit-label">
+        <f:translate key="tx_jobfair_domain_model_job.starttime" />
+    </label></div>
+    <div class="col-sm-5 tx_jobfair-edit-content">
+        <f:form.textfield
+                id="jobfair_item_starttime"
+                property="starttime"
+                value="{job.starttime -> f:format.date( format: 'd.m.Y' )}"
+                class="form-control tx_jobfair-edit-input" />
+    </div>
+</div>

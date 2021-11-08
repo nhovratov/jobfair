@@ -1,0 +1,67 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+<h1><span>{job.jobTitle}</span></h1>
+
+<f:flashMessages renderMode="div" />
+
+<dl class="tx_jobfair dl-horizontal">
+    <f:if condition="{settings.show.fields}">
+        <f:then>
+                <f:for each="{jobfair:misc.explode(string:'{settings.show.fields}')}" as="field">
+                    <f:render partial="Job/Show/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                </f:for>
+        </f:then>
+        <f:else>
+                <f:render partial="Job/Show/JobTitle" arguments="{_all}" />
+                <f:render partial="Job/Show/Employer" arguments="{_all}" />
+                <f:render partial="Job/Show/EmployerDescription" arguments="{_all}" />
+                <f:render partial="Job/Show/Location" arguments="{_all}" />
+                <f:render partial="Job/Show/ShortJobDescription" arguments="{_all}" />
+                <f:render partial="Job/Show/JobDescription" arguments="{_all}" />
+                <f:render partial="Job/Show/Experience" arguments="{_all}" />
+                <f:render partial="Job/Show/JobRequirements" arguments="{_all}" />
+                <f:render partial="Job/Show/JobBenefits" arguments="{_all}" />
+                <f:render partial="Job/Show/ApplyInformation" arguments="{_all}" />
+                <f:render partial="Job/Show/Salary" arguments="{_all}" />
+                <f:render partial="Job/Show/JobType" arguments="{_all}" />
+                <f:render partial="Job/Show/ContractType" arguments="{_all}" />
+                <f:render partial="Job/Show/Region" arguments="{_all}" />
+                <f:render partial="Job/Show/Contact" arguments="{_all}" />
+                <f:render partial="Job/Show/Sector" arguments="{_all}" />
+                <f:render partial="Job/Show/Category" arguments="{_all}" />
+                <f:render partial="Job/Show/Discipline" arguments="{_all}" />
+                <f:render partial="Job/Show/Education" arguments="{_all}" />
+        </f:else>
+    </f:if>
+</dl>
+
+<div id="tx_jobfair-show-actionlist">
+    <f:if condition="{settings.show.pageIdList}">
+        <f:then>
+            <f:link.action pageUid="{settings.show.pageIdList}" action="list" class="btn"><f:translate key="backToList" /></f:link.action>
+        </f:then>
+        <f:else>
+            <f:link.action action="list" class="btn"><f:translate key="backToList" /></f:link.action>
+        </f:else>
+    </f:if>
+    <f:if condition="{job}">
+        <f:if condition="{settings.application.disable} == 0"><f:cObject typoscriptObjectPath="plugin.tx_jobfair.divider" /><f:link.action action="newApplication" arguments="{job : job}" class="btn btn-primary"><f:translate key="applyNowLink" /></f:link.action></f:if>
+        <f:if condition="{settings.feuser.enableEdit}">
+            <f:if condition="{settings.feuser.editorUsergroupUid}">
+                <f:then>
+                    <f:security.ifHasRole role="{settings.feuser.editorUsergroupUid}">
+                        <jobfair:security.editLink job="{job}"><f:cObject typoscriptObjectPath="plugin.tx_jobfair.divider" /><f:link.action action="edit" arguments="{job : job}" class="btn"><f:translate key="editNowLink" /></f:link.action></jobfair:security.editLink>
+                        <jobfair:security.editLink job="{job}"><f:cObject typoscriptObjectPath="plugin.tx_jobfair.divider" /><f:link.action action="confirmDelete" arguments="{job : job}" class="btn"><f:translate key="deleteNowLink" /></f:link.action></jobfair:security.editLink>
+                    </f:security.ifHasRole>
+                </f:then>
+                <f:else>
+                    <jobfair:security.editLink job="{job}"><f:cObject typoscriptObjectPath="plugin.tx_jobfair.divider" /><f:link.action action="edit" arguments="{job : job}" class="btn"><f:translate key="editNowLink" /></f:link.action></jobfair:security.editLink>
+                    <jobfair:security.editLink job="{job}"><f:cObject typoscriptObjectPath="plugin.tx_jobfair.divider" /><f:link.action action="confirmDelete" arguments="{job : job}" class="btn"><f:translate key="deleteNowLink" /></f:link.action></jobfair:security.editLink>
+                </f:else>
+            </f:if>
+        </f:if>
+    </f:if>
+</div>
+</f:section>

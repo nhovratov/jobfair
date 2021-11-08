@@ -1,0 +1,11 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+    <f:if condition="{settings.list.pageIdDetail}">
+        <f:then>
+            <f:link.action pageUid="{settings.list.pageIdDetail}" action="show" arguments="{job : job}">{job.jobTitle}</f:link.action>
+        </f:then>
+        <f:else>
+            <f:link.action action="show" arguments="{job : job}">{job.jobTitle}</f:link.action>
+        </f:else>
+    </f:if>
+</td>

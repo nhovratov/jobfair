@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-04-30T21:09:58Z" product-name="jobfair">
+		<header/>
+		<body>
+			<trans-unit id="tx_jobfair_domain_model_job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_title">
+				<source>Job Title</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_image">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.employer">
+				<source>Employer</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.employer_description">
+				<source>Employer Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.short_job_description">
+				<source>Short Job Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_description">
+				<source>Job Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.experience">
+				<source>Experience</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_requirements">
+				<source>Job Requirements</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_benefits">
+				<source>Job Benefits</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.apply_information">
+				<source>Apply Information</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.salary">
+				<source>Salary</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_type">
+				<source>Job Type</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_type.0">
+				<source>Parttime</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_type.1">
+				<source>Fulltime</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type">
+				<source>Contract Type</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.0">
+				<source>Temporary</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.1">
+				<source>Permanent</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.2">
+				<source>Project</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.3">
+				<source>Contract</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.region">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.sector">
+				<source>Sector</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.discipline">
+				<source>Discipline</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.education">
+				<source>Education</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.feuser">
+				<source>FE-User</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.application">
+				<source>Applications</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.tstamp">
+				<source>Last update</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.crdate">
+				<source>Created</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.starttime">
+				<source>Publish date</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.endtime">
+				<source>Expiration date</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_region">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_region.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_sector">
+				<source>Sector</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_sector.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_category.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_discipline">
+				<source>Discipline</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_discipline.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_education">
+				<source>Education</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_education.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_user.jobs">
+				<source>Jobs</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application">
+				<source>Application</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.attachment">
+				<source>Attachment</source>
+			</trans-unit>
+			<trans-unit id="dateFormatList">
+				<source>m/d/Y</source>
+			</trans-unit>
+			<trans-unit id="dateFormatLatest">
+				<source>m/d/Y</source>
+			</trans-unit>
+			<trans-unit id="dateFormatShow">
+				<source>m/d/Y</source>
+			</trans-unit>
+			<trans-unit id="newNowLink">
+				<source>Add job</source>
+			</trans-unit>
+			<trans-unit id="editNowLink">
+				<source>Edit job</source>
+			</trans-unit>
+			<trans-unit id="deleteNowLink">
+				<source>Delete job</source>
+			</trans-unit>
+			<trans-unit id="applyNowLink">
+				<source>Apply now</source>
+			</trans-unit>
+			<trans-unit id="listJob">
+				<source>Jobs</source>
+			</trans-unit>
+			<trans-unit id="latestJob">
+				<source>Latest jobs</source>
+			</trans-unit>
+			<trans-unit id="newJob">
+				<source>Add job</source>
+			</trans-unit>
+			<trans-unit id="newJob.email_introduction">
+				<source>The following job has been created</source>
+			</trans-unit>
+			<trans-unit id="editJob">
+				<source>Edit: </source>
+			</trans-unit>
+			<trans-unit id="deleteJob">
+				<source>Delete: </source>
+			</trans-unit>
+			<trans-unit id="applyJob">
+				<source>Apply: </source>
+			</trans-unit>
+			<trans-unit id="titleFilterJob">
+				<source>Filter</source>
+			</trans-unit>
+			<trans-unit id="titleEditJob">
+				<source>Edit the job</source>
+			</trans-unit>
+			<trans-unit id="titleCreateJob">
+				<source>Create a new job</source>
+			</trans-unit>
+			<trans-unit id="submitEditJob">
+				<source>Update job</source>
+			</trans-unit>
+			<trans-unit id="emptySelectNew">
+				<source>None</source>
+			</trans-unit>
+			<trans-unit id="submitCreateJob">
+				<source>Create job</source>
+			</trans-unit>
+			<trans-unit id="submitDeleteJob">
+				<source>Delete job</source>
+			</trans-unit>
+			<trans-unit id="submitApplyJob">
+				<source>Send application</source>
+			</trans-unit>
+			<trans-unit id="deleteJobNotice">
+				<source>Are you sure that you want to delete the job?</source>
+			</trans-unit>
+			<trans-unit id="backToJob">
+				<source>Back to job</source>
+			</trans-unit>
+			<trans-unit id="backToList">
+				<source>Back to list</source>
+			</trans-unit>
+			<trans-unit id="forwardToList">
+				<source>More jobs</source>
+			</trans-unit>
+			<trans-unit id="emptySelect">
+				<source>All</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.email_subject">
+				<source>Application: %1$s</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.email_introduction">
+				<source>The following application has been send</source>
+			</trans-unit>
+			<trans-unit id="notFoundMessage">
+				<source>The job offer is not available anymore</source>
+			</trans-unit>
+			<trans-unit id="notFoundStatus">
+				<source>Job not found</source>
+			</trans-unit>
+			<trans-unit id="applicationSendMessage">
+				<source>Your application has been send to the contact(s)</source>
+			</trans-unit>
+			<trans-unit id="applicationSendStatus">
+				<source>Send!</source>
+			</trans-unit>
+			<trans-unit id="applicationAttachmentMissing">
+				<source>The attachment is missing</source>
+			</trans-unit>
+			<trans-unit id="applicationAttachmentMissingStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="applicationExtensionError">
+				<source>The extension of the attachment is not allowed</source>
+			</trans-unit>
+			<trans-unit id="applicationExtensionErrorStatusStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="applicationSendMessageNoRecipients">
+				<source>There are no valid contacts for this job. Please contact the site administrator</source>
+			</trans-unit>
+			<trans-unit id="applicationSendMessageNoRecipientsStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="applicationSendMessageGeneralError">
+				<source>There is an technical error. Please contact the site administrator</source>
+			</trans-unit>
+			<trans-unit id="applicationSendStatusGeneralErrorStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="editingDisabledMessage">
+				<source>The editing by users has been disabled</source>
+			</trans-unit>
+			<trans-unit id="editingDisabledStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="editingNotLoggedInMessage">
+				<source>You need to log in before you can start editing</source>
+			</trans-unit>
+			<trans-unit id="editingNotLoggedInStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="editingNoPermissionMessage">
+				<source>You do not have editing permissions</source>
+			</trans-unit>
+			<trans-unit id="editingNoPermissionStatus">
+				<source>Error!</source>
+			</trans-unit>
+			<trans-unit id="jobAddMessage">
+				<source>The job as been added</source>
+			</trans-unit>
+			<trans-unit id="jobAddStatus">
+				<source>Saved</source>
+			</trans-unit>
+			<trans-unit id="jobEditedMessage">
+				<source>The job as been updated</source>
+			</trans-unit>
+			<trans-unit id="jobEditedStatus">
+				<source>Updated</source>
+			</trans-unit>
+			<trans-unit id="jobRemovedMessage">
+				<source>The job as been removed</source>
+			</trans-unit>
+			<trans-unit id="jobRemovedStatus">
+				<source>Deleted</source>
+			</trans-unit>
+			<trans-unit id="searchword">
+				<source>Search word</source>
+			</trans-unit>
+			<trans-unit id="own">
+				<source>Only own jobs</source>
+			</trans-unit>
+			<trans-unit id="no">
+				<source>No</source>
+			</trans-unit>
+			<trans-unit id="yes">
+				<source>Yes</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,80 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<h1><span><f:translate key="listJob" /></span></h1>
+
+<f:flashMessages renderMode="div" />
+
+<f:if condition="{settings.filter.hideFilter} == 0">
+    <f:if condition="{jobs -> f:count()} >= {settings.filter.filterlimit}">
+        <div class="tx_jobfair" id="tx_jobfair_filter">
+            <f:form class="form-inline filterForm" method="post" action="list" name="filter" object="{filter}">
+                <legend>
+                    <f:translate key="titleFilterJob" />
+                </legend>
+                <f:for each="{jobfair:misc.explode(string:'{settings.filter.fields}')}" as="field">
+                    <f:render partial="Job/Filter/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                </f:for>
+            </f:form>
+        </div>
+    </f:if>
+</f:if>
+
+<table class="tx_jobfair table table-hover" >
+    <f:if condition="{settings.list.fields}">
+        <f:then>
+            <tr>
+                <f:for each="{jobfair:misc.explode(string:'{settings.list.fields}')}" as="field">
+                    <th class="tx_jobfair" id="tx_jobfair-list-th-{field}"><f:translate key="tx_jobfair_domain_model_job.{jobfair:misc.camelCaseToLowerCaseUnderscored(string:'{field}')}" /></th>
+                </f:for>
+            </tr>
+            <f:for each="{jobs}" as="job">
+                <tr>
+                    <f:for each="{jobfair:misc.explode(string:'{settings.list.fields}')}" as="field">
+                        <f:render partial="Job/List/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                    </f:for>
+                </tr>
+            </f:for>
+        </f:then>
+        <f:else>
+            <tr>
+                <th class="tx_jobfair" id="tx_jobfair-list-th-jobTitle"><f:translate key="tx_jobfair_domain_model_job.job_title" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-list-th-employer"><f:translate key="tx_jobfair_domain_model_job.employer" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-list-th-location"><f:translate key="tx_jobfair_domain_model_job.location" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-list-th-jobType"><f:translate key="tx_jobfair_domain_model_job.job_type" /></th>
+            </tr>
+            <f:for each="{jobs}" as="job">
+                <tr>
+                    <f:render partial="Job/List/JobTitle" arguments="{_all}" />
+                    <f:render partial="Job/List/Employer" arguments="{_all}" />
+                    <f:render partial="Job/List/Location" arguments="{_all}" />
+                    <f:render partial="Job/List/JobType" arguments="{_all}" />
+                </tr>
+            </f:for>
+        </f:else>
+    </f:if>
+</table>
+
+<f:security.ifAuthenticated>
+    <f:if condition="{settings.feuser.enableEdit}">
+        <f:if condition="{settings.feuser.editorUsergroupUid}">
+            <f:then>
+                <f:security.ifHasRole role="{settings.feuser.editorUsergroupUid}">
+                    <div id="tx_jobfair-list-actionlist">
+                        <f:link.action action="new" class="btn"><f:translate key="newNowLink" /></f:link.action>
+                    </div>
+                </f:security.ifHasRole>
+            </f:then>
+            <f:else>
+                <div id="tx_jobfair-list-actionlist">
+                    <f:link.action action="new" class="btn"><f:translate key="newNowLink" /></f:link.action>
+                </div>
+            </f:else>
+        </f:if>
+    </f:if>
+</f:security.ifAuthenticated>
+
+
+</f:section>

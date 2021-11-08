@@ -1,0 +1,53 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+    <h1><span><f:translate key="applyJob" />{job.jobTitle}</span></h1>
+
+    <f:flashMessages renderMode="div" />
+
+    <f:form class="form-horizontal" action="createApplication" name="newApplication" object="{newApplication}" arguments="{job : job, user : user}" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.name" /></label>
+            </div>
+            <div class="col-sm-5">
+                <f:form.textfield class="form-control" property="name" size="40" value="{user.firstName} {user.lastName}" required="required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.email" /></label>
+            </div>
+            <div class="col-sm-5">
+                <f:form.textfield class="form-control" size="40" property="email" value="{user.email}" type="email" required="required" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.message" /></label>
+            </div>
+            <div class="col-sm-5">
+                <f:form.textarea class="form-control" rows="20" cols="60" property="message" value=""  />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3 control-label">
+                <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.attachment" /></label>
+            </div>
+            <div class="col-sm-5">
+                <f:form.upload property="attachment" />
+            </div>
+        </div>
+        <f:form.hidden name="job" name="{job}" />
+        <f:form.hidden name="user" name="{user}" />
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <f:form.submit class="btn btn-primary" value="{f:translate(key:'submitApplyJob')}" />
+            </div>
+        </div>
+    </f:form>
+    <div id="tx_jobfair-apply-actionlist">
+        <f:link.action class="btn" controller="Job" action="show" arguments="{job : job}"><f:translate key="backToJob" /></f:link.action><br />
+    </div>
+</f:section>

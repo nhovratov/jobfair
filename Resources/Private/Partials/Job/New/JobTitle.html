@@ -1,0 +1,13 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair-new-item" id="tx_jobfair-new-item-jobTitle">
+    <div class="col-sm-3 control-label"><label for="jobfair_item_jobTitle" class="tx_jobfair-new-label">
+        <f:translate key="tx_jobfair_domain_model_job.job_title" />
+    </label></div>
+    <div class="col-sm-5 tx_jobfair-new-content">
+        <f:form.textfield
+                id="jobfair_item_jobTitle"
+                property="jobTitle"
+                class="form-control tx_jobfair-new-input"
+                required="required"/>
+    </div>
+</div>

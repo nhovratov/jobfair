@@ -1,0 +1,11 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+	<f:for each="{job.region}" as="region" iteration="i">
+		<f:if condition="{i.isFirst}">
+			<f:else>
+				<br />
+			</f:else>
+		</f:if>
+		{region.name}
+	</f:for>
+</td>

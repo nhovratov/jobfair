@@ -1,0 +1,16 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty,1:job.starttime} == {0:'1',1:''}">
+    <f:then></f:then>
+    <f:else>
+        <f:if condition="{job.starttime} == 0">
+            <f:then>
+                <dt><f:translate key="tx_jobfair_domain_model_job.starttime" /></dt>
+                <dd></dd>
+            </f:then>
+            <f:else>
+                <dt><f:translate key="tx_jobfair_domain_model_job.starttime" /></dt>
+                <dd><f:format.date format="{f:translate(key:'dateFormatShow')}">{job.starttime}</f:format.date></dd>
+            </f:else>
+        </f:if>
+    </f:else>
+</f:if>

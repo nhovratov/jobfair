@@ -1,0 +1,7 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{job.jobImage.originalResource.originalFile.uid}">
+    <f:then>
+        <dt><f:translate key="tx_jobfair_domain_model_job.job_image" /></dt>
+        <dd><f:image src="{job.jobImage.originalResource.originalFile.uid}" alt="{job.jobImage.originalResource.originalFile.alternative}" maxWidth="{settings.show.imageMaxWidth}" maxHeight="{settings.show.imageMaxHeight}" /></dd>
+    </f:then>
+</f:if>

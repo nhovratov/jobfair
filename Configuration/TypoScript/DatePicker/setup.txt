@@ -1,0 +1,24 @@
+page {
+	includeCSS {
+		jqueryui = //code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css
+		jqueryui.external = 1
+	}
+	includeJSFooter {
+		jquery = //code.jquery.com/jquery-1.10.2.js
+		jquery.external = 1
+		jquery.forceOnTop = 1
+		jqueryui = //code.jquery.com/ui/1.11.4/jquery-ui.js
+		jqueryui.external = 1
+	}
+	footerData {
+		10 = TEXT
+		10.value (
+<script>
+    $(function() {
+        $( "#jobfair_item_starttime" ).datepicker({dateFormat: "dd.mm.yy"});
+        $( "#jobfair_item_endtime" ).datepicker({dateFormat: "dd.mm.yy"});
+    });
+</script>
+		)
+	}
+}

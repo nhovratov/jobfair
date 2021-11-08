@@ -1,0 +1,21 @@
+<f:layout name="Email" />
+
+Email / AdminNotification
+
+This mail will be send to the admin if a new job has been created.
+
+Available variables:
+{job} Job object
+
+<f:section name="main">
+    <p><f:translate key="newJob.email_introduction" extensionName="jobfair" />:</p>
+
+    <p>
+        <f:translate key="tx_jobfair_domain_model_job.job_title" extensionName="jobfair" />:<br>
+        {job.jobTitle}
+    </p>
+    <p>
+      <f:translate key="tx_jobfair_domain_model_job.job_description" extensionName="jobfair" />:<br>
+        {job.jobDescription}
+    </p>
+</f:section>

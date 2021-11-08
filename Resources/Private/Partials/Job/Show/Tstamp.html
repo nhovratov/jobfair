@@ -1,0 +1,8 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{0:settings.show.hideEmpty,1:job.tstamp} == {0:'1',1:''}">
+    <f:then></f:then>
+    <f:else>
+        <dt><f:translate key="tx_jobfair_domain_model_job.tstamp" /></dt>
+        <dd><f:format.date format="{f:translate(key:'dateFormatShow')}">{job.tstamp}</f:format.date></dd>
+    </f:else>
+</f:if>

@@ -1,0 +1,11 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+	<f:for each="{job.category}" as="category" iteration="i">
+		<f:if condition="{i.isFirst}">
+			<f:else>
+				<br />
+			</f:else>
+		</f:if>
+		{category.name}
+	</f:for>
+</td>

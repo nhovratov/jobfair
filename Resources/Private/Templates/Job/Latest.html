@@ -1,0 +1,51 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<h1><span><f:translate key="latestJob" /></span></h1>
+
+<f:flashMessages renderMode="div" />
+
+<table class="tx_jobfair table table-hover" >
+    <f:if condition="{settings.latest.fields}">
+        <f:then>
+            <tr>
+                <f:for each="{jobfair:misc.explode(string:'{settings.latest.fields}')}" as="field">
+                    <th class="tx_jobfair" id="tx_jobfair-latest-th-{field}"><f:translate key="tx_jobfair_domain_model_job.{jobfair:misc.camelCaseToLowerCaseUnderscored(string:'{field}')}" /></th>
+                </f:for>
+            </tr>
+            <f:for each="{jobs}" as="job">
+                <tr>
+                    <f:for each="{jobfair:misc.explode(string:'{settings.latest.fields}')}" as="field">
+                        <f:render partial="Job/Latest/{jobfair:misc.upper(string:'{field}')}" arguments="{_all}" />
+                    </f:for>
+                </tr>
+            </f:for>
+        </f:then>
+        <f:else>
+            <tr>
+                <th class="tx_jobfair" id="tx_jobfair-latest-th-jobTitle"><f:translate key="tx_jobfair_domain_model_job.job_title" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-latest-th-employer"><f:translate key="tx_jobfair_domain_model_job.employer" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-latest-th-location"><f:translate key="tx_jobfair_domain_model_job.location" /></th>
+                <th class="tx_jobfair" id="tx_jobfair-latest-th-jobType"><f:translate key="tx_jobfair_domain_model_job.job_type" /></th>
+            </tr>
+            <f:for each="{jobs}" as="job">
+                <tr>
+                    <f:render partial="Job/Latest/JobTitle" arguments="{_all}" />
+                    <f:render partial="Job/Latest/Employer" arguments="{_all}" />
+                    <f:render partial="Job/Latest/Location" arguments="{_all}" />
+                    <f:render partial="Job/Latest/JobType" arguments="{_all}" />
+                </tr>
+            </f:for>
+        </f:else>
+    </f:if>
+</table>
+
+<f:if condition="{settings.latest.pageIdList}">
+    <div id="tx_jobfair-latest-actionlist">
+        <f:link.action pageUid="{settings.latest.pageIdList}" action="list" class="btn"><f:translate key="forwardToList" /></f:link.action>
+    </div>
+</f:if>
+
+</f:section>

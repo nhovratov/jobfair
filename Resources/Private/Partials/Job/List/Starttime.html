@@ -1,0 +1,9 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<f:if condition="{job.starttime} == 0">
+    <f:then>
+        <td></td>
+    </f:then>
+    <f:else>
+        <td><f:format.date format="{f:translate(key:'dateFormatList')}">{job.starttime}</f:format.date></td>
+    </f:else>
+</f:if>

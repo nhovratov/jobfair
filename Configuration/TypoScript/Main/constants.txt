@@ -1,0 +1,16 @@
+# customsubcategory=Application=Application
+# customsubcategory=PID=PID
+plugin.tx_jobfair {
+  settings {
+    application {
+      # cat=plugin.tx_jobfair/Application/100; type=string; label=Name of the mail sender for applications
+      fromName =
+      # cat=plugin.tx_jobfair/Application/101; type=string; label=Mail of the mail sender for applications
+      fromEmail = 
+    }
+  }
+  persistence {
+		# cat=plugin.tx_jobfair/PID/100; type=int+; label=Default storage PID
+		storagePid =
+  }
+}

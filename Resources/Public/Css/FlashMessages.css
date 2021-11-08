@@ -1,0 +1,87 @@
+/* JOBFAIR TYPO3 FLASH MESSAGES NEW STYLING IN TYPO3 7.3 */
+
+.typo3-messages {
+    padding: 0px;
+}
+
+.alert {
+    padding: 11px;
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+.alert h4 {
+    margin-top: 0;
+    color: inherit;
+}
+.alert .alert-link {
+    font-weight: bold;
+}
+.alert > p,
+.alert > ul {
+    margin-bottom: 0;
+}
+.alert > p + p {
+    margin-top: 5px;
+}
+.alert-dismissable,
+.alert-dismissible {
+    padding-right: 31px;
+}
+.alert-dismissable .close,
+.alert-dismissible .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    color: inherit;
+}
+.alert-success {
+    background-color: #79a548;
+    border-color: transparent;
+    color: #ffffff;
+}
+.alert-info {
+    background-color: #6daae0;
+    border-color: transparent;
+    color: #ffffff;
+}
+.alert-warning {
+    background-color: #e8a33d;
+    border-color: transparent;
+    color: #ffffff;
+}
+.alert-danger {
+    background-color: #c83c3c;
+    border-color: transparent;
+    color: #ffffff;
+}
+
+/* JOBFAIR TYPO3 FLASH MESSAGES OLD STYLING IN TYPO3 <7.3 */
+
+.typo3-message {
+    padding: 11px;
+    margin-bottom: 18px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+}
+
+.message-ok {
+    background-color: #79a548;
+    border-color: transparent;
+    color: #ffffff;
+}
+.message-information {
+    background-color: #6daae0;
+    border-color: transparent;
+    color: #ffffff;
+}
+.message-warning {
+    background-color: #e8a33d;
+    border-color: transparent;
+    color: #ffffff;
+}
+.message-error {
+    background-color: #c83c3c;
+    border-color: transparent;
+    color: #ffffff;
+}

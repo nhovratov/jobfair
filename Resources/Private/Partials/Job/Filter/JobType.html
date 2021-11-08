@@ -1,0 +1,18 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair tx_jobfair_filter_item" id="tx_jobfair_filter_item_jobType">
+    <div class="col-sm-3 control-label">
+        <label><f:translate key="tx_jobfair_domain_model_job.job_type" default="{field}" /></label>
+    </div>
+    <div class="col-sm-5 tx_jobfair-filter-content">
+        <f:form.select
+                id="jobType"
+                property="jobType"
+                options="{
+                    99: '{f:translate(key:\'emptySelect\')}',
+                    0: '{f:translate(key:\'tx_jobfair_domain_model_job.job_type.0\')}',
+                    1: '{f:translate(key:\'tx_jobfair_domain_model_job.job_type.1\')}'}"
+                additionalAttributes="{onChange : 'document.filter.submit();'}"
+                class="form-control tx_jobfair-filter-select">
+        </f:form.select>
+    </div>
+</div>

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-04-30T21:09:58Z" product-name="jobfair">
+		<header/>
+		<body>
+			<trans-unit id="tx_jobfair_domain_model_job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_title">
+				<source>Job Title</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_image">
+				<source>Job Image</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.employer">
+				<source>Employer</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.employer_description">
+				<source>Employer Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.location">
+				<source>Location</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.short_job_description">
+				<source>Short Job Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_description">
+				<source>Job Description</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.experience">
+				<source>Experience</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_requirements">
+				<source>Job Requirements</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_benefits">
+				<source>Job Benefits</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.apply_information">
+				<source>Apply Information</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.salary">
+				<source>Salary</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_type">
+				<source>Job Type</source>
+			</trans-unit>
+            <trans-unit id="tx_jobfair_domain_model_job.job_type.0">
+				<source>Parttime</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.job_type.1">
+				<source>Fulltime</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type">
+				<source>Contract Type</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.0">
+				<source>Temporary</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.1">
+				<source>Permanent</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.2">
+				<source>Project</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contract_type.3">
+				<source>Contract</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.region">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.sector">
+				<source>Sector</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.discipline">
+				<source>Discipline</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.education">
+				<source>Education</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.feuser">
+				<source>Feuser</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.application">
+				<source>Applications</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.internal_notes">
+				<source>Internal notes</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.tstamp">
+				<source>Last update</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.crdate">
+				<source>Created</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.starttime">
+				<source>Publish date</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_job.endtime">
+				<source>Expiration date</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact">
+				<source>Contact</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.address">
+				<source>Address</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.phone">
+				<source>Phone</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.www">
+				<source>Website</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.contact_image">
+				<source>Contact Image</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.name_cc">
+				<source>Name for CC</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.email_cc">
+				<source>Email for CC</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.name_bcc">
+				<source>Name for BCC</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_contact.email_bcc">
+				<source>Email for BCC</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_region">
+				<source>Region</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_region.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_sector">
+				<source>Sector</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_sector.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_category.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_discipline">
+				<source>Discipline</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_discipline.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_education">
+				<source>Education</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_education.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_user">
+				<source>User</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_user.jobs">
+				<source>Jobs</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application">
+				<source>Application</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.title">
+				<source>Title</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.email">
+				<source>E-Mail</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_jobfair_domain_model_application.attachment">
+				<source>Attachment</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.title">
+				<source>List</source>
+			</trans-unit>      
+			<trans-unit id="flexform.list.fieldsnotice">
+				<source>Select fields for list view (empty = Job Title, Employer, Location, Job Type)</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.imageMaxWidth">
+				<source>Max. width of images</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.imageMaxHeight">
+				<source>Max. height of images</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.ordering">
+				<source>Ordering by:</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.sorting">
+				<source>Sorting</source>
+			</trans-unit>
+			<trans-unit id="flexform.list.page_id_detail">
+				<source>UID of the page containing the plugin for detail view (empty = same page)</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.title">
+				<source>Filter</source>
+			</trans-unit>           
+			<trans-unit id="flexform.filter.hideFilter">
+				<source>Hide filter form</source>
+			</trans-unit> 
+			<trans-unit id="flexform.filter.filterlimit">
+				<source>Treshold of jobs for filter form to appear</source>
+			</trans-unit>  
+			<trans-unit id="flexform.filter.fieldsnotice">
+				<source>Select filters (empty = all available filters)</source>
+			</trans-unit>     
+			<trans-unit id="flexform.filter.enablePreselect">
+				<source>Enable preselect of filter</source>
+			</trans-unit>  
+			<trans-unit id="flexform.filter.preselectCategory">
+				<source>Category to preselect the filter</source>
+			</trans-unit>  
+			<trans-unit id="flexform.filter.preselectRegion">
+				<source>Region to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectSector">
+				<source>Sector to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectDiscipline">
+				<source>Discipline to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectEducation">
+				<source>Education to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectJobType">
+				<source>Job type to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectContractType">
+				<source>Contract type to preselect the filter</source>
+			</trans-unit>
+			<trans-unit id="flexform.filter.preselectOwn">
+				<source>Show only jobs of logged in FE-user</source>
+			</trans-unit>
+            <trans-unit id="flexform.show.title">
+				<source>Show</source>
+			</trans-unit>          
+            <trans-unit id="flexform.show.fieldsnotice">
+				<source>Select fields for show view (empty = all fields)</source>
+			</trans-unit> 
+            <trans-unit id="flexform.show.hideEmpty">
+				<source>Hide empty fields in show view</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.imageMaxWidth">
+				<source>Max. width of job image</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.imageMaxHeight">
+				<source>Max. height of job image</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.imageContactMaxWidth">
+				<source>Max. width of contact image</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.imageContactMaxHeight">
+				<source>Max. height of contact image</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.page_id_list">
+				<source>UID of the page containing the plugin for list view (empty = same page)</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.displayErrorMessageIfNotFound">
+				<source>Display error message if job cannot be found</source>
+			</trans-unit>
+			<trans-unit id="flexform.show.redirectIfNotFound">
+				<source>Redirect to list view if job cannot be found</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.title">
+				<source>Application</source>
+			</trans-unit> 
+			<trans-unit id="flexform.application.disable">
+				<source>Disable applications</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.fromName">
+				<source>Name of mail sender</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.fromEmail">
+				<source>Mail address of mail sender</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.requireAttachment">
+				<source>An attachment is required</source>
+			</trans-unit>
+			<trans-unit id="flexform.application.dontSaveAttachment">
+				<source>Do not save attachment in file system</source>
+			</trans-unit>
+			<trans-unit id="flexform.feuser.title">
+				<source>FE-User</source>
+			</trans-unit> 
+			<trans-unit id="flexform.feuser.enableEdit">
+				<source>Enable FE-Users to add, edit* and delete* job (*their own)</source>
+			</trans-unit>
+			<trans-unit id="flexform.feuser.editorUsergroupUid">
+				<source>Limit FE-User editing to members of the usergroup (UID) </source>
+			</trans-unit>
+			<trans-unit id="flexform.feuser.page_id">
+				<source>Page ID (PID) where the user profile is shown</source>
+			</trans-unit> 
+			<trans-unit id="flexform.feuser.plugin_name">
+				<source>Plugin which is used to show the user profile</source>
+			</trans-unit> 
+			<trans-unit id="flexform.feuser.plugin_field">
+				<source>Field which is used to identify the user</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.title">
+				<source>New</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.fieldsnotice">
+				<source>Select fields for new view (empty = all fields)</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.enable_admin_notificaton">
+				<source>Enable admin notification for new entries</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.from_name">
+				<source>Name of mail sender</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.from_email">
+				<source>Email address of mail sender</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.admin_name">
+				<source>Name of the administrator</source>
+			</trans-unit>
+			<trans-unit id="flexform.new.admin_email">
+				<source>Email address of the administrator</source>
+			</trans-unit>
+			<trans-unit id="flexform.edit.title">
+				<source>Edit</source>
+			</trans-unit>
+			<trans-unit id="flexform.edit.fieldsnotice">
+				<source>Select fields for edit view (empty = all fields)</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.title">
+				<source>Latest</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.enableLatest">
+				<source>Replace standard list view with latest view</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.limit">
+				<source>Limit of jobs to be shown</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.ordering">
+				<source>Ordering by:</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.page_id_detail">
+				<source>UID of the page containing the plugin for detail view (empty = same page)</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.page_id_list">
+				<source>UID of the page containing the plugin for list view (target of "More jobs" link)</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.fieldsnotice">
+				<source>Select fields for latest view (empty = Job Title, Employer, Location, Job Type)  </source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.imageMaxWidth">
+				<source>Max. width of images</source>
+			</trans-unit>
+			<trans-unit id="flexform.latest.imageMaxHeight">
+				<source>Max. height of images</source>
+			</trans-unit>
+			<trans-unit id="searchword">
+            	<source>Search word</source>
+            </trans-unit>
+			<trans-unit id="own">
+            	<source>Own jobs</source>
+            </trans-unit>
+		</body>
+	</file>
+</xliff>

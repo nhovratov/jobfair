@@ -1,0 +1,28 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>{settings.feed.title}</title>
+        <link>{settings.feed.link}</link>
+        <description>{settings.feed.description}</description>
+        <language>{settings.feed.language}</language>
+        <f:if condition="{settings.feed.copyright}">
+            <copyright>{settings.feed.copyright}</copyright>
+        </f:if>
+        <lastBuildDate><f:cObject typoscriptObjectPath="lib.ll_pubdate" data="{f:format.date(format:'U' date:'{jobs.0.tstamp}')}" /></lastBuildDate>
+        <f:if condition="{settings.feed.category}">
+            <category>{settings.feed.category}</category>
+        </f:if>
+        <generator>{settings.feed.generator}</generator>
+        <atom:link href="{f:uri.action(action:'show', arguments:{job : job}, absolute:'1', noCacheHash:'TRUE') -> f:format.htmlentities()}" rel="self" type="application/rss+xml" />
+        <f:if condition="{f:count(subject:'{jobs}')} > 0">
+            <f:for each="{jobs}" as="job" iteration="iterator">
+                <item>
+                    <guid isPermaLink="false"><f:format.htmlentities><f:uri.action action="show" arguments="{job : job}" absolute="1" noCacheHash="TRUE" /></f:format.htmlentities></guid>
+                    <pubDate><f:cObject typoscriptObjectPath="lib.ll_pubdate" data="{f:format.date(format:'U' date:'{job.tstamp}')}" /></pubDate>
+                    <title>{job.jobTitle}</title>
+                    <link><f:format.htmlentities><f:uri.action action="show" arguments="{job : job}" absolute="1" noCacheHash="TRUE" /></f:format.htmlentities></link>
+                    <description><f:format.cdata><f:format.nl2br>{job.jobDescription}</f:format.nl2br></f:format.cdata></description>
+                </item>
+            </f:for>
+        </f:if>
+    </channel>
+</rss>

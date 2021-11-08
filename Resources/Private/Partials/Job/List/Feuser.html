@@ -1,0 +1,11 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<td>
+	<f:for each="{job.feuser}" as="feuser" iteration="i">
+		<f:if condition="{i.isFirst}">
+			<f:else>
+				<br />
+			</f:else>
+		</f:if>
+		{feuser.lastName}<f:if condition="{feuser.lastName}">,</f:if> {feuser.firstName}
+	</f:for>
+</td>

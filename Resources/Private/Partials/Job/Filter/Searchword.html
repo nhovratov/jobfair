@@ -1,0 +1,15 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair tx_jobfair_filter_item" id="tx_jobfair_filter_item_searchword"
+     xmlns:f="http://www.w3.org/1999/html">
+    <div class="col-sm-3 control-label">
+        <label><f:translate key="searchword" default="{field}" /></label>
+    </div>
+    <div class="col-sm-5 tx_jobfair-filter-content">
+        <f:form.textfield
+                id="searchword"
+                property="searchword"
+                additionalAttributes="{onChange : 'document.filter.submit();'}"
+                class="form-control tx_jobfair-filter-input">
+        </f:form.textfield>
+    </div>
+</div>

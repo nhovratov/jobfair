@@ -1,0 +1,21 @@
+{namespace jobfair=Dan\Jobfair\ViewHelpers}
+<div class="form-group tx_jobfair tx_jobfair_filter_item" id="tx_jobfair_filter_item_sector">
+    <div class="col-sm-3 control-label">
+        <label><f:translate key="tx_jobfair_domain_model_job.sector" default="{field}" /></label>
+    </div>
+    <div class="col-sm-5 tx_jobfair-filter-content">
+        <f:form.select
+                id="sectors"
+                property="sectors"
+                options="{sectors}"
+                multiple="true"
+                optionValueField="uid"
+                optionLabelField="name"
+                prependOptionValue="0"
+                prependOptionLabel="{f:translate(key:'emptySelect')}"
+                additionalAttributes="{onChange : 'document.filter.submit();'}"
+                class="form-control tx_jobfair-filter-select">
+            <select><option>###dummy###</option></select>
+        </f:form.select>
+    </div>
+</div>
