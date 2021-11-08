@@ -1,0 +1,29 @@
+{
+  "name": "hov/jobfair",
+  "description": "Simple job market based on Extbase and Fluid. Basically works like dmmjobcontrol. There are list and detail views available. In addition, it is possible to set up an online application system. Furthermore, FE-Users can be enabled to add and edit jobs in the frontend, so to BE-Administration is required. Feeds (Rss091, Rss2, Atom) are also available",
+  "license": "GPL-2.0-or-later",
+  "type": "typo3-cms-extension",
+  "authors": [
+    {
+      "name": "Daniel Schill",
+      "email": "typo3dev@outlook.com"
+    },
+    {
+      "name": "Nikita Hovratov",
+      "email": "entwicklung@nikita-hovratov.de"
+    }
+  ],
+  "require": {
+    "typo3/cms": "^7.6 || ^8.7"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "jobfair"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Dan\\Jobfair\\": "Classes/"
+    }
+  }
+}
