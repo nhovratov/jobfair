@@ -50,7 +50,7 @@ class Div {
 	public function uploadFile($attachmentFile) {
 		// create new filename and upload it
 		$basicFileFunctions = GeneralUtility::makeInstance('TYPO3\CMS\Core\Utility\File\BasicFileUtility');
-        $newFileName = md5(uniqid(microtime(), true)) . '_' . $attachmentFile['name'];
+        $newFileName = bin2hex(random_bytes(20)) . '_' . $attachmentFile['name'];
 		$newFile = $basicFileFunctions->getUniqueName(
             $newFileName,
 				GeneralUtility::getFileAbsFileName( self::getUploadFolderFromTca() )
