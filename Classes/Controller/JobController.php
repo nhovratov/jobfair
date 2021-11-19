@@ -1,7 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dan\Jobfair\Controller;
 
+use Dan\Jobfair\Domain\Model\Category;
+use Dan\Jobfair\Domain\Model\Discipline;
+use Dan\Jobfair\Domain\Model\Education;
+use Dan\Jobfair\Domain\Model\Region;
+use Dan\Jobfair\Domain\Model\Sector;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
@@ -16,6 +23,7 @@ use Dan\Jobfair\Service\AccessControlService;
 use \TYPO3\CMS\Core\Messaging\AbstractMessage;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -123,7 +131,7 @@ class JobController extends ActionController
             ->getPropertyMappingConfiguration()
             ->forProperty('starttime')
             ->setTypeConverterOption(
-                'TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter',
+                DateTimeConverter::class,
                 DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 $this->settings['edit']['dateFormat']
             );
@@ -131,7 +139,7 @@ class JobController extends ActionController
             ->getPropertyMappingConfiguration()
             ->forProperty('endtime')
             ->setTypeConverterOption(
-                'TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter',
+                DateTimeConverter::class,
                 DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 $this->settings['edit']['dateFormat']
             );
@@ -147,7 +155,7 @@ class JobController extends ActionController
             ->getPropertyMappingConfiguration()
             ->forProperty('starttime')
             ->setTypeConverterOption(
-                'TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter',
+                DateTimeConverter::class,
                 DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 $this->settings['new']['dateFormat']
             );
@@ -155,7 +163,7 @@ class JobController extends ActionController
             ->getPropertyMappingConfiguration()
             ->forProperty('endtime')
             ->setTypeConverterOption(
-                'TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter',
+                DateTimeConverter::class,
                 DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 $this->settings['new']['dateFormat']
             );
@@ -205,7 +213,7 @@ class JobController extends ActionController
      * @param $filter \Dan\Jobfair\Domain\Model\Filter
      * @return void
      * @Extbase\IgnoreValidation("filter")
-     * @var $category \Dan\Jobfair\Domain\Model\Category
+     * @var $category Category
      */
     public function listAction(Filter $filter = null)
     {
@@ -221,18 +229,18 @@ class JobController extends ActionController
             $ordering = 'crdate';
         }
         $sorting = $this->settings['list']['sorting'];
-        if ($sorting == 'DESC') {
-            $this->jobRepository->setDefaultOrderings(array($ordering => QueryInterface::ORDER_DESCENDING));
+        if ($sorting === 'DESC') {
+            $this->jobRepository->setDefaultOrderings([$ordering => QueryInterface::ORDER_DESCENDING]);
         } else {
-            $this->jobRepository->setDefaultOrderings(array($ordering => QueryInterface::ORDER_ASCENDING));
+            $this->jobRepository->setDefaultOrderings([$ordering => QueryInterface::ORDER_ASCENDING]);
         }
 
         /* set the ordering and sorting for all other repositories */
-        $this->categoryRepository->setDefaultOrderings(array('sorting' => QueryInterface::ORDER_ASCENDING));
-        $this->regionRepository->setDefaultOrderings(array('sorting' => QueryInterface::ORDER_ASCENDING));
-        $this->sectorRepository->setDefaultOrderings(array('sorting' => QueryInterface::ORDER_ASCENDING));
-        $this->disciplineRepository->setDefaultOrderings(array('sorting' => QueryInterface::ORDER_ASCENDING));
-        $this->educationRepository->setDefaultOrderings(array('sorting' => QueryInterface::ORDER_ASCENDING));
+        $this->categoryRepository->setDefaultOrderings(['sorting' => QueryInterface::ORDER_ASCENDING]);
+        $this->regionRepository->setDefaultOrderings(['sorting' => QueryInterface::ORDER_ASCENDING]);
+        $this->sectorRepository->setDefaultOrderings(['sorting' => QueryInterface::ORDER_ASCENDING]);
+        $this->disciplineRepository->setDefaultOrderings(['sorting' => QueryInterface::ORDER_ASCENDING]);
+        $this->educationRepository->setDefaultOrderings(['sorting' => QueryInterface::ORDER_ASCENDING]);
 
         /* load filter contents */
         $this->view->assign('filter', $filter);
@@ -248,23 +256,23 @@ class JobController extends ActionController
         } elseif ($this->settings['filter']['enablePreselect']) {
             $filter = new Filter();
             if ($this->settings['filter']['preselectCategory']) {
-                /** @var \Dan\Jobfair\Domain\Model\Category $category */
+                /** @var Category $category */
                 $category = $this->categoryRepository->findByUid($this->settings['filter']['preselectCategory']);
                 $filter->addCategory($category);
             } elseif ($this->settings['filter']['preselectRegion']) {
-                /** @var \Dan\Jobfair\Domain\Model\Region $region */
+                /** @var Region $region */
                 $region = $this->regionRepository->findByUid($this->settings['filter']['preselectRegion']);
                 $filter->addRegion($region);
             } elseif ($this->settings['filter']['preselectSector']) {
-                /** @var \Dan\Jobfair\Domain\Model\Sector $sector */
+                /** @var Sector $sector */
                 $sector = $this->sectorRepository->findByUid($this->settings['filter']['preselectSector']);
                 $filter->addSector($sector);
             } elseif ($this->settings['filter']['preselectDiscipline']) {
-                /** @var \Dan\Jobfair\Domain\Model\Discipline $discipline */
+                /** @var Discipline $discipline */
                 $discipline = $this->disciplineRepository->findByUid($this->settings['filter']['preselectDiscipline']);
                 $filter->addDiscipline($discipline);
             } elseif ($this->settings['filter']['preselectEducation']) {
-                /** @var \Dan\Jobfair\Domain\Model\Education $education */
+                /** @var Education $education */
                 $education = $this->educationRepository->findByUid($this->settings['filter']['preselectEducation']);
                 $filter->addEducation($education);
             } elseif ($this->settings['filter']['preselectJobType']) {
@@ -311,17 +319,17 @@ class JobController extends ActionController
      */
     public function showAction(Job $job = null)
     {
-        if ($this->settings['seoOptimizationLevel']) {
+        if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
             $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
             $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
         }
-        if ($job == null && $this->settings['show']['displayErrorMessageIfNotFound']) {
+        if ($job === null && $this->settings['show']['displayErrorMessageIfNotFound']) {
             $this->flashMessageService('notFoundMessage', 'notFoundStatus', 'INFO');
         }
-        if ($job == null && $this->settings['show']['redirectIfNotFound']) {
+        if ($job === null && $this->settings['show']['redirectIfNotFound']) {
             $this->redirect('list');
         }
-        if ($job !== null) {
+        if ($job instanceof Job) {
             $this->view->assign('job', $job);
         }
     }
@@ -386,18 +394,18 @@ class JobController extends ActionController
         }
         $newJob->setSorting(9999999);
         $this->jobRepository->add($newJob);
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, array('job' => $newJob));
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, ['job' => $newJob]);
         if ($this->settings['new']['enableAdminNotificaton'] &&
             GeneralUtility::validEmail($this->settings['new']['adminEmail']) &&
             GeneralUtility::validEmail($this->settings['new']['fromEmail'])) {
             // from
-            $sender = (array($this->settings['new']['fromEmail'] => $this->settings['new']['fromName']));
+            $sender = ([$this->settings['new']['fromEmail'] => $this->settings['new']['fromName']]);
             // to
             /** @var $to array Array to collect all the receipients */
-            $to = array();
-            $to [] = array('email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']);
+            $to = [];
+            $to [] = ['email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']];
 
-            $recipients = array();
+            $recipients = [];
             foreach ($to as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
                     if (trim($pair['name'])) {
@@ -418,7 +426,7 @@ class JobController extends ActionController
                 $recipientsBcc,
                 $sender,
                 LocalizationUtility::translate('tx_jobfair_domain_model_job', 'jobfair') . ": " . $newJob->getJobTitle(),
-                array('job' => $newJob),
+                ['job' => $newJob],
                 $fileName
             );
         }
@@ -487,8 +495,8 @@ class JobController extends ActionController
         }
         $this->flashMessageService('jobEditedMessage', 'jobEditedStatus', 'OK');
         $this->jobRepository->update($job);
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, array('job' => $job));
-        $this->redirect('show', 'Job', null, array('job' => $job));
+        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, ['job' => $job]);
+        $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
     /**
@@ -560,11 +568,12 @@ class JobController extends ActionController
     public function newApplicationAction(Job $job, Application $newApplication = null)
     {
         $loggedInFeuserObject = $this->accessControlService->getFrontendUserObject();
-        $this->view->assignMultiple(array(
-                                        'job' => $job,
-                                        'user' => $loggedInFeuserObject,
-                                        'newApplication' => $newApplication
-                                    )
+        $this->view->assignMultiple(
+            [
+                'job' => $job,
+                'user' => $loggedInFeuserObject,
+                'newApplication' => $newApplication
+            ]
         );
     }
 
@@ -584,19 +593,19 @@ class JobController extends ActionController
         // Check if attachment is missing
         if (empty($attachmentFile['name']) && $this->settings['application']['validation']['attachment']['required']) {
             $this->flashMessageService('applicationAttachmentMissing', 'applicationAttachmentMissingStatus', 'ERROR');
-            $this->forward('newApplication', 'Job', null, array('job' => $job));
+            $this->forward('newApplication', 'Job', null, ['job' => $job]);
         }
         // Check file extension
         if (!empty($attachmentFile['name']) && (!Div::checkExtension($attachmentFile['name']) || !$this->verifyFilenameAgainstDenyPattern((string)$attachmentFile['name']))) {
             $this->flashMessageService('applicationExtensionError', 'applicationExtensionErrorStatus', 'ERROR');
-            $this->forward('newApplication', 'Job', null, array('job' => $job));
+            $this->forward('newApplication', 'Job', null, ['job' => $job]);
         }
         /** @var $fileName mixed false or file.xyz (name of the attached file) */
         $fileName = $this->div->uploadFile($attachmentFile);
         $newApplication->setAttachment($fileName);
 
         $this->applicationRepository->add($newApplication);
-        $persistenceManager = GeneralUtility::makeInstance("TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager");
+        $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
         $persistenceManager->persistAll();
 
         $job->addApplication($newApplication);
@@ -604,26 +613,26 @@ class JobController extends ActionController
 
 
         // from
-        $sender = array();
+        $sender = [];
         if ($this->settings['application']['fromEmail']) {
-            $sender = (array($this->settings['application']['fromEmail'] => $this->settings['application']['fromName']));
+            $sender = ([$this->settings['application']['fromEmail'] => $this->settings['application']['fromName']]);
         }
 
         /** @var $to array Array to collect all the receipients */
-        $to = array();
+        $to = [];
 
         $contact = $job->getContact();
         if ($contact) {
-            $to [] = array('email' => $contact->getEmail(), 'name' => $contact->getName());
+            $to [] = ['email' => $contact->getEmail(), 'name' => $contact->getName()];
         }
 
         $feusers = $job->getFeuser();
         /** @var $feuser \Dan\Jobfair\Domain\Model\User */
         foreach ($feusers as $feuser) {
-            $to [] = array('email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . " " . $feuser->getLastName());
+            $to [] = ['email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . " " . $feuser->getLastName()];
         }
 
-        $recipients = array();
+        $recipients = [];
         if (is_array($to)) {
             foreach ($to as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
@@ -638,16 +647,16 @@ class JobController extends ActionController
 
         if (!count($recipients)) {
             $this->flashMessageService('applicationSendMessageNoRecipients', 'applicationSendMessageNoRecipientsStatus', 'ERROR');
-            $this->redirect('show', 'Job', null, array('job' => $job));
+            $this->redirect('show', 'Job', null, ['job' => $job]);
         }
 
         // toCc and toBcc (only relevant if send to contacts)
         if ($contact) {
             /** @var $toCc array Array to collect all the receipients */
-            $toCc = array();
-            $toCc [] = array('email' => $contact->getEmailCc(), 'name' => $contact->getNameCc());
+            $toCc = [];
+            $toCc [] = ['email' => $contact->getEmailCc(), 'name' => $contact->getNameCc()];
 
-            $recipientsCc = array();
+            $recipientsCc = [];
             foreach ($toCc as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
                     if (trim($pair['name'])) {
@@ -659,10 +668,10 @@ class JobController extends ActionController
             }
 
             /** @var $toBcc array Array to collect all the receipients */
-            $toBcc = array();
-            $toBcc [] = array('email' => $contact->getEmailBcc(), 'name' => $contact->getNameBcc());
+            $toBcc = [];
+            $toBcc [] = ['email' => $contact->getEmailBcc(), 'name' => $contact->getNameBcc()];
 
-            $recipientsBcc = array();
+            $recipientsBcc = [];
             foreach ($toBcc as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
                     if (trim($pair['name'])) {
@@ -683,8 +692,8 @@ class JobController extends ActionController
             $recipientsCc,
             $recipientsBcc,
             $sender,
-            LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', array('jobTitle' => $job->getJobTitle())),
-            array('newApplication' => $newApplication, 'job' => $job),
+            LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
+            ['newApplication' => $newApplication, 'job' => $job],
             $fileName
         )) {
             $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
@@ -698,7 +707,7 @@ class JobController extends ActionController
                 @unlink($filePathAndName);
             }
         }
-        $this->redirect('show', 'Job', null, array('job' => $job));
+        $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
     protected function verifyFilenameAgainstDenyPattern(string $filename): bool
@@ -716,9 +725,9 @@ class JobController extends ActionController
      * @param \string $statusKey
      * @param \string $level
      */
-    protected function flashMessageService($messageKey, $statusKey, $level)
+    protected function flashMessageService($messageKey, $statusKey, $levelString)
     {
-        switch ($level) {
+        switch ($levelString) {
             case "NOTICE":
                 $level = AbstractMessage::NOTICE;
                 break;
@@ -734,6 +743,8 @@ class JobController extends ActionController
             case "ERROR":
                 $level = AbstractMessage::ERROR;
                 break;
+            default:
+                $level = AbstractMessage::OK;
         }
 
         $this->addFlashMessage(
