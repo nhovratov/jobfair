@@ -3,6 +3,7 @@
 #
 CREATE TABLE tx_jobfair_domain_model_job (
 	job_title varchar(255) DEFAULT '' NOT NULL,
+	slug varchar(2048),
   job_image varchar(255) DEFAULT '' NOT NULL,
 	employer varchar(255) DEFAULT '' NOT NULL,
 	employer_description text NOT NULL,
