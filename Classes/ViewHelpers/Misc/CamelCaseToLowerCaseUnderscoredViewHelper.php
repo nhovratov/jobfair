@@ -2,6 +2,7 @@
 namespace Dan\Jobfair\ViewHelpers\Misc;
 
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -21,15 +22,22 @@ use \TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class CamelCaseToLowerCaseUnderscoredViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class CamelCaseToLowerCaseUnderscoredViewHelper extends AbstractViewHelper {
 
 	/**
 	 * View helper to transform a camelCase string to to lower_case_underscored
 	 *
-	 * @param \string $string 			Any list (e.g. "a,b,c,d")
 	 * @return \string
 	 */
-	public function render($string) {
+	public function render()
+	{
+		$string = $this->arguments['string'];
 		return  GeneralUtility::camelCaseToLowerCaseUnderscored($string) ;
+	}
+
+	public function initializeArguments(): void
+	{
+		parent::initializeArguments();
+		$this->registerArgument('string', 'string', 'Any list (e.g. "a,b,c,d")', true);
 	}
 }

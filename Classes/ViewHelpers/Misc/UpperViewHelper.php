@@ -1,7 +1,8 @@
 <?php
 namespace Dan\Jobfair\ViewHelpers\Misc;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * This file is part of the TYPO3 CMS project.
@@ -24,10 +25,17 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 class UpperViewHelper extends AbstractViewHelper {
 
 	/**
-	 * @param string $string
 	 * @return string
 	 */
-	public function render($string = '') {
+	public function render()
+	{
+		$string = $this->arguments['string'];
 		return ucfirst($string);
+	}
+
+	public function initializeArguments(): void
+	{
+		parent::initializeArguments();
+		$this->registerArgument('string', 'string', '', false, '');
 	}
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -13,13 +14,12 @@ namespace Dan\Jobfair\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 /**
  * The model for Contact
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Contact extends AbstractEntity {
 
 	/**
 	 * name

@@ -1,6 +1,8 @@
 <?php
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 /**
  * This file is part of the TYPO3 CMS project.
  *
@@ -13,13 +15,12 @@ namespace Dan\Jobfair\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
-
 /**
  * The model for Application
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class Application extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Application extends AbstractEntity {
 
 	/**
 	 * title
@@ -80,7 +81,7 @@ class Application extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->jobs = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->jobs = new ObjectStorage();
 	}
   
   	/**
@@ -184,7 +185,7 @@ class Application extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Job $job
 	 * @return void
 	 */
-	public function addJob(\Dan\Jobfair\Domain\Model\Job $job) {
+	public function addJob(Job $job) {
 		$this->jobs->attach($job);
 	}
 
@@ -194,7 +195,7 @@ class Application extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
 	 * @return void
 	 */
-	public function removeJob(\Dan\Jobfair\Domain\Model\Job $jobToRemove) {
+	public function removeJob(Job $jobToRemove) {
 		$this->jobs->detach($jobToRemove);
 	}
 
@@ -213,7 +214,7 @@ class Application extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
 	 * @return void
 	 */
-	public function setJobs(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $jobs) {
+	public function setJobs(ObjectStorage $jobs) {
 		$this->jobs = $jobs;
 	}
 }

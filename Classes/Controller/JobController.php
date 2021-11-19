@@ -1,6 +1,15 @@
 <?php
 namespace Dan\Jobfair\Controller;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use Dan\Jobfair\Domain\Repository\JobRepository;
+use Dan\Jobfair\Domain\Repository\ApplicationRepository;
+use Dan\Jobfair\Domain\Repository\RegionRepository;
+use Dan\Jobfair\Domain\Repository\SectorRepository;
+use Dan\Jobfair\Domain\Repository\CategoryRepository;
+use Dan\Jobfair\Domain\Repository\DisciplineRepository;
+use Dan\Jobfair\Domain\Repository\EducationRepository;
+use Dan\Jobfair\Service\AccessControlService;
 use \TYPO3\CMS\Core\Messaging\AbstractMessage;
 use \TYPO3\CMS\Core\Utility\GeneralUtility;
 use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -36,20 +45,18 @@ class JobController extends ActionController {
 	const SIGNAL_UpdateActionAfterUpdate = 'updateActionAfterUpdate';
 
 	/**
-	* jobRepository
-	*
-	* @var \Dan\Jobfair\Domain\Repository\JobRepository
-	* @inject
-	*/
+	 * jobRepository
+	 *
+	 * @var \Dan\Jobfair\Domain\Repository\JobRepository
+	 */
 	protected $jobRepository = NULL;
 
 
 	/**
-	* applicationRepository
-	*
-	* @var \Dan\Jobfair\Domain\Repository\ApplicationRepository
-	* @inject
-	*/
+	 * applicationRepository
+	 *
+	 * @var \Dan\Jobfair\Domain\Repository\ApplicationRepository
+	 */
 	protected $applicationRepository = NULL;
 
 
@@ -57,23 +64,20 @@ class JobController extends ActionController {
 	 * categoryRepository
 	 *
 	 * @var \Dan\Jobfair\Domain\Repository\RegionRepository
-	 * @inject
 	 */
 	protected $regionRepository;
 
 	/**
-	* categoryRepository
-	*
-	* @var \Dan\Jobfair\Domain\Repository\SectorRepository
-	* @inject
-	*/
+	 * categoryRepository
+	 *
+	 * @var \Dan\Jobfair\Domain\Repository\SectorRepository
+	 */
 	protected $sectorRepository;
 
 	/**
 	 * categoryRepository
 	 *
 	 * @var \Dan\Jobfair\Domain\Repository\CategoryRepository
-	 * @inject
 	 */
 	protected $categoryRepository;
 
@@ -81,7 +85,6 @@ class JobController extends ActionController {
 	 * categoryRepository
 	 *
 	 * @var \Dan\Jobfair\Domain\Repository\DisciplineRepository
-	 * @inject
 	 */
 	protected $disciplineRepository;
 
@@ -89,22 +92,19 @@ class JobController extends ActionController {
 	 * categoryRepository
 	 *
 	 * @var \Dan\Jobfair\Domain\Repository\EducationRepository
-	 * @inject
 	 */
 	protected $educationRepository;
 
 	/**
-	* Misc Functions
-	*
-	* @var \Dan\Jobfair\Utility\Div
-	* @inject
-	*/
+	 * Misc Functions
+	 *
+	 * @var \Dan\Jobfair\Utility\Div
+	 */
 	protected $div;
 
 	/**
-	* @var \Dan\Jobfair\Service\AccessControlService
-	* @inject
-	*/
+	 * @var \Dan\Jobfair\Service\AccessControlService
+	 */
 	protected $accessControlService;
 
 	/**
@@ -188,13 +188,13 @@ class JobController extends ActionController {
 
 
 	/**
-	* action list
-	*
-	* @param $filter \Dan\Jobfair\Domain\Model\Filter
-	* @ignorevalidation $filter
-	* @var $category \Dan\Jobfair\Domain\Model\Category
-	* @return void
-	*/
+	 * action list
+	 *
+	 * @param $filter \Dan\Jobfair\Domain\Model\Filter
+	 * @var $category \Dan\Jobfair\Domain\Model\Category
+	 * @return void
+	 * @Extbase\IgnoreValidation("filter")
+	 */
 	public function listAction(Filter $filter = NULL) {
 
 		/* redirect to latest view if enabled in the plugin */
@@ -316,12 +316,12 @@ class JobController extends ActionController {
 
 
 	/**
-	* action new
-	*
-	* @param \Dan\Jobfair\Domain\Model\Job $newJob
-	* @ignorevalidation $newJob
-	* @return void
-	*/
+	 * action new
+	 *
+	 * @param \Dan\Jobfair\Domain\Model\Job $newJob
+	 * @return void
+	 * @Extbase\IgnoreValidation("newJob")
+	 */
 	public function newAction(Job $newJob = NULL) {
 		if (!$this->settings['feuser']['enableEdit']) {
 			$this->flashMessageService('editingDisabledMessage','editingDisabledStatus','ERROR' );
@@ -413,12 +413,12 @@ class JobController extends ActionController {
 	}
 
 	/**
-	* action edit
-	*
-	* @param \Dan\Jobfair\Domain\Model\Job $job
-	* @ignorevalidation $job
-	* @return void
-	*/
+	 * action edit
+	 *
+	 * @param \Dan\Jobfair\Domain\Model\Job $job
+	 * @return void
+	 * @Extbase\IgnoreValidation("job")
+	 */
 	public function editAction(Job $job) {
 		if (!$this->settings['feuser']['enableEdit']) {
 			$this->flashMessageService('editingDisabledMessage','editingDisabledStatus','ERROR' );
@@ -532,13 +532,13 @@ class JobController extends ActionController {
 	}
 
 	/**
-	* action newApplication
-	*
-	* @param \Dan\Jobfair\Domain\Model\Job $job
-	* @param \Dan\Jobfair\Domain\Model\Application $newApplication
-	* @ignorevalidation $newApplication
-	* @return void
-	*/
+	 * action newApplication
+	 *
+	 * @param \Dan\Jobfair\Domain\Model\Job $job
+	 * @param \Dan\Jobfair\Domain\Model\Application $newApplication
+	 * @return void
+	 * @Extbase\IgnoreValidation("newApplication")
+	 */
 	public function newApplicationAction(Job $job, Application $newApplication = NULL) {
 		$loggedInFeuserObject = $this->accessControlService->getFrontendUserObject();
 		$this->view->assignMultiple(array(
@@ -549,13 +549,13 @@ class JobController extends ActionController {
 	}
 
 	/**
-	* action createApplication
-	*
-	* @param \Dan\Jobfair\Domain\Model\Application $newApplication
-	* @param \Dan\Jobfair\Domain\Model\Job $job
-	* @validate $newApplication \Dan\Jobfair\Domain\Validator\ApplicationCreateValidator
-	* @return void
-	*/
+	 * action createApplication
+	 *
+	 * @param \Dan\Jobfair\Domain\Model\Application $newApplication
+	 * @param \Dan\Jobfair\Domain\Model\Job $job
+	 * @return void
+	 * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
+	 */
 	public function createApplicationAction(Application $newApplication, Job $job) {
 		$newApplication->setTitle($job->getJobTitle()." - ".$newApplication->getName());
 
@@ -710,5 +710,50 @@ class JobController extends ActionController {
 				$level,
 				TRUE
 		);
+	}
+
+	public function injectJobRepository(JobRepository $jobRepository): void
+	{
+		$this->jobRepository = $jobRepository;
+	}
+
+	public function injectApplicationRepository(ApplicationRepository $applicationRepository): void
+	{
+		$this->applicationRepository = $applicationRepository;
+	}
+
+	public function injectRegionRepository(RegionRepository $regionRepository): void
+	{
+		$this->regionRepository = $regionRepository;
+	}
+
+	public function injectSectorRepository(SectorRepository $sectorRepository): void
+	{
+		$this->sectorRepository = $sectorRepository;
+	}
+
+	public function injectCategoryRepository(CategoryRepository $categoryRepository): void
+	{
+		$this->categoryRepository = $categoryRepository;
+	}
+
+	public function injectDisciplineRepository(DisciplineRepository $disciplineRepository): void
+	{
+		$this->disciplineRepository = $disciplineRepository;
+	}
+
+	public function injectEducationRepository(EducationRepository $educationRepository): void
+	{
+		$this->educationRepository = $educationRepository;
+	}
+
+	public function injectDiv(Div $div): void
+	{
+		$this->div = $div;
+	}
+
+	public function injectAccessControlService(AccessControlService $accessControlService): void
+	{
+		$this->accessControlService = $accessControlService;
 	}
 }

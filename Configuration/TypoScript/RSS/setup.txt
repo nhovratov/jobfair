@@ -1,75 +1,75 @@
 ## Add typenum to jobfair settings to enable easy linking to feed
 plugin.tx_jobfair.settings.feed {
-	feedTypeNum = {$plugin.tx_jobfair.settings.feed.feedTypeNum}
-	feedType = {$plugin.tx_jobfair.settings.feed.feedType}
-	title = {$plugin.tx_jobfair.settings.feed.title}
-	author = {$plugin.tx_jobfair.settings.feed.author}
-	link = {$plugin.tx_jobfair.settings.feed.link}
-	description = {$plugin.tx_jobfair.settings.feed.description}
-	language = {$plugin.tx_jobfair.settings.feed.language}
-	generator = Jobfair (TYPO3 Extension)
-	copyright = {$plugin.tx_jobfair.settings.feed.copyright}
-	category ={$plugin.tx_jobfair.settings.feed.category}
-	utcOffset ={$plugin.tx_jobfair.settings.feed.utcOffset}
-	maxRecords ={$plugin.tx_jobfair.settings.feed.maxRecords}
+    feedTypeNum = {$plugin.tx_jobfair.settings.feed.feedTypeNum}
+    feedType = {$plugin.tx_jobfair.settings.feed.feedType}
+    title = {$plugin.tx_jobfair.settings.feed.title}
+    author = {$plugin.tx_jobfair.settings.feed.author}
+    link = {$plugin.tx_jobfair.settings.feed.link}
+    description = {$plugin.tx_jobfair.settings.feed.description}
+    language = {$plugin.tx_jobfair.settings.feed.language}
+    generator = Jobfair (TYPO3 Extension)
+    copyright = {$plugin.tx_jobfair.settings.feed.copyright}
+    category = {$plugin.tx_jobfair.settings.feed.category}
+    utcOffset = {$plugin.tx_jobfair.settings.feed.utcOffset}
+    maxRecords = {$plugin.tx_jobfair.settings.feed.maxRecords}
 }
 
 # localize date format, used within the fluid templates
 lib.ll_pubdate = TEXT
 lib.ll_pubdate {
-	current = 1
-	strftime = %a, %d %b %Y %T %z
+    current = 1
+    strftime = %a, %d %b %Y %T %z
 }
 lib.ll_pubdate_RFC3339 = TEXT
 lib.ll_pubdate_RFC3339 {
-	current = 1
+    current = 1
     prioriCalc = 1
-	date = c
+    date = c
 }
 
 ## jobfair_feed
 jobfair_feed = PAGE
 jobfair_feed {
-	typeNum = {$plugin.tx_jobfair.settings.feed.feedTypeNum}
+    typeNum = {$plugin.tx_jobfair.settings.feed.feedTypeNum}
 
-	config {
-		additionalHeaders = Content-Type:application/rss+xml;charset=utf-8
-		xhtml_cleaning = 0
-		admPanel = 0
-		cache_period = {$plugin.tx_jobfair.settings.feed.cachePeriod}
-		disableAllHeaderCode = 1
-		metaCharset = utf-8
-		disablePrefixComment = 1
-		language = en
-		locale_all = en_GB
-	}
-
-  10 = USER
-  10 {
-    userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-    extensionName = Jobfair
-    vendorName = Dan
-    pluginName = Pi1
-    controller = Job
-    action = list
-	view {
-		templateRootPaths {
-			9999 = EXT:jobfair/Resources/Private/Templates/RSS/
-		 }
-		partialRootPaths {
-			9999 = EXT:jobfair/Resources/Private/Partials/RSS
-		}
-	}
-    persistence < plugin.tx_jobfair.persistence
-    settings < plugin.tx_jobfair.settings
-    settings {
-    		list.ordering = tstamp
-    		list.sorting = DESC
+    config {
+        additionalHeaders.10.header = Content-Type:application/rss+xml;charset=utf-8
+        xhtml_cleaning = 0
+        admPanel = 0
+        cache_period = {$plugin.tx_jobfair.settings.feed.cachePeriod}
+        disableAllHeaderCode = 1
+        metaCharset = utf-8
+        disablePrefixComment = 1
+        language = en
+        locale_all = en_GB
     }
-  }
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        extensionName = Jobfair
+        vendorName = Dan
+        pluginName = Pi1
+        controller = Job
+        action = list
+        view {
+            templateRootPaths {
+                9999 = EXT:jobfair/Resources/Private/Templates/RSS/
+            }
+            partialRootPaths {
+                9999 = EXT:jobfair/Resources/Private/Partials/RSS
+            }
+        }
+        persistence < plugin.tx_jobfair.persistence
+        settings < plugin.tx_jobfair.settings
+        settings {
+            list.ordering = tstamp
+            list.sorting = DESC
+        }
+    }
 }
 
 # Change Content-type for atom-feed
-[globalVar = LIT:Atom1 = {$plugin.tx_jobfair.settings.feed.feedType}]
-	jobfair_feed.config.additionalHeaders = Content-Type:application/atom+xml;charset=utf-8
+
+["{$plugin.tx_jobfair.settings.feed.feedType}" == "Atom1"]
+    jobfair_feed.config.additionalHeaders.10.header = Content-Type:application/atom+xml;charset=utf-8
 [global]

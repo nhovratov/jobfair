@@ -1,25 +1,26 @@
 <?php
 namespace Dan\Jobfair\Domain\Model;
 
-	/**
-	 * This file is part of the TYPO3 CMS project.
-	 *
-	 * It is free software; you can redistribute it and/or modify it under
-	 * the terms of the GNU General Public License, either version 2
-	 * of the License, or any later version.
-	 *
-	 * For the full copyright and license information, please read the
-	 * LICENSE.txt file that was distributed with this source code.
-	 *
-	 * The TYPO3 project - inspiring people to share!
-	 */
-
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+/**
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 /**
  * The model for Region
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class Region extends AbstractEntity {
 
 	/**
 	 * name
@@ -52,7 +53,7 @@ class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
-		$this->jobs = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->jobs = new ObjectStorage();
 	}
 
 	/**
@@ -80,7 +81,7 @@ class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Job $job
 	 * @return void
 	 */
-	public function addJob(\Dan\Jobfair\Domain\Model\Job $job) {
+	public function addJob(Job $job) {
 		$this->jobs->attach($job);
 	}
 
@@ -90,7 +91,7 @@ class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
 	 * @return void
 	 */
-	public function removeJob(\Dan\Jobfair\Domain\Model\Job $jobToRemove) {
+	public function removeJob(Job $jobToRemove) {
 		$this->jobs->detach($jobToRemove);
 	}
 
@@ -109,7 +110,7 @@ class Region extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
 	 * @return void
 	 */
-	public function setJobs(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $jobs) {
+	public function setJobs(ObjectStorage $jobs) {
 		$this->jobs = $jobs;
 	}
 

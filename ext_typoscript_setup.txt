@@ -1,26 +1,26 @@
 config.tx_extbase.persistence.classes {
-			Dan\Jobfair\Domain\Model\User {
-				mapping {
-					tableName = fe_users
-          			recordType = Tx_Extbase_Domain_Model_FrontendUser
-				}
-			}
-      		TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
-				subclasses {
-					  Tx_Jobfair_User = Dan\Jobfair\Domain\Model\User
-					}
-			}
+    Dan\Jobfair\Domain\Model\User {
+        mapping {
+            tableName = fe_users
+            recordType = Tx_Extbase_Domain_Model_FrontendUser
+        }
+    }
+    TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+        subclasses {
+            Tx_Jobfair_User = Dan\Jobfair\Domain\Model\User
+        }
+    }
 }
 
 plugin.tx_jobfair {
-       persistence {
-                    classes {
-                             Dan\Jobfair\Domain\Model\User {
-                                     mapping {
-                                              tableName = fe_users
-                                              recordType = Tx_Extbase_Domain_Model_FrontendUser
-                                     }
-                             }
-                    }
-       }
+    persistence {
+        classes {
+            Dan\Jobfair\Domain\Model\User {
+                mapping {
+                    tableName = fe_users
+                    recordType = Tx_Extbase_Domain_Model_FrontendUser
+                }
+            }
+        }
+    }
 }

@@ -144,7 +144,7 @@ class Filter extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Region $region
 	 * @return void
 	 */
-	public function addRegion(\Dan\Jobfair\Domain\Model\Region $region) {
+	public function addRegion(Region $region) {
 		$this->regions->attach($region);
 	}
 

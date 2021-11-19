@@ -510,7 +510,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Region $region
 	 * @return void
 	 */
-	public function addRegion(\Dan\Jobfair\Domain\Model\Region $region) {
+	public function addRegion(Region $region) {
 		$this->region->attach($region);
 	}
 
@@ -520,7 +520,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Region $regionToRemove
 	 * @return void
 	 */
-	public function removeRegion(\Dan\Jobfair\Domain\Model\Region $regionToRemove) {
+	public function removeRegion(Region $regionToRemove) {
 		$this->region->detach($regionToRemove);
 	}
 
@@ -558,7 +558,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Contact $contact
 	 * @return void
 	 */
-	public function setContact(\Dan\Jobfair\Domain\Model\Contact $contact) {
+	public function setContact(Contact $contact) {
 		$this->contact = $contact;
 	}
 
@@ -568,7 +568,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Sector $sector
 	 * @return void
 	 */
-	public function addSector(\Dan\Jobfair\Domain\Model\Sector $sector) {
+	public function addSector(Sector $sector) {
 		$this->sector->attach($sector);
 	}
 
@@ -578,7 +578,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Sector $sectorToRemove The Sector to be removed
 	 * @return void
 	 */
-	public function removeSector(\Dan\Jobfair\Domain\Model\Sector $sectorToRemove) {
+	public function removeSector(Sector $sectorToRemove) {
 		$this->sector->detach($sectorToRemove);
 	}
 
@@ -607,7 +607,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Category $category
 	 * @return void
 	 */
-	public function addCategory(\Dan\Jobfair\Domain\Model\Category $category) {
+	public function addCategory(Category $category) {
 		$this->category->attach($category);
 	}
 
@@ -617,7 +617,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Category $categoryToRemove The Category to be removed
 	 * @return void
 	 */
-	public function removeCategory(\Dan\Jobfair\Domain\Model\Category $categoryToRemove) {
+	public function removeCategory(Category $categoryToRemove) {
 		$this->category->detach($categoryToRemove);
 	}
 
@@ -636,7 +636,7 @@ class Job extends AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category> $category
 	 * @return void
 	 */
-	public function setCategory(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $category) {
+	public function setCategory(ObjectStorage $category) {
 		$this->category = $category;
 	}
 
@@ -646,7 +646,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Discipline $discipline
 	 * @return void
 	 */
-	public function addDiscipline(\Dan\Jobfair\Domain\Model\Discipline $discipline) {
+	public function addDiscipline(Discipline $discipline) {
 		$this->discipline->attach($discipline);
 	}
 
@@ -656,7 +656,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Discipline $disciplineToRemove The Discipline to be removed
 	 * @return void
 	 */
-	public function removeDiscipline(\Dan\Jobfair\Domain\Model\Discipline $disciplineToRemove) {
+	public function removeDiscipline(Discipline $disciplineToRemove) {
 		$this->discipline->detach($disciplineToRemove);
 	}
 
@@ -675,7 +675,7 @@ class Job extends AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline> $discipline
 	 * @return void
 	 */
-	public function setDiscipline(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $discipline) {
+	public function setDiscipline(ObjectStorage $discipline) {
 		$this->discipline = $discipline;
 	}
 
@@ -685,7 +685,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Education $education
 	 * @return void
 	 */
-	public function addEducation(\Dan\Jobfair\Domain\Model\Education $education) {
+	public function addEducation(Education $education) {
 		$this->education->attach($education);
 	}
 
@@ -695,7 +695,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Education $educationToRemove The Education to be removed
 	 * @return void
 	 */
-	public function removeEducation(\Dan\Jobfair\Domain\Model\Education $educationToRemove) {
+	public function removeEducation(Education $educationToRemove) {
 		$this->education->detach($educationToRemove);
 	}
 
@@ -714,7 +714,7 @@ class Job extends AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education> $education
 	 * @return void
 	 */
-	public function setEducation(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $education) {
+	public function setEducation(ObjectStorage $education) {
 		$this->education = $education;
 	}
 
@@ -724,7 +724,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\User $feuser
 	 * @return void
 	 */
-	public function addFeuser(\Dan\Jobfair\Domain\Model\User $feuser) {
+	public function addFeuser(User $feuser) {
 		$this->feuser->attach($feuser);
 	}
 
@@ -734,7 +734,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\User $feuserToRemove The User to be removed
 	 * @return void
 	 */
-	public function removeFeuser(\Dan\Jobfair\Domain\Model\User $feuserToRemove) {
+	public function removeFeuser(User $feuserToRemove) {
 		$this->feuser->detach($feuserToRemove);
 	}
 
@@ -753,7 +753,7 @@ class Job extends AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\User> $feuser
 	 * @return void
 	 */
-	public function setFeuser(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $feuser) {
+	public function setFeuser(ObjectStorage $feuser) {
 		$this->feuser = $feuser;
 	}
 
@@ -763,7 +763,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Application $application
 	 * @return void
 	 */
-	public function addApplication(\Dan\Jobfair\Domain\Model\Application $application) {
+	public function addApplication(Application $application) {
 		$this->application->attach($application);
 	}
 
@@ -773,7 +773,7 @@ class Job extends AbstractEntity {
 	 * @param \Dan\Jobfair\Domain\Model\Application $applicationToRemove The Application to be removed
 	 * @return void
 	 */
-	public function removeApplication(\Dan\Jobfair\Domain\Model\Application $applicationToRemove) {
+	public function removeApplication(Application $applicationToRemove) {
 		$this->application->detach($applicationToRemove);
 	}
 
@@ -792,7 +792,7 @@ class Job extends AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Application> $application
 	 * @return void
 	 */
-	public function setApplication(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $application) {
+	public function setApplication(ObjectStorage $application) {
 		$this->application = $application;
 	}
 

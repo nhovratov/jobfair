@@ -1,6 +1,9 @@
 <?php
 namespace Dan\Jobfair\Service;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Context\Context;
+use Dan\Jobfair\Domain\Repository\UserRepository;
 use Dan\Jobfair\Domain\Model\Job;
 use Dan\Jobfair\Domain\Model\User;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -27,7 +30,6 @@ class AccessControlService implements SingletonInterface {
 
 	/**
 	 * @var \Dan\Jobfair\Domain\Repository\UserRepository
-	 * @inject
 	 */
 	protected $userRepository;
 
@@ -51,7 +53,7 @@ class AccessControlService implements SingletonInterface {
 	 * @return bool
 	 */
 	public function hasLoggedInFrontendUser() {
-		if ($GLOBALS['TSFE']->loginUser) {
+		if (GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'isLoggedIn')) {
 			return TRUE;
 		}
 		return FALSE;
@@ -72,7 +74,7 @@ class AccessControlService implements SingletonInterface {
 	 */
 	public function getFrontendUserUid() {
 		if($this->hasLoggedInFrontendUser() && !empty($GLOBALS['TSFE']->fe_user->user['uid'])) {
-			return intval($GLOBALS['TSFE']->fe_user->user['uid']);
+			return (int)$GLOBALS['TSFE']->fe_user->user['uid'];
 		}
 		return NULL;
 	}
@@ -85,6 +87,11 @@ class AccessControlService implements SingletonInterface {
 			return $this->userRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
 		}
 		return NULL;
+	}
+
+	public function injectUserRepository(UserRepository $userRepository): void
+	{
+		$this->userRepository = $userRepository;
 	}
 
 }

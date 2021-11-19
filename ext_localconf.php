@@ -4,7 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Dan.' . $_EXTKEY,
+	'Dan.' . 'jobfair',
 		'Pi1',
 	array(
 		'Job' => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',

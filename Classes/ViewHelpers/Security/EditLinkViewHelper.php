@@ -27,7 +27,7 @@ class EditLinkViewHelper extends IfViewHelper {
 
 	/**
 	 * @var \Dan\Jobfair\Service\AccessControlService
-	 * @inject
+     * @TYPO3\CMS\Extbase\Annotation\Inject
 	 */
 	protected $accessControlService;
 

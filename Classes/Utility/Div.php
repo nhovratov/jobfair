@@ -29,7 +29,6 @@ class Div {
 	 * configurationManager
 	 *
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
-	 * @inject
 	 */
 	protected $configurationManager;
 
@@ -37,7 +36,6 @@ class Div {
 	 * objectManager
 	 *
 	 * @var \TYPO3\CMS\Extbase\Object\ObjectManager
-	 * @inject
 	 */
 	protected $objectManager;
 
@@ -169,5 +167,15 @@ class Div {
 					);
 		}
 		return $absolutePathAndFilename;
+	}
+
+	public function injectConfigurationManager($configurationManager): void
+	{
+		$this->configurationManager = $configurationManager;
+	}
+
+	public function injectObjectManager($objectManager): void
+	{
+		$this->objectManager = $objectManager;
 	}
 }

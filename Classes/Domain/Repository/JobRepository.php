@@ -1,6 +1,7 @@
 <?php
 namespace Dan\Jobfair\Domain\Repository;
 
+use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Region;
 use Dan\Jobfair\Domain\Model\Sector;
@@ -33,7 +34,6 @@ class JobRepository extends Repository {
 
 	/**
 	 * @var \Dan\Jobfair\Service\AccessControlService
-	 * @inject
 	 */
 	protected $accessControlService;
 
@@ -191,4 +191,9 @@ class JobRepository extends Repository {
 		$query->setLimit($limit);
 		return $query->execute();
 	 }
+
+	public function injectAccessControlService(AccessControlService $accessControlService): void
+	{
+		$this->accessControlService = $accessControlService;
+	}
 }
