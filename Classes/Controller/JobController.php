@@ -178,19 +178,19 @@ class JobController extends ActionController
     public function initializeListAction()
     {
         $arguments = $this->request->getArguments();
-        if (intval($arguments['filter']['categories'][0]) === 0) {
+        if ((int)$arguments['filter']['categories'][0] === 0) {
             unset($arguments['filter']['categories']);
         }
-        if (intval($arguments['filter']['regions'][0]) === 0) {
+        if ((int)$arguments['filter']['regions'][0] === 0) {
             unset($arguments['filter']['regions']);
         }
-        if (intval($arguments['filter']['sectors'][0]) === 0) {
+        if ((int)$arguments['filter']['sectors'][0] === 0) {
             unset($arguments['filter']['sectors']);
         }
-        if (intval($arguments['filter']['disciplines'][0]) === 0) {
+        if ((int)$arguments['filter']['disciplines'][0] === 0) {
             unset($arguments['filter']['disciplines']);
         }
-        if (intval($arguments['filter']['educations'][0]) === 0) {
+        if ((int)$arguments['filter']['educations'][0] === 0) {
             unset($arguments['filter']['educations']);
         }
         $this->request->setArguments($arguments);
@@ -292,7 +292,7 @@ class JobController extends ActionController
         $ordering = $this->settings['latest']['ordering'];
         /** @var int $limit */
         if ($this->settings['latest']['limit'] >= 1) {
-            $limit = intval($this->settings['latest']['limit']);
+            $limit = (int)$this->settings['latest']['limit'];
         } else {
             $limit = 3;
         }
