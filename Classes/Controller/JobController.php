@@ -2,6 +2,8 @@
 
 namespace Dan\Jobfair\Controller;
 
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use Dan\Jobfair\Domain\Repository\JobRepository;
 use Dan\Jobfair\Domain\Repository\ApplicationRepository;
@@ -585,7 +587,7 @@ class JobController extends ActionController
             $this->forward('newApplication', 'Job', null, array('job' => $job));
         }
         // Check file extension
-        if (!empty($attachmentFile['name']) && (!Div::checkExtension($attachmentFile['name']) || !GeneralUtility::verifyFilenameAgainstDenyPattern($attachmentFile['name']))) {
+        if (!empty($attachmentFile['name']) && (!Div::checkExtension($attachmentFile['name']) || !$this->verifyFilenameAgainstDenyPattern((string)$attachmentFile['name']))) {
             $this->flashMessageService('applicationExtensionError', 'applicationExtensionErrorStatus', 'ERROR');
             $this->forward('newApplication', 'Job', null, array('job' => $job));
         }
@@ -699,13 +701,22 @@ class JobController extends ActionController
         $this->redirect('show', 'Job', null, array('job' => $job));
     }
 
+    protected function verifyFilenameAgainstDenyPattern(string $filename): bool
+    {
+        if ((new Typo3Version())->getMajorVersion() > 9) {
+            return GeneralUtility::makeInstance(FileNameValidator::class)->isValid($filename);
+        }
+
+        return GeneralUtility::verifyFilenameAgainstDenyPattern($filename);
+    }
+
     /**
      *
      * @param \string $messageKey
      * @param \string $statusKey
      * @param \string $level
      */
-    function flashMessageService($messageKey, $statusKey, $level)
+    protected function flashMessageService($messageKey, $statusKey, $level)
     {
         switch ($level) {
             case "NOTICE":
