@@ -11,6 +11,14 @@
 ChangeLog
 =========
 
+**3.0.0**
+---------
+
+| - Compatibility TYPO3 v9/v10
+| - Dropped compatibility v7/v8
+| - Breaking: Application attachement now FAL
+| - New documentation rendering
+
 **2.0.0**
 ----------
 | Compatibility with TYPO3 8
