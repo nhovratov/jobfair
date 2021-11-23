@@ -2,37 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dan\Jobfair\Controller;
-
-use Dan\Jobfair\Domain\Model\Category;
-use Dan\Jobfair\Domain\Model\Discipline;
-use Dan\Jobfair\Domain\Model\Education;
-use Dan\Jobfair\Domain\Model\Region;
-use Dan\Jobfair\Domain\Model\Sector;
-use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
-use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Extbase\Annotation as Extbase;
-use Dan\Jobfair\Domain\Repository\JobRepository;
-use Dan\Jobfair\Domain\Repository\ApplicationRepository;
-use Dan\Jobfair\Domain\Repository\RegionRepository;
-use Dan\Jobfair\Domain\Repository\SectorRepository;
-use Dan\Jobfair\Domain\Repository\CategoryRepository;
-use Dan\Jobfair\Domain\Repository\DisciplineRepository;
-use Dan\Jobfair\Domain\Repository\EducationRepository;
-use Dan\Jobfair\Service\AccessControlService;
-use \TYPO3\CMS\Core\Messaging\AbstractMessage;
-use \TYPO3\CMS\Core\Utility\GeneralUtility;
-use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use \TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
-use \TYPO3\CMS\Extbase\Utility\LocalizationUtility;
-use \TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use \Dan\Jobfair\Domain\Model\Job;
-use \Dan\Jobfair\Domain\Model\Application;
-use \Dan\Jobfair\Domain\Model\Filter;
-use \Dan\Jobfair\Utility\Div;
-
-/**
+/*
  * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -45,6 +15,36 @@ use \Dan\Jobfair\Utility\Div;
  * The TYPO3 project - inspiring people to share!
  */
 
+namespace Dan\Jobfair\Controller;
+
+use Dan\Jobfair\Domain\Model\Application;
+use Dan\Jobfair\Domain\Model\Category;
+use Dan\Jobfair\Domain\Model\Discipline;
+use Dan\Jobfair\Domain\Model\Education;
+use Dan\Jobfair\Domain\Model\Filter;
+use Dan\Jobfair\Domain\Model\Job;
+use Dan\Jobfair\Domain\Model\Region;
+use Dan\Jobfair\Domain\Model\Sector;
+use Dan\Jobfair\Domain\Repository\ApplicationRepository;
+use Dan\Jobfair\Domain\Repository\CategoryRepository;
+use Dan\Jobfair\Domain\Repository\DisciplineRepository;
+use Dan\Jobfair\Domain\Repository\EducationRepository;
+use Dan\Jobfair\Domain\Repository\JobRepository;
+use Dan\Jobfair\Domain\Repository\RegionRepository;
+use Dan\Jobfair\Domain\Repository\SectorRepository;
+use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
+use Dan\Jobfair\Service\AccessControlService;
+use Dan\Jobfair\Utility\Div;
+use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
+use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
+
 /**
  * The controller for Jobs
  *
@@ -52,7 +52,6 @@ use \Dan\Jobfair\Utility\Div;
  */
 class JobController extends ActionController
 {
-
     const SIGNAL_CreateActionAfterAdd = 'createActionAfterAdd';
     const SIGNAL_UpdateActionAfterUpdate = 'updateActionAfterUpdate';
 
@@ -61,16 +60,14 @@ class JobController extends ActionController
      *
      * @var \Dan\Jobfair\Domain\Repository\JobRepository
      */
-    protected $jobRepository = null;
-
+    protected $jobRepository;
 
     /**
      * applicationRepository
      *
      * @var \Dan\Jobfair\Domain\Repository\ApplicationRepository
      */
-    protected $applicationRepository = null;
-
+    protected $applicationRepository;
 
     /**
      * categoryRepository
@@ -172,7 +169,6 @@ class JobController extends ActionController
     /**
      * initialize list action
      * Needed to prevent errors from propperty mapper due to empty objects
-     *
      */
     public function initializeListAction()
     {
@@ -195,12 +191,10 @@ class JobController extends ActionController
         $this->request->setArguments($arguments);
     }
 
-
     /**
      * action list
      *
      * @param $filter \Dan\Jobfair\Domain\Model\Filter
-     * @return void
      * @Extbase\IgnoreValidation("filter")
      * @var $category Category
      */
@@ -279,11 +273,8 @@ class JobController extends ActionController
         $this->view->assign('jobs', $jobs);
     }
 
-
     /**
      * action latest
-     *
-     * @return void
      */
     public function latestAction()
     {
@@ -299,12 +290,10 @@ class JobController extends ActionController
         $this->view->assign('jobs', $jobs);
     }
 
-
     /**
      * action show
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      */
     public function showAction(Job $job = null)
     {
@@ -323,12 +312,10 @@ class JobController extends ActionController
         }
     }
 
-
     /**
      * action new
      *
      * @param \Dan\Jobfair\Domain\Model\Job $newJob
-     * @return void
      * @Extbase\IgnoreValidation("newJob")
      */
     public function newAction(Job $newJob = null)
@@ -340,9 +327,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -358,9 +345,7 @@ class JobController extends ActionController
      * action create
      *
      * @param \Dan\Jobfair\Domain\Model\Job $newJob
-     * @return void
      */
-
     public function createAction(Job $newJob)
     {
         if (!$this->settings['feuser']['enableEdit']) {
@@ -370,9 +355,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -414,7 +399,7 @@ class JobController extends ActionController
                 $recipientsCc,
                 $recipientsBcc,
                 $sender,
-                LocalizationUtility::translate('tx_jobfair_domain_model_job', 'jobfair') . ": " . $newJob->getJobTitle(),
+                LocalizationUtility::translate('tx_jobfair_domain_model_job', 'jobfair') . ': ' . $newJob->getJobTitle(),
                 ['job' => $newJob],
                 $fileName
             );
@@ -427,7 +412,6 @@ class JobController extends ActionController
      * action edit
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      * @Extbase\IgnoreValidation("job")
      */
     public function editAction(Job $job)
@@ -439,9 +423,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -461,7 +445,6 @@ class JobController extends ActionController
      * action update
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      */
     public function updateAction(Job $job)
     {
@@ -472,9 +455,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -492,7 +475,6 @@ class JobController extends ActionController
      * action confirmDelete
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      */
     public function confirmDeleteAction(Job $job)
     {
@@ -503,9 +485,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -520,7 +502,6 @@ class JobController extends ActionController
      * action delete
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      */
     public function deleteAction(Job $job)
     {
@@ -531,9 +512,9 @@ class JobController extends ActionController
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
-                $this->settings['feuser']['editorUsergroupUid'],
-                $this->accessControlService->getFrontendUserGroups()
-            )) {
+            $this->settings['feuser']['editorUsergroupUid'],
+            $this->accessControlService->getFrontendUserGroups()
+        )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             $this->redirect('list');
         }
@@ -551,7 +532,6 @@ class JobController extends ActionController
      *
      * @param \Dan\Jobfair\Domain\Model\Job $job
      * @param \Dan\Jobfair\Domain\Model\Application $newApplication
-     * @return void
      * @Extbase\IgnoreValidation("newApplication")
      */
     public function newApplicationAction(Job $job, Application $newApplication = null)
@@ -577,12 +557,11 @@ class JobController extends ActionController
      *
      * @param \Dan\Jobfair\Domain\Model\Application $newApplication
      * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @return void
      * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
      */
     public function createApplicationAction(Application $newApplication, Job $job)
     {
-        $newApplication->setTitle($job->getJobTitle() . " - " . $newApplication->getName());
+        $newApplication->setTitle($job->getJobTitle() . ' - ' . $newApplication->getName());
 
         $this->applicationRepository->add($newApplication);
         $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
@@ -590,7 +569,6 @@ class JobController extends ActionController
 
         $job->addApplication($newApplication);
         $this->jobRepository->update($job);
-
 
         // from
         $sender = [];
@@ -609,7 +587,7 @@ class JobController extends ActionController
         $feusers = $job->getFeuser();
         /** @var $feuser \Dan\Jobfair\Domain\Model\User */
         foreach ($feusers as $feuser) {
-            $to [] = ['email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . " " . $feuser->getLastName()];
+            $to [] = ['email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . ' ' . $feuser->getLastName()];
         }
 
         $recipients = [];
@@ -691,7 +669,6 @@ class JobController extends ActionController
     }
 
     /**
-     *
      * @param \string $messageKey
      * @param \string $statusKey
      * @param \string $level
@@ -699,19 +676,19 @@ class JobController extends ActionController
     protected function flashMessageService($messageKey, $statusKey, $levelString)
     {
         switch ($levelString) {
-            case "NOTICE":
+            case 'NOTICE':
                 $level = AbstractMessage::NOTICE;
                 break;
-            case "INFO":
+            case 'INFO':
                 $level = AbstractMessage::INFO;
                 break;
-            case "OK":
+            case 'OK':
                 $level = AbstractMessage::OK;
                 break;
-            case "WARNING":
+            case 'WARNING':
                 $level = AbstractMessage::WARNING;
                 break;
-            case "ERROR":
+            case 'ERROR':
                 $level = AbstractMessage::ERROR;
                 break;
             default:
@@ -726,9 +703,6 @@ class JobController extends ActionController
         );
     }
 
-    /**
-     *
-     */
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
         \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)

@@ -1,9 +1,6 @@
 <?php
-namespace Dan\Jobfair\Domain\Model;
 
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-/**
+/*
  * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -15,76 +12,84 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
+namespace Dan\Jobfair\Domain\Model;
+
+use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /**
  * The model for User
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class User extends FrontendUser {
+class User extends FrontendUser
+{
 
-	/**
-	 * jobs
-	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job>
-	 */
-	protected $jobs = NULL;
-  
-	/**
-	 * __construct
-	 */
-	public function __construct() {
-		//Do not remove the next line: It would break the functionality
-		$this->initStorageObjects();
-	}
-  
-	/**
-	 * Initializes all ObjectStorage properties
-	 * Do not modify this method!
-	 * It will be rewritten on each save in the extension builder
-	 * You may modify the constructor of this class instead
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->jobs = new ObjectStorage();
-	}
+    /**
+     * jobs
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job>
+     */
+    protected $jobs;
 
-	/**
-	 * Adds a Job
-	 *
-	 * @param \Dan\Jobfair\Domain\Model\Job $job
-	 * @return void
-	 */
-	public function addJob(Job $job) {
-		$this->jobs->attach($job);
-	}
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
 
-	/**
-	 * Removes a Job
-	 *
-	 * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
-	 * @return void
-	 */
-	public function removeJob(Job $jobToRemove) {
-		$this->jobs->detach($jobToRemove);
-	}
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     */
+    protected function initStorageObjects()
+    {
+        $this->jobs = new ObjectStorage();
+    }
 
-	/**
-	 * Returns the jobs
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
-	 */
-	public function getJobs() {
-		return $this->jobs;
-	}
+    /**
+     * Adds a Job
+     *
+     * @param \Dan\Jobfair\Domain\Model\Job $job
+     */
+    public function addJob(Job $job)
+    {
+        $this->jobs->attach($job);
+    }
 
-	/**
-	 * Sets the jobs
-	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
-	 * @return void
-	 */
-	public function setJobs(ObjectStorage $jobs) {
-		$this->jobs = $jobs;
-	}
+    /**
+     * Removes a Job
+     *
+     * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
+     */
+    public function removeJob(Job $jobToRemove)
+    {
+        $this->jobs->detach($jobToRemove);
+    }
+
+    /**
+     * Returns the jobs
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     */
+    public function getJobs()
+    {
+        return $this->jobs;
+    }
+
+    /**
+     * Sets the jobs
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     */
+    public function setJobs(ObjectStorage $jobs)
+    {
+        $this->jobs = $jobs;
+    }
 }

@@ -1,9 +1,6 @@
 <?php
-namespace Dan\Jobfair\Domain\Repository;
 
-use \TYPO3\CMS\Extbase\Persistence\Repository;
-
-/**
+/*
  * This file is part of the TYPO3 CMS project.
  *
  * It is free software; you can redistribute it and/or modify it under
@@ -16,10 +13,15 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+namespace Dan\Jobfair\Domain\Repository;
+
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
 /**
  * The repository for Filters
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class FilterRepository extends Repository {
+class FilterRepository extends Repository
+{
 }
