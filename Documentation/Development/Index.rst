@@ -22,4 +22,4 @@ Ideas
 -----
 
 All I needed from this extension is already included. But I am happy to include features others need. Please use
-`Github <https://github.com/nhovratov/jobfair/issues>>`_ to submit your ideas.
+`Github <https://github.com/nhovratov/jobfair/issues>`_ to submit your ideas.
