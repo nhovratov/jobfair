@@ -2,3 +2,4 @@
 composer.lock
 .Build
 .php-cs-fixer.cache
+.env
