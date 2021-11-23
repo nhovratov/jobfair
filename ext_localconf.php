@@ -21,3 +21,7 @@ $iconRegistry->registerIcon(
 		\TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider::class,
 		['source' => 'EXT:jobfair/Resources/Public/Icons/folder.gif']
 );
+
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter::class);
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerTypeConverter(\Dan\Jobfair\Property\TypeConverter\ObjectStorageConverter::class);

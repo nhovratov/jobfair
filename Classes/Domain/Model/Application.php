@@ -28,7 +28,7 @@ class Application extends AbstractEntity {
 	 * @var string
 	 */
 	protected $title = '';
-  
+
 	/**
 	 * name
 	 *
@@ -53,10 +53,10 @@ class Application extends AbstractEntity {
    /**
 	 * attachment
 	 *
-	 * @var string
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
 	 */
-	protected $attachment = '\'\'';
-  
+	protected $attachment;
+
   /**
 	 * jobs
 	 *
@@ -83,7 +83,7 @@ class Application extends AbstractEntity {
 	protected function initStorageObjects() {
 		$this->jobs = new ObjectStorage();
 	}
-  
+
   	/**
 	 * Returns the title
 	 *
@@ -102,7 +102,7 @@ class Application extends AbstractEntity {
 	public function setTitle($title) {
 		$this->title = $title;
 	}
-  
+
   	/**
 	 * Returns the name
 	 *
@@ -121,7 +121,7 @@ class Application extends AbstractEntity {
 	public function setName($name) {
 		$this->name = $name;
 	}
-  
+
   	/**
 	 * Returns the email
 	 *
@@ -140,7 +140,7 @@ class Application extends AbstractEntity {
 	public function setEmail($email) {
 		$this->email = $email;
 	}
-  
+
   /**
 	 * Returns the message
 	 *
@@ -159,11 +159,11 @@ class Application extends AbstractEntity {
 	public function setMessage($message) {
 		$this->message = $message;
 	}
-  
+
   /**
 	 * Returns the attachment
 	 *
-	 * @return string $attachment
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $attachment
 	 */
 	public function getAttachment() {
 		return $this->attachment;
@@ -172,7 +172,7 @@ class Application extends AbstractEntity {
 	/**
 	 * Sets the attachment
 	 *
-	 * @param string $attachment
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $attachment
 	 * @return void
 	 */
 	public function setAttachment($attachment) {

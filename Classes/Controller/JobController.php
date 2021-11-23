@@ -9,8 +9,8 @@ use Dan\Jobfair\Domain\Model\Discipline;
 use Dan\Jobfair\Domain\Model\Education;
 use Dan\Jobfair\Domain\Model\Region;
 use Dan\Jobfair\Domain\Model\Sector;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
+use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use Dan\Jobfair\Domain\Repository\JobRepository;
 use Dan\Jobfair\Domain\Repository\ApplicationRepository;
@@ -167,17 +167,6 @@ class JobController extends ActionController
                 DateTimeConverter::CONFIGURATION_DATE_FORMAT,
                 $this->settings['new']['dateFormat']
             );
-    }
-
-    /**
-     * initialize action
-     * allow creation of submodel application
-     */
-    public function initializeAction()
-    {
-        if ($this->arguments->hasArgument('newApplication')) {
-            $this->arguments->getArgument('newApplication')->getPropertyMappingConfiguration()->setTargetTypeForSubProperty('attachment', 'array');
-        }
     }
 
     /**
@@ -577,6 +566,12 @@ class JobController extends ActionController
         );
     }
 
+    public function initializeCreateApplicationAction()
+    {
+        $this->setTypeConverterConfigurationForImageUpload('newApplication');
+        GeneralUtility::mkdir_deep(Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications');
+    }
+
     /**
      * action createApplication
      *
@@ -588,21 +583,6 @@ class JobController extends ActionController
     public function createApplicationAction(Application $newApplication, Job $job)
     {
         $newApplication->setTitle($job->getJobTitle() . " - " . $newApplication->getName());
-
-        $attachmentFile = $newApplication->getAttachment();
-        // Check if attachment is missing
-        if (empty($attachmentFile['name']) && $this->settings['application']['validation']['attachment']['required']) {
-            $this->flashMessageService('applicationAttachmentMissing', 'applicationAttachmentMissingStatus', 'ERROR');
-            $this->forward('newApplication', 'Job', null, ['job' => $job]);
-        }
-        // Check file extension
-        if (!empty($attachmentFile['name']) && (!Div::checkExtension($attachmentFile['name']) || !$this->verifyFilenameAgainstDenyPattern((string)$attachmentFile['name']))) {
-            $this->flashMessageService('applicationExtensionError', 'applicationExtensionErrorStatus', 'ERROR');
-            $this->forward('newApplication', 'Job', null, ['job' => $job]);
-        }
-        /** @var $fileName mixed false or file.xyz (name of the attached file) */
-        $fileName = $this->div->uploadFile($attachmentFile);
-        $newApplication->setAttachment($fileName);
 
         $this->applicationRepository->add($newApplication);
         $persistenceManager = GeneralUtility::makeInstance(PersistenceManager::class);
@@ -694,29 +674,20 @@ class JobController extends ActionController
             $sender,
             LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
             ['newApplication' => $newApplication, 'job' => $job],
-            $fileName
+            $newApplication->getAttachment()->getOriginalResource()->getName()
         )) {
             $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
         } else {
             $this->flashMessageService('applicationSendMessageGeneralError', 'applicationSendStatusGeneralErrorStatus', 'ERROR');
         }
         if ($this->settings['application']['dontSaveAttachment']) {
-            $newApplication->setAttachment('');
-            $filePathAndName = 'uploads/tx_jobfair/' . $fileName;
+            $newApplication->setAttachment(null);
+            $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_uploads/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
             if (file_exists($filePathAndName)) {
                 @unlink($filePathAndName);
             }
         }
         $this->redirect('show', 'Job', null, ['job' => $job]);
-    }
-
-    protected function verifyFilenameAgainstDenyPattern(string $filename): bool
-    {
-        if ((new Typo3Version())->getMajorVersion() > 9) {
-            return GeneralUtility::makeInstance(FileNameValidator::class)->isValid($filename);
-        }
-
-        return GeneralUtility::verifyFilenameAgainstDenyPattern($filename);
     }
 
     /**
@@ -753,6 +724,29 @@ class JobController extends ActionController
             $level,
             true
         );
+    }
+
+    /**
+     *
+     */
+    protected function setTypeConverterConfigurationForImageUpload($argumentName)
+    {
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+            ->registerImplementation(
+                \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
+                \Dan\Jobfair\Domain\Model\FileReference::class
+            );
+
+        $uploadConfiguration = [
+            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'],
+            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_uploads/tx_jobfair/applications',
+        ];
+        $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+        $newExampleConfiguration->forProperty('attachment')
+            ->setTypeConverterOptions(
+                UploadedFileReferenceConverter::class,
+                $uploadConfiguration
+            );
     }
 
     public function injectJobRepository(JobRepository $jobRepository): void

@@ -57,11 +57,13 @@
                 <label class="tx_jobfair-label"><f:translate key="tx_jobfair_domain_model_application.attachment" /></label>
             </div>
             <div class="col-sm-5">
-                <f:form.upload property="attachment" value="{newApplication.attachment}"/>
+                <jobfair:form.upload property="attachment"/>
             </div>
         </div>
-        <f:form.hidden name="job" name="{job}" />
-        <f:form.hidden name="user" name="{user}" />
+        <f:form.hidden name="job" value="{job}" />
+        <f:if condition="{user}">
+            <f:form.hidden name="user" value="{user}" />
+        </f:if>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
                 <f:form.submit class="btn btn-primary" value="{f:translate(key:'submitApplyJob')}" />

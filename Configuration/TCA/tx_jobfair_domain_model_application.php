@@ -180,8 +180,12 @@ return [
             'exclude' => 1,
             'label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_application.attachment',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'attachement',
+                'attachment',
                 [
+                    'foreign_match_fields' => [
+                        'tablenames' => 'tx_jobfair_domain_model_application',
+                        'table_local' => 'sys_file'
+                    ],
                     'maxitems' => 6,
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
