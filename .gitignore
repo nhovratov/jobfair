@@ -3,3 +3,4 @@ composer.lock
 .Build
 .php-cs-fixer.cache
 .env
+Documentation-GENERATED-temp
