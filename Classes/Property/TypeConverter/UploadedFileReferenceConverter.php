@@ -15,31 +15,8 @@
 
 namespace Dan\Jobfair\Property\TypeConverter;
 
-/***************************************************************
- *  Copyright notice
- *
- *  (c) 2014 Helmut Hummel
- *
- *  All rights reserved
- *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
- *
- *  This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
-
 use Dan\Jobfair\Utility\CompatUtility;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException;
 use TYPO3\CMS\Core\Resource\File as FalFile;
@@ -208,6 +185,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
         $uploadFolder = $this->resourceFactory->retrieveFileOrFolderObject($uploadFolderId);
         // Secure uploaded file with a random hash value prepended to the name.
         $uploadInfo['name'] = bin2hex(random_bytes(20)) . '_' . $uploadInfo['name'];
+        GeneralUtility::mkdir_deep(Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications');
         $uploadedFile =  $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
 
         $resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && strpos($uploadInfo['submittedFile']['resourcePointer'], 'file:') === false

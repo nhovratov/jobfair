@@ -7,7 +7,6 @@ $EM_CONF[$_EXTKEY] = [
     'version' => '3.0.0-dev',
     'state' => 'stable',
     'uploadfolder' => true,
-    'createDirs' => 'uploads/tx_jobfair/',
     'author' => 'Dan',
     'author_email' => 'typo3dev@outlook.com',
     'author_company' => '',

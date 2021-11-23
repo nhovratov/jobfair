@@ -549,7 +549,6 @@ class JobController extends ActionController
     public function initializeCreateApplicationAction()
     {
         $this->setTypeConverterConfigurationForImageUpload('newApplication');
-        GeneralUtility::mkdir_deep(Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications');
     }
 
     /**
@@ -660,7 +659,7 @@ class JobController extends ActionController
         }
         if ($this->settings['application']['dontSaveAttachment']) {
             $newApplication->setAttachment(null);
-            $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_uploads/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
+            $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
             if (file_exists($filePathAndName)) {
                 @unlink($filePathAndName);
             }
@@ -713,7 +712,7 @@ class JobController extends ActionController
 
         $uploadConfiguration = [
             UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'],
-            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_uploads/tx_jobfair/applications',
+            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
         ];
         $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
         $newExampleConfiguration->forProperty('attachment')

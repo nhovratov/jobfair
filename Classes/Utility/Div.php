@@ -46,28 +46,6 @@ class Div
     protected $objectManager;
 
     /**
-     * Upload file
-     *
-     * @param \array $attachmentFile
-     * @return mixed	false or file.xyz
-     */
-    public function uploadFile($attachmentFile)
-    {
-        // create new filename and upload it
-        $basicFileFunctions = GeneralUtility::makeInstance('TYPO3\CMS\Core\Utility\File\BasicFileUtility');
-        $newFileName = bin2hex(random_bytes(20)) . '_' . $attachmentFile['name'];
-        $absFilePath = GeneralUtility::getFileAbsFileName('uploads/tx_jobfair');
-        GeneralUtility::mkdir_deep($absFilePath);
-        $newFile = $basicFileFunctions->getUniqueName($newFileName, $absFilePath);
-
-        if (GeneralUtility::upload_copy_move($attachmentFile['tmp_name'], $newFile)) {
-            $fileInfo = pathinfo($newFile);
-            return $fileInfo['basename'];
-        }
-        return false;
-    }
-
-    /**
      * Check extension of given filename
      *
      * @param \string		Filename like (upload.png)
@@ -134,7 +112,7 @@ class Div
 
         if ($fileName) {
             /** @var $filePathAndName string Path to file name (incl. path) */
-            $filePathAndName = 'uploads/tx_jobfair/' . $fileName;
+            $filePathAndName = 'fileadmin/user_upload/tx_jobfair/applications/' . $fileName;
             $email->attach(\Swift_Attachment::fromPath($filePathAndName));
         }
 
@@ -171,7 +149,7 @@ class Div
         }
 
         if ($fileName) {
-            $absFilePath = GeneralUtility::getFileAbsFileName('uploads/tx_jobfair/' . $fileName);
+            $absFilePath = GeneralUtility::getFileAbsFileName('fileadmin/user_upload/tx_jobfair/applications/' . $fileName);
             $email->attachFromPath($absFilePath);
         }
 
