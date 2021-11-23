@@ -66,7 +66,7 @@ Job details in the frontend:
 
 .. figure:: ../Images/Introduction/JobShowFrontend.png
     :width: 611px
-	:alt: Job details in the frontend
+    :alt: Job details in the frontend
 
     Job details in the frontend
 
@@ -77,7 +77,7 @@ Job application in the frontend:
    :width: 598px
    :alt: Job application in the frontend
 
-    Job application in the frontend
+   Job application in the frontend
 
 
 The job record displaying all available fields (note that the MM records where created beforehand):

@@ -15,7 +15,7 @@ Under the assumption that the plugin will be used only once (or only a few times
 the flexform was created in a way that almost all configuration can be done there. For the few
 exeptions see the Configuration\TypoScript\Main\setup.txt.
 
-.. important:: Every setting can also be defined by TypoScript. However, please inform yourself about the setting overrideFlexformSettingsIfEmpty_.
+.. important:: Every setting can also be defined by TypoScript. However, please inform yourself about the setting overrideFlexformSettingsIfEmpty.
 
 
 .. _configuration-typoscript:
@@ -78,7 +78,6 @@ Properties
 	`new.enableAdminNotificaton`_                                                              boolean
 	`new.fromName`_                                                                            string
 	`new.fromEmail`_                                                                           string
-	==================================== ====================================== ============== ===============
 	`new.adminName`_                                                                           string
 	`new.adminEmail`_                                                                          string
 	`new.dateFormat`_                                                                          string
@@ -90,6 +89,7 @@ Properties
 	`latest.pageIdList`_                                                                       integer
 	`latest.imageMaxWidth`_                                                                    integer
 	`latest.imageMaxHeight`_                                                                   integer
+	==================================== ====================================== ============== ===============
 
 Property details
 ^^^^^^^^^^^^^^^^
@@ -215,8 +215,8 @@ noTrimWrap
 	Default
 		| | |
 	Description
-		Wrap for the text which is used as a divider between link buttons. Default is "| | |" resulting in one space before and
-		after the "|" (see plugin.tx_jobfair.divider.value from above).
+		Wrap for the text which is used as a divider between link buttons. Default is `"| | |"` resulting in one space before and
+		after the `"|"` (see plugin.tx_jobfair.divider.value from above).
 
 
 .. _ts-plugin-tx-jobfair-settings-list-imageMaxWidth:
@@ -472,8 +472,7 @@ hideEmpty
 	Default
 		|
 	Description
-		If set to 1 all empty fields in the detail view are hidden. That might be useful if you do not fill every field for
-each job entry.
+		If set to 1 all empty fields in the detail view are hidden. That might be useful if you do not fill every field for each job entry.
 
 
 .. _ts-plugin-tx-jobfair-settings-show.imageMaxWidth:
@@ -735,7 +734,7 @@ new.fromEmail
 Sets the email address of the email sender for admin notifications.
 
 
-.. _ts-plugin-tx-jobfair-settings-new.adminName::
+.. _ts-plugin-tx-jobfair-settings-new.adminName:
 
 new.adminName
 """""""""""""

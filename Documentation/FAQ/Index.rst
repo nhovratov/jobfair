@@ -9,12 +9,13 @@
 .. _faq:
 
 FAQ
-============
+===
 
 How can I use my own template?
 ------------------------------
 
 In your template (setup) use the following typoscript:
+
 ::
 
 	plugin.tx_jobfair {
@@ -48,6 +49,7 @@ How to hide fields in the Backend?
 ----------------------------------
 
 In Page TSConfig:
+
 ::
 
 	TCEFORM.tx_jobfair_domain_model_job {
@@ -60,6 +62,7 @@ How to change language labels in the BACKEND?
 ---------------------------------------------
 
 In Page TSConfig:
+
 ::
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type {
@@ -71,6 +74,7 @@ In Page TSConfig:
 This can be done language specific:
 
 In Page TSConfig:
+
 ::
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.label.de = Kategorie
@@ -80,7 +84,9 @@ NOTE: Do not use this to translate the entire backend but add your translation t
 
 How to change language labels in the FRONTEND?
 ----------------------------------------------
+
 In your template (setup) use the following typoscript:
+
 ::
 
 	plugin.tx_jobfair._LOCAL_LANG.default {
@@ -90,6 +96,7 @@ In your template (setup) use the following typoscript:
 This can be done language specific:
 
 In your template (setup) use the following typoscript:
+
 ::
 
 	plugin.tx_jobfair._LOCAL_LANG.de {
@@ -102,6 +109,7 @@ How to shorten the URL and use RealURL?
 ---------------------------------------
 If you want to shorten the URL, it is possible to skip the controller parameter, since the jobfair extension works
 with only one controller in the frontend. To skip the controller add the following to your SETUP:
+
 ::
 
 	plugin.tx_jobfair {
@@ -112,7 +120,8 @@ with only one controller in the frontend. To skip the controller add the followi
 
 In general, there are two options if you want to shorten the URL by using RealURL: using **postVarSets** or **fixedPostVars**.
 |
-To use the postVarSets add the following code to your RealURL configuration: 
+To use the postVarSets add the following code to your RealURL configuration:
+
 ::
 
     'postVarSets' => array (
@@ -144,12 +153,13 @@ To use the postVarSets add the following code to your RealURL configuration:
                            ),
         ),
     ),
-    
+
 This will tranform your URL to the following format: http://www.yourdomain.com/*pagepath*/job/show/*job_title*.html
 Note that the pagepath depends on your configuration.
 |
 |
 As an even shorter alternative it is possible to configure the fixedPostVars in your RealURL configuration:
+
 ::
 
     'fixedPostVars' => array(
@@ -222,6 +232,7 @@ attribute:
 ::
 
 	additionalAttributes="{required: 'required'}
+
 How can I change the multiple select fields to simple dropdowns in filter?
 --------------------------------------------------------------------------
 
@@ -230,6 +241,7 @@ You need to change the partial of the filter field (e.g. category: Resources/Pri
 ::
 
 	multiple="true"
+
 and change it to
 
 ::
@@ -243,25 +255,31 @@ How can I add fields to the selects like contract types?
 The reason why these fields are selects / dropdowns is that the fields where used in the older dmmjobcontrol extension. To make the transition process easy, those fields where not changed.
 
 However, you can change both, the quantity of the items and the label. The process on how to change the labels is stated in the FAQ as well. To change those labels in the backend add the following to the page TSConfig:
+
 ::
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.altLabels.0= XYZ
+
 Additionally you have to add the following to the SETUP to change the label in the frontend:
+
 ::
 
 	plugin.tx_jobfair._LOCAL_LANG.default {
     tx_jobfair_domain_model_job.job_type.0 = XYZ
     }
-To add items you can simply add the following to the page TSConfig of the folder containing the jobs:
-::
 
+To add items you can simply add the following to the page TSConfig of the folder containing the jobs:
+
+::
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.addItems {
                 2 = XYZ
                 3 = TEST 1
                 4 = TEST 2
     }
+
 Finally, you need to change the partial JobType.html and add the following if statement (duplicate if you have more additional entries):
+
 ::
 
 	<f:if condition="{job.jobType} == 2">
@@ -274,6 +292,7 @@ A new feature in TYPO3 CMS 6.2 is that we can simply change the TCA by putting f
 The TCA in these files will be added to the cached TCA for extra speed. So if you have not done this before create a
 simply (empty) extension for your installation. By convention we'll simply use as filename tx_jobfair_domain_model_application.php,
 in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php . Insert the following content:
+
 ::
 
 	<?php
