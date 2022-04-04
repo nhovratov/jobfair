@@ -16,6 +16,7 @@
 namespace Dan\Jobfair\Domain\Validator;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
@@ -26,12 +27,6 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
  */
 class ApplicationCreateValidator extends AbstractValidator
 {
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     */
-    protected $configurationManager;
-
     /**
      * @var array
      */
@@ -43,7 +38,9 @@ class ApplicationCreateValidator extends AbstractValidator
      */
     public function isValid($application)
     {
-        $this->settings = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'jobfair');
+        // @todo: Use dependency injection once support for TYPO3 v9 is dropped
+        $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
+        $this->settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'jobfair');
         $isValid = true;
 
         if (empty($application->getEmail()) && $this->settings['application']['validation']['email']['required']) {
@@ -88,10 +85,5 @@ class ApplicationCreateValidator extends AbstractValidator
     protected function validEmail($emailAddress)
     {
         return GeneralUtility::validEmail($emailAddress);
-    }
-
-    public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager): void
-    {
-        $this->configurationManager = $configurationManager;
     }
 }

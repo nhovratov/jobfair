@@ -19,9 +19,12 @@ use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
+use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * This class provides misc functions (mostly file related) for the jobfair extension.
@@ -30,20 +33,10 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  */
 class Div
 {
-
     /**
-     * configurationManager
-     *
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
+     * @var ConfigurationManager
      */
     protected $configurationManager;
-
-    /**
-     * objectManager
-     *
-     * @var \TYPO3\CMS\Extbase\Object\ObjectManager
-     */
-    protected $objectManager;
 
     /**
      * Check extension of given filename
@@ -85,9 +78,7 @@ class Div
 
     public function sendSwiftEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName)
     {
-
-        /** @var $emailBodyObject \TYPO3\CMS\Fluid\View\StandaloneView */
-        $emailBodyObject = $this->objectManager->get('TYPO3\\CMS\\Fluid\\View\\StandaloneView');
+        $emailBodyObject = GeneralUtility::makeInstance(StandaloneView::class);
         $emailBodyObject->setTemplatePathAndFilename($this->getTemplatePath('Email/' . $template . '.html'));
         //$emailBodyObject->setTemplatePathAndFileName(ExtensionManagementUtility::extPath('jobfair') . 'Resources/Private/Templates/Email/' . $template . '.html');
         $emailBodyObject->setLayoutRootPaths([
@@ -100,7 +91,7 @@ class Div
         ]);
         $emailBodyObject->assignMultiple($variables);
 
-        $email = $this->objectManager->get('TYPO3\\CMS\\Core\\Mail\\MailMessage');
+        $email = GeneralUtility::makeInstance(MailMessage::class);
         $email
                 ->setTo($receiver)
                 ->setCc($receiverCc)
@@ -198,13 +189,8 @@ class Div
         return $absolutePathAndFilename;
     }
 
-    public function injectConfigurationManager($configurationManager): void
+    public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager): void
     {
         $this->configurationManager = $configurationManager;
-    }
-
-    public function injectObjectManager($objectManager): void
-    {
-        $this->objectManager = $objectManager;
     }
 }
