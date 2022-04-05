@@ -7,22 +7,24 @@
     <f:form.validationResults for="newApplication">
     <f:if condition="{validationResults.flattenedErrors}">
             <f:for each="{validationResults.flattenedErrors}" as="errors" key="propertyPath">
-                <div class="typo3-messages">
-                    <div class="alert alert-danger">
-                        <div class="media">
-                            <div class="media-left">
+                <f:for each="{errors}" as="error">
+                    <div class="typo3-messages">
+                        <div class="alert alert-danger">
+                            <div class="media">
+                                <div class="media-left">
 						<span class="fa-stack fa-lg">
 							<i class="fa fa-circle fa-stack-2x"></i>
 							<i class="fa fa-times fa-stack-1x"></i>
 						</span>
-                            </div>
-                            <div class="media-body">
-                                <h4 class="alert-title">{propertyPath}</h4>
-                                <div class="alert-message">{error}</div>
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="alert-title">{propertyPath}</h4>
+                                    <div class="alert-message">{error.message}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </f:for>
             </f:for>
     </f:if>
     </f:form.validationResults>
