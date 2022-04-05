@@ -38,7 +38,7 @@ class ApplicationCreateValidator extends AbstractValidator
      */
     public function isValid($application)
     {
-        // @todo: Use dependency injection once support for TYPO3 v9 is dropped
+        // @todo: Use dependency injection
         $configurationManager = GeneralUtility::makeInstance(ConfigurationManager::class);
         $this->settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'jobfair');
         $isValid = true;

@@ -69,47 +69,7 @@ class Div
      */
     public function sendEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName)
     {
-        if ((new Typo3Version())->getMajorVersion() > 9) {
-            return $this->sendFluidEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName);
-        }
-
-        return $this->sendSwiftEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName);
-    }
-
-    public function sendSwiftEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName)
-    {
-        $emailBodyObject = GeneralUtility::makeInstance(StandaloneView::class);
-        $emailBodyObject->setTemplatePathAndFilename($this->getTemplatePath('Email/' . $template . '.html'));
-        //$emailBodyObject->setTemplatePathAndFileName(ExtensionManagementUtility::extPath('jobfair') . 'Resources/Private/Templates/Email/' . $template . '.html');
-        $emailBodyObject->setLayoutRootPaths([
-                'default' => ExtensionManagementUtility::extPath('jobfair') . 'Resources/Private/Layouts',
-                'specific' => 'fileadmin/template/extensions/jobfair/Layouts'
-        ]);
-        $emailBodyObject->setPartialRootPaths([
-                'default' => ExtensionManagementUtility::extPath('jobfair') . 'Resources/Private/Partials',
-                'specific' => 'fileadmin/template/extensions/jobfair/Partials'
-        ]);
-        $emailBodyObject->assignMultiple($variables);
-
-        $email = GeneralUtility::makeInstance(MailMessage::class);
-        $email
-                ->setTo($receiver)
-                ->setCc($receiverCc)
-                ->setBcc($receiverBcc)
-                ->setFrom($sender)
-                ->setSubject($subject)
-                ->setCharset($GLOBALS['TSFE']->metaCharset)
-                ->setBody($emailBodyObject->render(), 'text/html');
-
-        if ($fileName) {
-            /** @var $filePathAndName string Path to file name (incl. path) */
-            $filePathAndName = 'fileadmin/user_upload/tx_jobfair/applications/' . $fileName;
-            $email->attach(\Swift_Attachment::fromPath($filePathAndName));
-        }
-
-        $email->send();
-
-        return $email->isSent();
+        return $this->sendFluidEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName);
     }
 
     /**

@@ -5,17 +5,15 @@ if (!defined('TYPO3_MODE')) {
 }
 
 (function() {
-    $controller = (new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion() >= 11 ? \Dan\Jobfair\Controller\JobController::class : 'Job';
-
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Dan.' . 'jobfair',
         'Pi1',
         [
-            $controller => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
+            \Dan\Jobfair\Controller\JobController::class => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
         ],
         // non-cacheable actions
         [
-            $controller => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
+            \Dan\Jobfair\Controller\JobController::class => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
         ]
     );
 
