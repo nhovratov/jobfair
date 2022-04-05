@@ -15,7 +15,9 @@
 
 namespace Dan\Jobfair\Property\TypeConverter;
 
-use Dan\Jobfair\Utility\CompatUtility;
+use TYPO3\CMS\Core\Resource\FileInterface;
+use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
+use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
 use TYPO3\CMS\Core\Resource\Exception\ExistingTargetFileNameException;
@@ -95,7 +97,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     protected $persistenceManager;
 
     /**
-     * @var \TYPO3\CMS\Core\Resource\FileInterface[]
+     * @var FileInterface[]
      */
     protected $convertedResources = [];
 
@@ -121,9 +123,9 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
      * @param string|int $source
      * @param string $targetType
      * @param array $convertedChildProperties
-     * @param \TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface $configuration
+     * @param PropertyMappingConfigurationInterface $configuration
      * @throws \TYPO3\CMS\Extbase\Property\Exception
-     * @return \TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder
+     * @return AbstractFileFolder
      * @api
      */
     public function convertFrom($source, $targetType, array $convertedChildProperties = [], PropertyMappingConfigurationInterface $configuration = null)
@@ -180,7 +182,7 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
      */
     protected function importUploadedResource(array $uploadInfo, PropertyMappingConfigurationInterface $configuration)
     {
-        if (!CompatUtility::verifyFilenameAgainstDenyPattern($uploadInfo['name'])) {
+        if (!GeneralUtility::makeInstance(FileNameValidator::class)->isValid($uploadInfo['name'])) {
             throw new TypeConverterException('Uploading files with PHP file extensions is not allowed!', 1399312430);
         }
 

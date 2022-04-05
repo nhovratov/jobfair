@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Discipline;
 use Dan\Jobfair\Domain\Model\Education;
@@ -35,16 +36,16 @@ class JobRepository extends Repository
 {
 
     /**
-     * @var \Dan\Jobfair\Service\AccessControlService
+     * @var AccessControlService
      */
     protected $accessControlService;
 
     /**
-    * Find by filter in front end
-    *
-    * @param \Dan\Jobfair\Domain\Model\Filter $filter
-    * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-    */
+     * Find by filter in front end
+     *
+     * @param Filter $filter
+     * @return array|QueryResultInterface
+     */
     public function findFiltered(Filter $filter = null)
     {
         $query = $this->createQuery();
@@ -178,12 +179,12 @@ class JobRepository extends Repository
     }
 
     /**
-    * Find latest jobs
-    *
-    * @param string $ordering
-    * @param int $limit
-    * @return array|\TYPO3\CMS\Extbase\Persistence\QueryResultInterface
-    */
+     * Find latest jobs
+     *
+     * @param string $ordering
+     * @param int $limit
+     * @return array|QueryResultInterface
+     */
     public function findLatest($ordering, $limit)
     {
         $query = $this->createQuery();

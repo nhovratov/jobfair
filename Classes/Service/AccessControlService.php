@@ -31,14 +31,14 @@ class AccessControlService implements SingletonInterface
 {
 
     /**
-     * @var \Dan\Jobfair\Domain\Repository\UserRepository
+     * @var UserRepository
      */
     protected $userRepository;
 
     /**
      * Tests, if the given person is owner of a job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      * @return bool The result; TRUE if the given person is logged in; otherwise FALSE
      */
     public function isOwner(Job $job)
@@ -86,7 +86,7 @@ class AccessControlService implements SingletonInterface
     }
 
     /**
-     * @return \Dan\Jobfair\Domain\Model\User|null
+     * @return User|null
      */
     public function getFrontendUserObject()
     {

@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\ViewHelpers\Security;
 
+use Dan\Jobfair\Domain\Model\Job;
 use Dan\Jobfair\Service\AccessControlService;
 use TYPO3Fluid\Fluid\Core\Compiler\TemplateCompiler;
 use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
@@ -49,7 +50,7 @@ class EditLinkViewHelper extends IfViewHelper
     /**
      * View helper to display edit or delete link if logged in user is owner of the job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job The job to be tested for ownership
+     * @param Job $job The job to be tested for ownership
      * @return string The output
      */
     public function render()

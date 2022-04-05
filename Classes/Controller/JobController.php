@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Dan\Jobfair\Controller;
 
+use TYPO3\CMS\Extbase\Object\Container\Container;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Dan\Jobfair\Domain\Model\Application;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Discipline;
@@ -58,61 +60,61 @@ class JobController extends ActionController
     /**
      * jobRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\JobRepository
+     * @var JobRepository
      */
     protected $jobRepository;
 
     /**
      * applicationRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\ApplicationRepository
+     * @var ApplicationRepository
      */
     protected $applicationRepository;
 
     /**
      * categoryRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\RegionRepository
+     * @var RegionRepository
      */
     protected $regionRepository;
 
     /**
      * categoryRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\SectorRepository
+     * @var SectorRepository
      */
     protected $sectorRepository;
 
     /**
      * categoryRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\CategoryRepository
+     * @var CategoryRepository
      */
     protected $categoryRepository;
 
     /**
      * categoryRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\DisciplineRepository
+     * @var DisciplineRepository
      */
     protected $disciplineRepository;
 
     /**
      * categoryRepository
      *
-     * @var \Dan\Jobfair\Domain\Repository\EducationRepository
+     * @var EducationRepository
      */
     protected $educationRepository;
 
     /**
      * Misc Functions
      *
-     * @var \Dan\Jobfair\Utility\Div
+     * @var Div
      */
     protected $div;
 
     /**
-     * @var \Dan\Jobfair\Service\AccessControlService
+     * @var AccessControlService
      */
     protected $accessControlService;
 
@@ -293,7 +295,7 @@ class JobController extends ActionController
     /**
      * action show
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function showAction(Job $job = null)
     {
@@ -315,7 +317,7 @@ class JobController extends ActionController
     /**
      * action new
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $newJob
+     * @param Job $newJob
      * @Extbase\IgnoreValidation("newJob")
      */
     public function newAction(Job $newJob = null)
@@ -344,7 +346,7 @@ class JobController extends ActionController
     /**
      * action create
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $newJob
+     * @param Job $newJob
      */
     public function createAction(Job $newJob)
     {
@@ -411,7 +413,7 @@ class JobController extends ActionController
     /**
      * action edit
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      * @Extbase\IgnoreValidation("job")
      */
     public function editAction(Job $job)
@@ -444,7 +446,7 @@ class JobController extends ActionController
     /**
      * action update
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function updateAction(Job $job)
     {
@@ -474,7 +476,7 @@ class JobController extends ActionController
     /**
      * action confirmDelete
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function confirmDeleteAction(Job $job)
     {
@@ -501,7 +503,7 @@ class JobController extends ActionController
     /**
      * action delete
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function deleteAction(Job $job)
     {
@@ -530,8 +532,8 @@ class JobController extends ActionController
     /**
      * action newApplication
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
-     * @param \Dan\Jobfair\Domain\Model\Application $newApplication
+     * @param Job $job
+     * @param Application $newApplication
      * @Extbase\IgnoreValidation("newApplication")
      */
     public function newApplicationAction(Job $job, Application $newApplication = null)
@@ -554,8 +556,8 @@ class JobController extends ActionController
     /**
      * action createApplication
      *
-     * @param \Dan\Jobfair\Domain\Model\Application $newApplication
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Application $newApplication
+     * @param Job $job
      * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
      */
     public function createApplicationAction(Application $newApplication, Job $job)
@@ -705,14 +707,14 @@ class JobController extends ActionController
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
         /* FileReference alias for TYPO3 v9-v11 */
-        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
+        GeneralUtility::makeInstance(Container::class)
             ->registerImplementation(
-                \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
+                FileReference::class,
                 \Dan\Jobfair\Domain\Model\FileReference::class
             );
 
         /* FileReference alias for TYPO3 v12 */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Extbase\Domain\Model\FileReference::class] = [
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][FileReference::class] = [
             'className' => \Dan\Jobfair\Domain\Model\FileReference::class,
         ];
 

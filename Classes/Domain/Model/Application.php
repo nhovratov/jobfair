@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -55,17 +56,17 @@ class Application extends AbstractEntity
     protected $message = '';
 
     /**
-      * attachment
-      *
-      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-      */
+     * attachment
+     *
+     * @var FileReference
+     */
     protected $attachment;
 
     /**
-       * jobs
-       *
-       * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job>
-       */
+     * jobs
+     *
+     * @var ObjectStorage<Job>
+     */
     protected $jobs;
 
     /**
@@ -169,10 +170,10 @@ class Application extends AbstractEntity
     }
 
     /**
-       * Returns the attachment
-       *
-       * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $attachment
-       */
+     * Returns the attachment
+     *
+     * @return FileReference $attachment
+     */
     public function getAttachment()
     {
         return $this->attachment;
@@ -181,7 +182,7 @@ class Application extends AbstractEntity
     /**
      * Sets the attachment
      *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $attachment
+     * @param FileReference $attachment
      */
     public function setAttachment($attachment)
     {
@@ -191,7 +192,7 @@ class Application extends AbstractEntity
     /**
      * Adds a Job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function addJob(Job $job)
     {
@@ -201,7 +202,7 @@ class Application extends AbstractEntity
     /**
      * Removes a Job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
+     * @param Job $jobToRemove The Job to be removed
      */
     public function removeJob(Job $jobToRemove)
     {
@@ -211,7 +212,7 @@ class Application extends AbstractEntity
     /**
      * Returns the jobs
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     * @return ObjectStorage<Job> $jobs
      */
     public function getJobs()
     {
@@ -221,7 +222,7 @@ class Application extends AbstractEntity
     /**
      * Sets the jobs
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     * @param ObjectStorage<Job> $jobs
      */
     public function setJobs(ObjectStorage $jobs)
     {
