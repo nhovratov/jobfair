@@ -720,8 +720,8 @@ class JobController extends ActionController
             UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'],
             UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
         ];
-        $newExampleConfiguration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-        $newExampleConfiguration->forProperty('attachment')
+        $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+        $configuration->forProperty('attachment')
             ->setTypeConverterOptions(
                 UploadedFileReferenceConverter::class,
                 $uploadConfiguration
