@@ -704,11 +704,17 @@ class JobController extends ActionController
 
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
+        /* FileReference alias for TYPO3 v9-v11 */
         \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\Container\Container::class)
             ->registerImplementation(
                 \TYPO3\CMS\Extbase\Domain\Model\FileReference::class,
                 \Dan\Jobfair\Domain\Model\FileReference::class
             );
+
+        /* FileReference alias for TYPO3 v12 */
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Extbase\Domain\Model\FileReference::class] = [
+            'className' => \Dan\Jobfair\Domain\Model\FileReference::class,
+        ];
 
         $uploadConfiguration = [
             UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'],
