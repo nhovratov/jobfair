@@ -16,6 +16,8 @@
 namespace Dan\Jobfair\ViewHelpers\Form;
 
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Property\PropertyMapper;
+use TYPO3\CMS\Extbase\Security\Cryptography\HashService;
 
 /**
  * Class UploadViewHelper
@@ -25,16 +27,24 @@ use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 class UploadViewHelper extends \TYPO3\CMS\Fluid\ViewHelpers\Form\UploadViewHelper
 {
     /**
-     * @var \TYPO3\CMS\Extbase\Security\Cryptography\HashService
-     * @TYPO3\CMS\Extbase\Annotation\Inject
+     * @var HashService
      */
     protected $hashService;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Property\PropertyMapper
-     * @TYPO3\CMS\Extbase\Annotation\Inject
+     * @var PropertyMapper
      */
     protected $propertyMapper;
+
+    public function injectPropertyMapper(PropertyMapper $propertyMapper)
+    {
+        $this->propertyMapper = $propertyMapper;
+    }
+
+    public function injectHashService(HashService $hashService)
+    {
+        $this->hashService = $hashService;
+    }
 
     /**
      * Render the upload field including possible resource pointer

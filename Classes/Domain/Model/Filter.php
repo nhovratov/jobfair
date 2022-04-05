@@ -29,35 +29,35 @@ class Filter extends AbstractEntity
     /**
      * categories
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      */
     protected $categories;
 
     /**
      * regions
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region>
+     * @var ObjectStorage<Region>
      */
     protected $regions;
 
     /**
      * sectors
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector>
+     * @var ObjectStorage<Sector>
      */
     protected $sectors;
 
     /**
      * disciplines
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline>
+     * @var ObjectStorage<Discipline>
      */
     protected $disciplines;
 
     /**
      * educations
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education>
+     * @var ObjectStorage<Education>
      */
     protected $educations;
 
@@ -114,7 +114,7 @@ class Filter extends AbstractEntity
     /**
      * Adds a category
      *
-     * @param \Dan\Jobfair\Domain\Model\Category $category
+     * @param Category $category
      */
     public function addCategory(Category $category)
     {
@@ -124,7 +124,7 @@ class Filter extends AbstractEntity
     /**
      * Returns the categories
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category> $categories
+     * @return ObjectStorage<Category> $categories
      */
     public function getCategories()
     {
@@ -134,7 +134,7 @@ class Filter extends AbstractEntity
     /**
      * Sets the categories
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category> $categories
+     * @param ObjectStorage<Category> $categories
      */
     public function setCategories(ObjectStorage $categories)
     {
@@ -144,7 +144,7 @@ class Filter extends AbstractEntity
     /**
      * Adds a region
      *
-     * @param \Dan\Jobfair\Domain\Model\Region $region
+     * @param Region $region
      */
     public function addRegion(Region $region)
     {
@@ -154,7 +154,7 @@ class Filter extends AbstractEntity
     /**
      * Returns the regions
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region> $regions
+     * @return ObjectStorage<Region> $regions
      */
     public function getRegions()
     {
@@ -164,7 +164,7 @@ class Filter extends AbstractEntity
     /**
      * Sets the regions
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region> $regions
+     * @param ObjectStorage<Region> $regions
      */
     public function setRegions(ObjectStorage $regions)
     {
@@ -174,7 +174,7 @@ class Filter extends AbstractEntity
     /**
      * Adds a sector
      *
-     * @param \Dan\Jobfair\Domain\Model\Sector $sector
+     * @param Sector $sector
      */
     public function addSector(Sector $sector)
     {
@@ -184,7 +184,7 @@ class Filter extends AbstractEntity
     /**
      * Returns the sectors
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector> $sectors
+     * @return ObjectStorage<Sector> $sectors
      */
     public function getSectors()
     {
@@ -194,7 +194,7 @@ class Filter extends AbstractEntity
     /**
      * Sets the sectors
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector> $sectors
+     * @param ObjectStorage<Sector> $sectors
      */
     public function setSectors(ObjectStorage $sectors)
     {
@@ -204,7 +204,7 @@ class Filter extends AbstractEntity
     /**
      * Adds a discipline
      *
-     * @param \Dan\Jobfair\Domain\Model\Discipline $discipline
+     * @param Discipline $discipline
      */
     public function addDiscipline(Discipline $discipline)
     {
@@ -214,7 +214,7 @@ class Filter extends AbstractEntity
     /**
      * Returns the disciplines
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline> $disciplines
+     * @return ObjectStorage<Discipline> $disciplines
      */
     public function getDisciplines()
     {
@@ -224,7 +224,7 @@ class Filter extends AbstractEntity
     /**
      * Sets the disciplines
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline> $disciplines
+     * @param ObjectStorage<Discipline> $disciplines
      */
     public function setDisciplines(ObjectStorage $disciplines)
     {
@@ -234,7 +234,7 @@ class Filter extends AbstractEntity
     /**
      * Adds a education
      *
-     * @param \Dan\Jobfair\Domain\Model\Education $education
+     * @param Education $education
      */
     public function addEducation(Education $education)
     {
@@ -244,7 +244,7 @@ class Filter extends AbstractEntity
     /**
      * Returns the educations
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education> $educations
+     * @return ObjectStorage<Education> $educations
      */
     public function getEducations()
     {
@@ -254,7 +254,7 @@ class Filter extends AbstractEntity
     /**
      * Sets the educations
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education> $educations
+     * @param ObjectStorage<Education> $educations
      */
     public function setEducations(ObjectStorage $educations)
     {

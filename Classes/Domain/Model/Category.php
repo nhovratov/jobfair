@@ -36,7 +36,7 @@ class Category extends AbstractEntity
     /**
      * jobs
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job>
+     * @var ObjectStorage<Job>
      */
     protected $jobs;
 
@@ -83,7 +83,7 @@ class Category extends AbstractEntity
     /**
      * Adds a Job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $job
+     * @param Job $job
      */
     public function addJob(Job $job)
     {
@@ -93,7 +93,7 @@ class Category extends AbstractEntity
     /**
      * Removes a Job
      *
-     * @param \Dan\Jobfair\Domain\Model\Job $jobToRemove The Job to be removed
+     * @param Job $jobToRemove The Job to be removed
      */
     public function removeJob(Job $jobToRemove)
     {
@@ -103,7 +103,7 @@ class Category extends AbstractEntity
     /**
      * Returns the jobs
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     * @return ObjectStorage<Job> $jobs
      */
     public function getJobs()
     {
@@ -113,7 +113,7 @@ class Category extends AbstractEntity
     /**
      * Sets the jobs
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Job> $jobs
+     * @param ObjectStorage<Job> $jobs
      */
     public function setJobs(ObjectStorage $jobs)
     {

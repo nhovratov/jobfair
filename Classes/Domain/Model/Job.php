@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -35,7 +36,7 @@ class Job extends AbstractEntity
 
     /**
      * jobImage
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var FileReference
      */
     protected $jobImage;
 
@@ -126,56 +127,56 @@ class Job extends AbstractEntity
     /**
      * region
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region>
+     * @var ObjectStorage<Region>
      */
     protected $region;
 
     /**
      * contact
      *
-     * @var \Dan\Jobfair\Domain\Model\Contact
+     * @var Contact
      */
     protected $contact;
 
     /**
      * sector
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector>
+     * @var ObjectStorage<Sector>
      */
     protected $sector;
 
     /**
      * category
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category>
+     * @var ObjectStorage<Category>
      */
     protected $category;
 
     /**
      * discipline
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline>
+     * @var ObjectStorage<Discipline>
      */
     protected $discipline;
 
     /**
      * education
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education>
+     * @var ObjectStorage<Education>
      */
     protected $education;
 
     /**
      * feuser
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\User>
+     * @var ObjectStorage<User>
      */
     protected $feuser;
 
     /**
      * application
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Application>
+     * @var ObjectStorage<Application>
      */
     protected $application;
 
@@ -262,7 +263,7 @@ class Job extends AbstractEntity
     /**
      * Returns the jobImage
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $jobImage
+     * @return ObjectStorage<FileReference> $jobImage
      */
     public function getJobImage()
     {
@@ -272,7 +273,7 @@ class Job extends AbstractEntity
     /**
      * Sets the jobImage
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $jobImage
+     * @param ObjectStorage<FileReference> $jobImage
      */
     public function setJobImage($jobImage)
     {
@@ -522,7 +523,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Region
      *
-     * @param \Dan\Jobfair\Domain\Model\Region $region
+     * @param Region $region
      */
     public function addRegion(Region $region)
     {
@@ -532,7 +533,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Region
      *
-     * @param \Dan\Jobfair\Domain\Model\Region $regionToRemove
+     * @param Region $regionToRemove
      */
     public function removeRegion(Region $regionToRemove)
     {
@@ -542,7 +543,7 @@ class Job extends AbstractEntity
     /**
      * Returns the region
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region> $region
+     * @return ObjectStorage<Region> $region
      */
     public function getRegion()
     {
@@ -552,7 +553,7 @@ class Job extends AbstractEntity
     /**
      * Sets the region
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Region> $region
+     * @param ObjectStorage<Region> $region
      */
     public function setRegion(ObjectStorage $region)
     {
@@ -562,7 +563,7 @@ class Job extends AbstractEntity
     /**
      * Returns the contact
      *
-     * @return \Dan\Jobfair\Domain\Model\Contact $contact
+     * @return Contact $contact
      */
     public function getContact()
     {
@@ -572,7 +573,7 @@ class Job extends AbstractEntity
     /**
      * Sets the contact
      *
-     * @param \Dan\Jobfair\Domain\Model\Contact $contact
+     * @param Contact $contact
      */
     public function setContact(Contact $contact)
     {
@@ -582,7 +583,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Sector
      *
-     * @param \Dan\Jobfair\Domain\Model\Sector $sector
+     * @param Sector $sector
      */
     public function addSector(Sector $sector)
     {
@@ -592,7 +593,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Sector
      *
-     * @param \Dan\Jobfair\Domain\Model\Sector $sectorToRemove The Sector to be removed
+     * @param Sector $sectorToRemove The Sector to be removed
      */
     public function removeSector(Sector $sectorToRemove)
     {
@@ -602,7 +603,7 @@ class Job extends AbstractEntity
     /**
      * Returns the sector
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector> $sector
+     * @return ObjectStorage<Sector> $sector
      */
     public function getSector()
     {
@@ -612,7 +613,7 @@ class Job extends AbstractEntity
     /**
      * Sets the sector
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Sector> $sector
+     * @param ObjectStorage<Sector> $sector
      */
     public function setSector(ObjectStorage $sector)
     {
@@ -622,7 +623,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Category
      *
-     * @param \Dan\Jobfair\Domain\Model\Category $category
+     * @param Category $category
      */
     public function addCategory(Category $category)
     {
@@ -632,7 +633,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Category
      *
-     * @param \Dan\Jobfair\Domain\Model\Category $categoryToRemove The Category to be removed
+     * @param Category $categoryToRemove The Category to be removed
      */
     public function removeCategory(Category $categoryToRemove)
     {
@@ -642,7 +643,7 @@ class Job extends AbstractEntity
     /**
      * Returns the category
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category> $category
+     * @return ObjectStorage<Category> $category
      */
     public function getCategory()
     {
@@ -652,7 +653,7 @@ class Job extends AbstractEntity
     /**
      * Sets the category
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Category> $category
+     * @param ObjectStorage<Category> $category
      */
     public function setCategory(ObjectStorage $category)
     {
@@ -662,7 +663,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Discipline
      *
-     * @param \Dan\Jobfair\Domain\Model\Discipline $discipline
+     * @param Discipline $discipline
      */
     public function addDiscipline(Discipline $discipline)
     {
@@ -672,7 +673,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Discipline
      *
-     * @param \Dan\Jobfair\Domain\Model\Discipline $disciplineToRemove The Discipline to be removed
+     * @param Discipline $disciplineToRemove The Discipline to be removed
      */
     public function removeDiscipline(Discipline $disciplineToRemove)
     {
@@ -682,7 +683,7 @@ class Job extends AbstractEntity
     /**
      * Returns the discipline
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline> $discipline
+     * @return ObjectStorage<Discipline> $discipline
      */
     public function getDiscipline()
     {
@@ -692,7 +693,7 @@ class Job extends AbstractEntity
     /**
      * Sets the discipline
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Discipline> $discipline
+     * @param ObjectStorage<Discipline> $discipline
      */
     public function setDiscipline(ObjectStorage $discipline)
     {
@@ -702,7 +703,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Education
      *
-     * @param \Dan\Jobfair\Domain\Model\Education $education
+     * @param Education $education
      */
     public function addEducation(Education $education)
     {
@@ -712,7 +713,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Education
      *
-     * @param \Dan\Jobfair\Domain\Model\Education $educationToRemove The Education to be removed
+     * @param Education $educationToRemove The Education to be removed
      */
     public function removeEducation(Education $educationToRemove)
     {
@@ -722,7 +723,7 @@ class Job extends AbstractEntity
     /**
      * Returns the education
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education> $education
+     * @return ObjectStorage<Education> $education
      */
     public function getEducation()
     {
@@ -732,7 +733,7 @@ class Job extends AbstractEntity
     /**
      * Sets the education
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Education> $education
+     * @param ObjectStorage<Education> $education
      */
     public function setEducation(ObjectStorage $education)
     {
@@ -742,7 +743,7 @@ class Job extends AbstractEntity
     /**
      * Adds a User
      *
-     * @param \Dan\Jobfair\Domain\Model\User $feuser
+     * @param User $feuser
      */
     public function addFeuser(User $feuser)
     {
@@ -752,7 +753,7 @@ class Job extends AbstractEntity
     /**
      * Removes a User
      *
-     * @param \Dan\Jobfair\Domain\Model\User $feuserToRemove The User to be removed
+     * @param User $feuserToRemove The User to be removed
      */
     public function removeFeuser(User $feuserToRemove)
     {
@@ -762,7 +763,7 @@ class Job extends AbstractEntity
     /**
      * Returns the feuser
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\User> $feuser
+     * @return ObjectStorage<User> $feuser
      */
     public function getFeuser()
     {
@@ -772,7 +773,7 @@ class Job extends AbstractEntity
     /**
      * Sets the feuser
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\User> $feuser
+     * @param ObjectStorage<User> $feuser
      */
     public function setFeuser(ObjectStorage $feuser)
     {
@@ -782,7 +783,7 @@ class Job extends AbstractEntity
     /**
      * Adds a Application
      *
-     * @param \Dan\Jobfair\Domain\Model\Application $application
+     * @param Application $application
      */
     public function addApplication(Application $application)
     {
@@ -792,7 +793,7 @@ class Job extends AbstractEntity
     /**
      * Removes a Application
      *
-     * @param \Dan\Jobfair\Domain\Model\Application $applicationToRemove The Application to be removed
+     * @param Application $applicationToRemove The Application to be removed
      */
     public function removeApplication(Application $applicationToRemove)
     {
@@ -802,7 +803,7 @@ class Job extends AbstractEntity
     /**
      * Returns the application
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Application> $application
+     * @return ObjectStorage<Application> $application
      */
     public function getApplication()
     {
@@ -812,7 +813,7 @@ class Job extends AbstractEntity
     /**
      * Sets the application
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dan\Jobfair\Domain\Model\Application> $application
+     * @param ObjectStorage<Application> $application
      */
     public function setApplication(ObjectStorage $application)
     {

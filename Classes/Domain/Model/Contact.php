@@ -15,6 +15,8 @@
 
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -62,7 +64,7 @@ class Contact extends AbstractEntity
 
     /**
      * contactImage
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var FileReference
      */
     protected $contactImage;
 
@@ -197,7 +199,7 @@ class Contact extends AbstractEntity
     /**
      * Returns the contactImage
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $contactImage
+     * @return ObjectStorage<FileReference> $contactImage
      */
     public function getContactImage()
     {
@@ -207,7 +209,7 @@ class Contact extends AbstractEntity
     /**
      * Sets the contactImage
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $contactImage
+     * @param ObjectStorage<FileReference> $contactImage
      */
     public function setContactImage($contactImage)
     {
