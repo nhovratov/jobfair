@@ -23,8 +23,8 @@ $tmp_alumni_columns = [
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $tmp_alumni_columns);
 
-$GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'] .= ',--div--;LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job,';
-$GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'] .= 'jobs';
+$GLOBALS['TCA']['fe_users']['types']['0']['showitem'] .= ',--div--;LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job,';
+$GLOBALS['TCA']['fe_users']['types']['0']['showitem'] .= 'jobs';
 
 // Use first and last name as default label instead of username:
 $GLOBALS['TCA']['fe_users']['ctrl']['label'] = 'last_name';
