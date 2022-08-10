@@ -194,7 +194,7 @@
 			</trans-unit>
 			<trans-unit id="flexform.list.title">
 				<source>List</source>
-			</trans-unit>      
+			</trans-unit>
 			<trans-unit id="flexform.list.fieldsnotice">
 				<source>Select fields for list view (empty = Job Title, Employer, Location, Job Type)</source>
 			</trans-unit>
@@ -213,24 +213,27 @@
 			<trans-unit id="flexform.list.page_id_detail">
 				<source>UID of the page containing the plugin for detail view (empty = same page)</source>
 			</trans-unit>
+			<trans-unit id="flexform.list.recursive">
+				<source>Recursive</source>
+			</trans-unit>
 			<trans-unit id="flexform.filter.title">
 				<source>Filter</source>
-			</trans-unit>           
+			</trans-unit>
 			<trans-unit id="flexform.filter.hideFilter">
 				<source>Hide filter form</source>
-			</trans-unit> 
+			</trans-unit>
 			<trans-unit id="flexform.filter.filterlimit">
 				<source>Treshold of jobs for filter form to appear</source>
-			</trans-unit>  
+			</trans-unit>
 			<trans-unit id="flexform.filter.fieldsnotice">
 				<source>Select filters (empty = all available filters)</source>
-			</trans-unit>     
+			</trans-unit>
 			<trans-unit id="flexform.filter.enablePreselect">
 				<source>Enable preselect of filter</source>
-			</trans-unit>  
+			</trans-unit>
 			<trans-unit id="flexform.filter.preselectCategory">
 				<source>Category to preselect the filter</source>
-			</trans-unit>  
+			</trans-unit>
 			<trans-unit id="flexform.filter.preselectRegion">
 				<source>Region to preselect the filter</source>
 			</trans-unit>
@@ -254,10 +257,10 @@
 			</trans-unit>
             <trans-unit id="flexform.show.title">
 				<source>Show</source>
-			</trans-unit>          
+			</trans-unit>
             <trans-unit id="flexform.show.fieldsnotice">
 				<source>Select fields for show view (empty = all fields)</source>
-			</trans-unit> 
+			</trans-unit>
             <trans-unit id="flexform.show.hideEmpty">
 				<source>Hide empty fields in show view</source>
 			</trans-unit>
@@ -284,7 +287,7 @@
 			</trans-unit>
 			<trans-unit id="flexform.application.title">
 				<source>Application</source>
-			</trans-unit> 
+			</trans-unit>
 			<trans-unit id="flexform.application.disable">
 				<source>Disable applications</source>
 			</trans-unit>
@@ -308,7 +311,7 @@
 			</trans-unit>
 			<trans-unit id="flexform.feuser.title">
 				<source>FE-User</source>
-			</trans-unit> 
+			</trans-unit>
 			<trans-unit id="flexform.feuser.enableEdit">
 				<source>Enable FE-Users to add, edit* and delete* job (*their own)</source>
 			</trans-unit>
@@ -317,10 +320,10 @@
 			</trans-unit>
 			<trans-unit id="flexform.feuser.page_id">
 				<source>Page ID (PID) where the user profile is shown</source>
-			</trans-unit> 
+			</trans-unit>
 			<trans-unit id="flexform.feuser.plugin_name">
 				<source>Plugin which is used to show the user profile</source>
-			</trans-unit> 
+			</trans-unit>
 			<trans-unit id="flexform.feuser.plugin_field">
 				<source>Field which is used to identify the user</source>
 			</trans-unit>

@@ -266,6 +266,15 @@
                             </config>
                         </TCEforms>
                     </settings.list.pageIdDetail>
+                    <settings.list.recursive>
+                        <TCEforms>
+                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.recursive</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim,int</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.list.recursive>
                 </el>
             </ROOT>
         </list>
@@ -349,7 +358,7 @@
                             </config>
                         </TCEforms>
                     </settings.filter.fields>
-                    
+
                     <settings.filter.enablePreselect>
                         <TCEforms>
                             <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.enablePreselect</label>
@@ -359,7 +368,7 @@
                             </config>
                         </TCEforms>
                     </settings.filter.enablePreselect>
-                    
+
                     <settings.filter.preselectCategory>
                         <TCEforms>
                             <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectCategory</label>
@@ -1156,7 +1165,7 @@
                             </config>
                         </TCEforms>
                     </settings.edit.fields>
-                    
+
                 </el>
             </ROOT>
         </edit>

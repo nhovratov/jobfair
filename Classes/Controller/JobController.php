@@ -17,6 +17,7 @@ declare(strict_types=1);
 
 namespace Dan\Jobfair\Controller;
 
+use Dan\Jobfair\Utility\Page;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Dan\Jobfair\Domain\Model\Application;
@@ -41,8 +42,10 @@ use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -234,6 +237,17 @@ class JobController extends ActionController
         $this->view->assign('sectors', $this->sectorRepository->findAll());
         $this->view->assign('disciplines', $this->disciplineRepository->findAll());
         $this->view->assign('educations', $this->educationRepository->findAll());
+
+        /* Add query settings to define storage pages */
+        $querySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $pids = Page::getPageChildren(
+            $this->configurationManager->getConfiguration(
+                ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            )['persistence']['storagePid'],
+            $this->settings['list']['recursive']
+        );
+        $querySettings->setStoragePageIds(explode(",", $pids));
+        $this->jobRepository->setDefaultQuerySettings($querySettings);
 
         /* load jobs if filter is set */
         if ($filter !== null) {
