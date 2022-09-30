@@ -67,7 +67,7 @@ return [
                 ],
                 'foreign_table' => 'tx_jobfair_domain_model_discipline',
                 // no sys_language_uid = -1 allowed explicitly!
-                'foreign_table_where' => 'AND tx_jobfair_domain_model_discipline.uid=###CURRENT_PID### AND tx_jobfair_domain_model_discipline.sys_language_uid = 0',
+                'foreign_table_where' => 'AND tx_jobfair_domain_model_discipline.pid=###CURRENT_PID### AND tx_jobfair_domain_model_discipline.sys_language_uid IN (-1,0)',
                 'default' => 0
             ]
         ],
