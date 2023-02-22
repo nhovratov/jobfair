@@ -207,7 +207,8 @@ If you want to use shortened URLs with TYPO3 9+, you can use the following code 
 
 Please mind the the intendation: "routeEnhancers" starts on the first character of the line.
 
-..code-block::yaml
+.. code-block:: yaml
+
 		routeEnhancers:
 		  Jobfair:
 		    type: Extbase
