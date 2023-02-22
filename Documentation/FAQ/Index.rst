@@ -201,6 +201,48 @@ As an even shorter alternative it is possible to configure the fixedPostVars in 
 
 Note: You need to adapt the configuration to the page ID where you inserted the jobfair plugin (change 279 to your page ID).
 
+How can I use TYPO3 9+ routing with jobfair?
+--------------------------------------------
+
+If you want to use shortened URLs with TYPO3 9+, you can use the following code in your site configuration.
+
+Please mind the the intendation: "routeEnhancers" starts on the first character of the line.
+
+.. code-block:: yaml
+
+		routeEnhancers:
+		  Jobfair:
+		    type: Extbase
+		    extension: Jobfair
+		    plugin: Pi1
+		    routes:
+		      -
+		        routePath: '/{job_title}'
+		        _controller: 'Job::show'
+		        _arguments:
+		          job_title: job
+		      -
+		        routePath: '/'
+		        _controller: 'Job::list'
+		      -
+		        routePath: 'apply/{job_title}'
+		        _controller: 'Job::newApplication'
+		        _arguments:
+		          job_title: job
+		    defaultController: 'Job::show'
+		    aspects:
+		      job_title:
+		        type: PersistedAliasMapper
+		        tableName: tx_jobfair_domain_model_job
+		        routeFieldName: slug
+
+
+The first part will give you a shortened URL for the job itself.
+
+The second part will give you a shortened URL for the "Back to list" button in the single view of the job.
+
+And the third and final part will shorten the URL of the "Apply now" button. Here you should adapt the "bewerben" string to your needs.
+
 How can I hide the jobs tab/field in the backend for Frontend Users?
 --------------------------------------------------------------------
 
