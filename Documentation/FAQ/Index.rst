@@ -224,7 +224,7 @@ Please mind the the intendation: "routeEnhancers" starts on the first character 
 		        routePath: '/'
 		        _controller: 'Job::list'
 		      -
-		        routePath: 'bewerben/{job_title}'
+		        routePath: 'apply/{job_title}'
 		        _controller: 'Job::newApplication'
 		        _arguments:
 		          job_title: job
