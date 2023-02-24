@@ -16,7 +16,7 @@ How can I use my own template?
 
 In your template (setup) use the following typoscript:
 
-::
+.. code-block:: typoscript
 
 	plugin.tx_jobfair {
 		view {
@@ -50,7 +50,7 @@ How to hide fields in the Backend?
 
 In Page TSConfig:
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.tx_jobfair_domain_model_job {
 		contract_type.disabled = 1
@@ -63,7 +63,7 @@ How to change language labels in the BACKEND?
 
 In Page TSConfig:
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type {
 		label.default = Category
@@ -75,7 +75,7 @@ This can be done language specific:
 
 In Page TSConfig:
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.label.de = Kategorie
 
@@ -87,7 +87,7 @@ How to change language labels in the FRONTEND?
 
 In your template (setup) use the following typoscript:
 
-::
+.. code-block:: typoscript
 
 	plugin.tx_jobfair._LOCAL_LANG.default {
     		tx_jobfair_domain_model_job.job_title = New label text
@@ -97,7 +97,7 @@ This can be done language specific:
 
 In your template (setup) use the following typoscript:
 
-::
+.. code-block:: typoscript
 
 	plugin.tx_jobfair._LOCAL_LANG.de {
     		tx_jobfair_domain_model_job.job_title = New label text
@@ -110,7 +110,7 @@ How to shorten the URL and use RealURL?
 If you want to shorten the URL, it is possible to skip the controller parameter, since the jobfair extension works
 with only one controller in the frontend. To skip the controller add the following to your SETUP:
 
-::
+.. code-block:: php
 
 	plugin.tx_jobfair {
     		features {
@@ -122,7 +122,7 @@ In general, there are two options if you want to shorten the URL by using RealUR
 |
 To use the postVarSets add the following code to your RealURL configuration:
 
-::
+.. code-block:: php
 
     'postVarSets' => array (
         '_DEFAULT' => array (
@@ -160,7 +160,7 @@ Note that the pagepath depends on your configuration.
 |
 As an even shorter alternative it is possible to configure the fixedPostVars in your RealURL configuration:
 
-::
+.. code-block:: php
 
     'fixedPostVars' => array(
                 'jobfairConfiguration' => array(
@@ -248,7 +248,7 @@ How can I hide the jobs tab/field in the backend for Frontend Users?
 
 Add the following TypoScript Configuration to Page TSConfig of your folder containing the Frontend Users (see page proberties)
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.fe_users {
 		jobs.disabled = 1
@@ -271,7 +271,7 @@ You can change the default behaviour by editing the template file "NewApplicatio
 required="required". Plese note: to change the setting for the textarea, you need to set it using a different
 attribute:
 
-::
+.. code-block:: html
 
 	additionalAttributes="{required: 'required'}
 
@@ -280,13 +280,13 @@ How can I change the multiple select fields to simple dropdowns in filter?
 
 You need to change the partial of the filter field (e.g. category: Resources/Private/Partials/Job/Filter/Category.html). Find the line
 
-::
+.. code-block:: html
 
 	multiple="true"
 
 and change it to
 
-::
+.. code-block:: html
 
 	multiple=""
     size="1"
@@ -298,13 +298,13 @@ The reason why these fields are selects / dropdowns is that the fields where use
 
 However, you can change both, the quantity of the items and the label. The process on how to change the labels is stated in the FAQ as well. To change those labels in the backend add the following to the page TSConfig:
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.altLabels.0= XYZ
 
 Additionally you have to add the following to the SETUP to change the label in the frontend:
 
-::
+.. code-block:: typoscript
 
 	plugin.tx_jobfair._LOCAL_LANG.default {
     tx_jobfair_domain_model_job.job_type.0 = XYZ
@@ -312,7 +312,7 @@ Additionally you have to add the following to the SETUP to change the label in t
 
 To add items you can simply add the following to the page TSConfig of the folder containing the jobs:
 
-::
+.. code-block:: typoscript
 
 	TCEFORM.tx_jobfair_domain_model_job.job_type.addItems {
                 2 = XYZ
@@ -322,7 +322,7 @@ To add items you can simply add the following to the page TSConfig of the folder
 
 Finally, you need to change the partial JobType.html and add the following if statement (duplicate if you have more additional entries):
 
-::
+.. code-block:: html
 
 	<f:if condition="{job.jobType} == 2">
     	<f:translate key="tx_jobfair_domain_model_job.job_type.2" />
@@ -335,7 +335,7 @@ The TCA in these files will be added to the cached TCA for extra speed. So if yo
 simply (empty) extension for your installation. By convention we'll simply use as filename tx_jobfair_domain_model_application.php,
 in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php . Insert the following content:
 
-::
+.. code-block:: php
 
 	<?php
 	if (!defined('TYPO3_MODE')) {
