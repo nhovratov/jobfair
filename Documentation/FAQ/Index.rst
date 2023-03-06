@@ -245,6 +245,7 @@ And the third and final part will shorten the URL of the "Apply now" button. Her
 You can also put the above code into your sitepackage and import it:
 
 .. code-block:: yaml
+
   imports:
     -
       resource: 'EXT:yoursitepackage/Configuration/Routes/Default.yaml'
