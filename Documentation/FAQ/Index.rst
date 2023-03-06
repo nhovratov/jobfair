@@ -345,8 +345,8 @@ in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php
 
 .. code-block:: php
 
-<?php
-	if (!defined('TYPO3_MODE')) {
-			die ('Access denied.');
-	}
-	$GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'] = 'pdf,zip,rar,doc,docx,odt';
+  <?php
+    if (!defined('TYPO3_MODE')) {
+      die ('Access denied.');
+    }
+    $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'] = 'pdf,zip,rar,doc,docx,odt';
