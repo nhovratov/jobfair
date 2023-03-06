@@ -123,7 +123,7 @@ In general, there are two options if you want to shorten the URL by using RealUR
 To use the postVarSets add the following code to your RealURL configuration:
 
 .. code-block:: php
-	:caption: typo3conf/realurl_conf.php
+
 		
     'postVarSets' => array (
         '_DEFAULT' => array (
