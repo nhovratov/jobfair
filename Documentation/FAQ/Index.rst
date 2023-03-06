@@ -245,10 +245,9 @@ And the third and final part will shorten the URL of the "Apply now" button. Her
 You can also put the above code into your sitepackage and import it:
 
 .. code-block:: yaml
-
-		imports:
-  		-
-    		resource: 'EXT:yoursitepackage/Configuration/Routes/Default.yaml'
+  imports:
+    -
+      resource: 'EXT:yoursitepackage/Configuration/Routes/Default.yaml'
 
 
 How can I hide the jobs tab/field in the backend for Frontend Users?
