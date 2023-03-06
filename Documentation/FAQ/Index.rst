@@ -290,13 +290,13 @@ You need to change the partial of the filter field (e.g. category: EXT:jobfair/R
 
 .. code-block:: html
 
-	multiple="true"
+  multiple="true"
 
 and change it to
 
 .. code-block:: html
 
-	multiple=""
+  multiple=""
     size="1"
 
 How can I add fields to the selects like contract types?
@@ -314,7 +314,7 @@ Additionally you have to add the following to the SETUP to change the label in t
 
 .. code-block:: typoscript
 
-	plugin.tx_jobfair._LOCAL_LANG.default {
+  plugin.tx_jobfair._LOCAL_LANG.default {
     tx_jobfair_domain_model_job.job_type.0 = XYZ
     }
 
@@ -322,7 +322,7 @@ To add items you can simply add the following to the page TSConfig of the folder
 
 .. code-block:: typoscript
 
-	TCEFORM.tx_jobfair_domain_model_job.job_type.addItems {
+  TCEFORM.tx_jobfair_domain_model_job.job_type.addItems {
                 2 = XYZ
                 3 = TEST 1
                 4 = TEST 2
@@ -332,9 +332,9 @@ Finally, you need to change the partial JobType.html and add the following if st
 
 .. code-block:: html
 
-	<f:if condition="{job.jobType} == 2">
-    	<f:translate key="tx_jobfair_domain_model_job.job_type.2" />
-	</f:if>
+  <f:if condition="{job.jobType} == 2">
+    <f:translate key="tx_jobfair_domain_model_job.job_type.2" />
+  </f:if>
 
 How can I changes file types allowed to upload?
 -----------------------------------------------
@@ -345,7 +345,7 @@ in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php
 
 .. code-block:: php
 
-	<?php
+<?php
 	if (!defined('TYPO3_MODE')) {
 			die ('Access denied.');
 	}
