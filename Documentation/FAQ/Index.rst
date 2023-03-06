@@ -123,7 +123,7 @@ In general, there are two options if you want to shorten the URL by using RealUR
 To use the postVarSets add the following code to your RealURL configuration:
 
 .. code-block:: php
-
+		:caption: typo3conf/realurl_conf.php
     'postVarSets' => array (
         '_DEFAULT' => array (
                           'job' => array(
@@ -161,7 +161,7 @@ Note that the pagepath depends on your configuration.
 As an even shorter alternative it is possible to configure the fixedPostVars in your RealURL configuration:
 
 .. code-block:: php
-
+		:caption: typo3conf/realurl_conf.php
     'fixedPostVars' => array(
                 'jobfairConfiguration' => array(
           				array(
@@ -209,7 +209,7 @@ If you want to use shortened URLs with TYPO3 9+, you can use the following code 
 Please mind the the intendation: "routeEnhancers" starts on the first character of the line.
 
 .. code-block:: yaml
-
+		:caption: typo3conf/sites/yoursite/config.yaml
 		routeEnhancers:
 		  Jobfair:
 		    type: Extbase
@@ -241,7 +241,16 @@ The first part will give you a shortened URL for the job itself.
 
 The second part will give you a shortened URL for the "Back to list" button in the single view of the job.
 
-And the third and final part will shorten the URL of the "Apply now" button. Here you should adapt the "bewerben" string to your needs.
+And the third and final part will shorten the URL of the "Apply now" button. Here you should adapt the "apply" string to your needs.
+
+You can also put the above code into your sitepackage and import it:
+
+.. code-block:: yaml
+		:caption: typo3conf/sites/yoursite/config.yaml
+		imports:
+  		-
+    		resource: 'EXT:yoursitepackage/Configuration/Routes/Default.yaml'
+
 
 How can I hide the jobs tab/field in the backend for Frontend Users?
 --------------------------------------------------------------------
@@ -272,22 +281,22 @@ required="required". Plese note: to change the setting for the textarea, you nee
 attribute:
 
 .. code-block:: html
-
+	:caption: EXT:jobfair/Resources/Private/Templates/Job/NewApplication.html
 	additionalAttributes="{required: 'required'}
 
 How can I change the multiple select fields to simple dropdowns in filter?
 --------------------------------------------------------------------------
 
-You need to change the partial of the filter field (e.g. category: Resources/Private/Partials/Job/Filter/Category.html). Find the line
+You need to change the partial of the filter field (e.g. category: EXT:jobfair/Resources/Private/Partials/Job/Filter/Category.html). Find the line
 
 .. code-block:: html
-
+	:caption: EXT:jobfair/Resources/Private/Partials/Job/Filter/Category.html
 	multiple="true"
 
 and change it to
 
 .. code-block:: html
-
+	:caption: EXT:jobfair/Resources/Private/Partials/Job/Filter/Category.html
 	multiple=""
     size="1"
 
@@ -336,7 +345,7 @@ simply (empty) extension for your installation. By convention we'll simply use a
 in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php . Insert the following content:
 
 .. code-block:: php
-
+	:caption: EXT:yoursitepackage/Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php
 	<?php
 	if (!defined('TYPO3_MODE')) {
 			die ('Access denied.');
