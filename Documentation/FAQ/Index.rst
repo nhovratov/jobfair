@@ -124,6 +124,7 @@ To use the postVarSets add the following code to your RealURL configuration:
 
 .. code-block:: php
 		:caption: typo3conf/realurl_conf.php
+		
     'postVarSets' => array (
         '_DEFAULT' => array (
                           'job' => array(
