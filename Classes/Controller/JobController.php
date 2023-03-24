@@ -645,43 +645,26 @@ class JobController extends ActionController
         // send email to contacts and frontend users
         /** @var $recipientsCc array Array to collect all the CC receipients */
         /** @var $recipientsBcc array Array to collect all the BCC receipients */
-        if ($newApplication->getAttachment()) {
-          if ($this->div->sendEmail(
-              'MailApplication',
-              $recipients,
-              $recipientsCc,
-              $recipientsBcc,
-              $sender,
-              LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
-              ['newApplication' => $newApplication, 'job' => $job],
-              $newApplication->getAttachment()->getOriginalResource()->getName()
-          )) {
-              $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
-          } else {
-              $this->flashMessageService('applicationSendMessageGeneralError', 'applicationSendStatusGeneralErrorStatus', 'ERROR');
-          }
-          if ($this->settings['application']['dontSaveAttachment']) {
-              $newApplication->setAttachment(null);
-              $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
-              if (file_exists($filePathAndName)) {
-                  @unlink($filePathAndName);
-              }
-          }
+        if ($this->div->sendEmail(
+            'MailApplication',
+            $recipients,
+            $recipientsCc,
+            $recipientsBcc,
+            $sender,
+            LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
+            ['newApplication' => $newApplication, 'job' => $job],
+            $newApplication->getAttachment()->getOriginalResource()->getName()
+        )) {
+            $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
         } else {
-          if ($this->div->sendEmail(
-              'MailApplication',
-              $recipients,
-              $recipientsCc,
-              $recipientsBcc,
-              $sender,
-              LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
-              ['newApplication' => $newApplication, 'job' => $job],
-              ''
-          )) {
-              $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
-          } else {
-              $this->flashMessageService('applicationSendMessageGeneralError', 'applicationSendStatusGeneralErrorStatus', 'ERROR');
-          }
+            $this->flashMessageService('applicationSendMessageGeneralError', 'applicationSendStatusGeneralErrorStatus', 'ERROR');
+        }
+        if ($this->settings['application']['dontSaveAttachment']) {
+            $newApplication->setAttachment(null);
+            $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
+            if (file_exists($filePathAndName)) {
+                @unlink($filePathAndName);
+            }
         }
         $this->redirect('show', 'Job', null, ['job' => $job]);
     }
