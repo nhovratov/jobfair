@@ -107,6 +107,7 @@ NOTE: Do not use this to translate the entire Frontend but add your translation 
 
 How to shorten the URL and use RealURL?
 ---------------------------------------
+
 If you want to shorten the URL, it is possible to skip the controller parameter, since the jobfair extension works
 with only one controller in the frontend. To skip the controller add the following to your SETUP:
 
@@ -205,9 +206,10 @@ How can I use TYPO3 9+ routing with jobfair?
 
 If you want to use shortened URLs with TYPO3 9+, you can use the following code in your site configuration.
 
-Please mind the the indentation: "routeEnhancers" starts on the first character of the line.
+Please mind the indentation: "routeEnhancers" starts on the first character of the line.
 
 .. code-block:: yaml
+	:caption: sites/<yourConfig>/config.yaml
 
 		routeEnhancers:
 		  Jobfair:
@@ -275,7 +277,7 @@ the detail view.
 How can I change which fields are required to send an application?
 ------------------------------------------------------------------
 
-You can change the default behaviour by editing the template file "NewApplication.html". Search for the attribute
+You can change the default behaviour by editing the template file :file:`EXT:jobfair/Resources/Private/Templates/Job/NewApplication.html`. Search for the attribute
 required="required". Plese note: to change the setting for the textarea, you need to set it using a different
 attribute:
 
@@ -286,7 +288,7 @@ attribute:
 How can I change the multiple select fields to simple dropdowns in filter?
 --------------------------------------------------------------------------
 
-You need to change the partial of the filter field (e.g. category: EXT:jobfair/Resources/Private/Partials/Job/Filter/Category.html). Find the line
+You need to change the partial of the filter field (e.g. category: :file:`EXT:yoursitepackage/Resources/Private/Partials/Job/Filter/Category.html`). Find the line
 
 .. code-block:: html
 
@@ -328,7 +330,7 @@ To add items you can simply add the following to the page TSConfig of the folder
                 4 = TEST 2
     }
 
-Finally, you need to change the partial JobType.html and add the following if statement (duplicate if you have more additional entries):
+Finally, you need to change the partial :file:`JobType.html` and add the following if statement (duplicate if you have more additional entries):
 
 .. code-block:: html
 
@@ -336,15 +338,18 @@ Finally, you need to change the partial JobType.html and add the following if st
     <f:translate key="tx_jobfair_domain_model_job.job_type.2" />
   </f:if>
 
+This should be done at least in :file:`EXT:jobfair/Resources/Private/Partials/Job/Filter/Category.html`
+
 How can I changes file types allowed to upload?
 -----------------------------------------------
+
 A new feature in TYPO3 CMS 6.2 is that we can simply change the TCA by putting files in Configuration/TCA/Overrides/
 The TCA in these files will be added to the cached TCA for extra speed. So if you have not done this before create a
 simply (empty) extension for your installation. By convention we'll simply use as filename tx_jobfair_domain_model_application.php,
-in our case: Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php . Insert the following content:
+in our case: :file:`Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php`. Insert the following content:
 
 .. code-block:: php
-
+	:caption: EXT:sitepackage/Configuration/TCA/Overrides/tx_jobfair_domain_model_application.php
   <?php
   if (!defined('TYPO3_MODE')) {
     die ('Access denied.');
