@@ -175,19 +175,19 @@ class JobController extends ActionController
     public function initializeListAction()
     {
         $arguments = $this->request->getArguments();
-        if ((int)$arguments['filter']['categories'][0] === 0) {
+        if (((int)($arguments['filter']['categories'][0] ?? 0)) === 0) {
             unset($arguments['filter']['categories']);
         }
-        if ((int)$arguments['filter']['regions'][0] === 0) {
+        if (((int)($arguments['filter']['regions'][0] ?? 0)) === 0) {
             unset($arguments['filter']['regions']);
         }
-        if ((int)$arguments['filter']['sectors'][0] === 0) {
+        if (((int)($arguments['filter']['sectors'][0] ?? 0)) === 0) {
             unset($arguments['filter']['sectors']);
         }
-        if ((int)$arguments['filter']['disciplines'][0] === 0) {
+        if (((int)($arguments['filter']['disciplines'][0] ?? 0)) === 0) {
             unset($arguments['filter']['disciplines']);
         }
-        if ((int)$arguments['filter']['educations'][0] === 0) {
+        if (((int)($arguments['filter']['educations'][0] ?? 0)) === 0) {
             unset($arguments['filter']['educations']);
         }
         $this->request->setArguments($arguments);
