@@ -203,7 +203,7 @@ class JobController extends ActionController
     public function listAction(Filter $filter = null)
     {
         /* redirect to latest view if enabled in the plugin */
-        if ($this->settings['latest']['enableLatest']) {
+        if ($this->settings['latest']['enableLatest'] ?? false) {
             $this->forward('latest');
         }
 
@@ -238,9 +238,9 @@ class JobController extends ActionController
         /* load jobs if filter is set */
         if ($filter !== null) {
             $jobs = $this->jobRepository->findFiltered($filter);
-        } elseif ($this->settings['filter']['enablePreselect']) {
+        } elseif ($this->settings['filter']['enablePreselect'] ?? false) {
             $filter = new Filter();
-            if ($this->settings['filter']['preselectCategory']) {
+            if ($this->settings['filter']['preselectCategory'] ?? false) {
                 /** @var Category $category */
                 $category = $this->categoryRepository->findByUid($this->settings['filter']['preselectCategory']);
                 $filter->addCategory($category);
