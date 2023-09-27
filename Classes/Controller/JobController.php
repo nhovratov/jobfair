@@ -17,6 +17,8 @@ declare(strict_types=1);
 
 namespace Dan\Jobfair\Controller;
 
+use TYPO3\CMS\Core\Resource\ResourceFactory;
+use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Dan\Jobfair\Domain\Model\Application;
@@ -538,6 +540,13 @@ class JobController extends ActionController
      */
     public function newApplicationAction(Job $job, Application $newApplication = null)
     {
+        $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
+        $defaultStorage = $storageRepository->getDefaultStorage();
+        $identifier = 'user_upload/tx_jobfair/applications';
+        $hasFolder = $defaultStorage->hasFolder($identifier);
+        if ($hasFolder === false) {
+            $defaultStorage->createFolder($identifier);
+        }
         $loggedInFeuserObject = $this->accessControlService->getFrontendUserObject();
         $this->view->assignMultiple(
             [
