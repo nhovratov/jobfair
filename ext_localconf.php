@@ -6,7 +6,7 @@ if (!defined('TYPO3_MODE')) {
 
 (function() {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Dan.' . 'jobfair',
+        'jobfair',
         'Pi1',
         [
             \Dan\Jobfair\Controller\JobController::class => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
