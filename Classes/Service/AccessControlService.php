@@ -90,8 +90,11 @@ class AccessControlService implements SingletonInterface
      */
     public function getFrontendUserObject()
     {
-        if ($this->hasLoggedInFrontendUser() && !empty($GLOBALS['TSFE']->fe_user->user['uid'])) {
-            return $this->userRepository->findByUid($GLOBALS['TSFE']->fe_user->user['uid']);
+        if ($this->hasLoggedInFrontendUser()) {
+            $frontendUserId = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
+            /** @var User $user */
+            $user = $this->userRepository->findByUid($frontendUserId);
+            return $user;
         }
         return null;
     }
