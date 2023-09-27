@@ -15,8 +15,8 @@
             <f:if condition="{iterator.index} <= {settings.feed.maxRecords}">
                 <entry>
                     <title>{job.jobTitle}</title>
-                    <link href="{f:uri.action(action:'show', arguments:{job : job}, absolute:'1', noCacheHash:'TRUE') -> f:format.htmlentities()}" />
-                    <id><f:format.htmlentities><f:uri.action action="show" arguments="{job : job}" absolute="1" noCacheHash="TRUE"/></f:format.htmlentities></id>
+                    <link href="{f:uri.action(action:'show', arguments:{job : job}, absolute:'1') -> f:format.htmlentities()}" />
+                    <id><f:format.htmlentities><f:uri.action action="show" arguments="{job : job}" absolute="1" /></f:format.htmlentities></id>
                     <updated><f:cObject typoscriptObjectPath="lib.ll_pubdate_RFC3339" data="{f:format.date(format:'U' date:'{job.tstamp}')}{settings.feed.utcOffset}" /></updated>
                     <author>
                         <name>{settings.feed.author}</name>
