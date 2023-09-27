@@ -183,12 +183,12 @@ class Job extends AbstractEntity
     /**
      * @var \DateTime
      */
-    protected $starttime = '';
+    protected $starttime;
 
     /**
      * @var \DateTime
      */
-    protected $endtime = '';
+    protected $endtime;
 
     /**
      * @var int
