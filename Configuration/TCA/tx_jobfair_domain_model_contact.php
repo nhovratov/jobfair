@@ -29,9 +29,6 @@ return [
         'searchFields' => 'name,address,phone,email,',
         'iconfile' => 'EXT:jobfair/Resources/Public/Icons/tx_jobfair_domain_model_contact.gif'
     ],
-    'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, address, phone, email, www, contact_image, name_cc, email_cc, name_bcc, email_bcc'
-    ],
     'types' => [
         '1' => ['showitem' => 'sys_language_uid,l10n_parent,l10n_diffsource,hidden,name,address,phone,email,www,contact_image,name_cc,email_cc,name_bcc,email_bcc,--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access,starttime,endtime'],
     ],
