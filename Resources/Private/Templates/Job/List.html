@@ -8,7 +8,7 @@
 <f:flashMessages />
 
 <f:if condition="{settings.filter.hideFilter} == 0">
-    <f:if condition="{jobs -> f:count()} >= {settings.filter.filterlimit}">
+  <f:if condition="{jobs -> f:count()} >= {settings.filter.filterlimit} || {filter}">
         <div class="tx_jobfair" id="tx_jobfair_filter">
             <f:form class="form-inline filterForm" method="post" action="list" name="filter" object="{filter}">
                 <legend>
