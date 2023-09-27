@@ -17,16 +17,14 @@ namespace Dan\Jobfair\ViewHelpers\Security;
 
 use Dan\Jobfair\Domain\Model\Job;
 use Dan\Jobfair\Service\AccessControlService;
-use TYPO3Fluid\Fluid\Core\Compiler\TemplateCompiler;
-use TYPO3Fluid\Fluid\Core\Parser\SyntaxTree\ViewHelperNode;
-use TYPO3Fluid\Fluid\ViewHelpers\IfViewHelper;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
 
 /**
  * View helper to create additional parameters for link to user profile
  *
  * @author Dan <typo3dev@outlook.com>
  */
-class EditLinkViewHelper extends IfViewHelper
+class EditLinkViewHelper extends AbstractConditionViewHelper
 {
 
     /**
@@ -55,39 +53,10 @@ class EditLinkViewHelper extends IfViewHelper
      */
     public function render()
     {
-        //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->arguments['job']);
         $job = $this->arguments['job'];
         if ($this->accessControlService->isOwner($job)) {
             return $this->renderThenChild();
         }
         return $this->renderElseChild();
-    }
-
-    /**
-     * The compiled ViewHelper adds two new ViewHelper arguments: __thenClosure and __elseClosure.
-     * These contain closures which are be executed to render the then(), respectively else() case.
-     *
-     * @param string $argumentsName
-     * @param string $closureName
-     * @param string $initializationPhpCode
-     * @param ViewHelperNode $node
-     * @param TemplateCompiler $compiler
-     * @return string
-     */
-    public function compile(
-        $argumentsName,
-        $closureName,
-        &$initializationPhpCode,
-        ViewHelperNode $node,
-        TemplateCompiler $compiler
-    ) {
-        parent::compile(
-            $argumentsName,
-            $closureName,
-            $initializationPhpCode,
-            $node,
-            $compiler
-        );
-        return TemplateCompiler::SHOULD_GENERATE_VIEWHELPER_INVOCATION;
     }
 }
