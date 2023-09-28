@@ -17,6 +17,7 @@ namespace Dan\Jobfair\Property\TypeConverter;
 
 use TYPO3\CMS\Core\Resource\FileInterface;
 use TYPO3\CMS\Core\Resource\Security\FileNameValidator;
+use TYPO3\CMS\Core\Utility\StringUtility;
 use TYPO3\CMS\Extbase\Domain\Model\AbstractFileFolder;
 use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Resource\DuplicationBehavior;
@@ -45,19 +46,19 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     /**
      * Folder where the file upload should go to (including storage).
      */
-    const CONFIGURATION_UPLOAD_FOLDER = 1;
+    public const CONFIGURATION_UPLOAD_FOLDER = 1;
 
     /**
      * How to handle a upload when the name of the uploaded file conflicts.
      */
-    const CONFIGURATION_UPLOAD_CONFLICT_MODE = 2;
+    public const CONFIGURATION_UPLOAD_CONFLICT_MODE = 2;
 
     /**
      * Whether to replace an already present resource.
      * Useful for "maxitems = 1" fields and properties
      * with no ObjectStorage annotation.
      */
-    const CONFIGURATION_ALLOWED_FILE_EXTENSIONS = 4;
+    public const CONFIGURATION_ALLOWED_FILE_EXTENSIONS = 4;
 
     /**
      * @var string
@@ -120,25 +121,29 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
      * Actually convert from $source to $targetType, taking into account the fully
      * built $convertedChildProperties and $configuration.
      *
-     * @param string|int $source
+     * @param array $source
      * @param string $targetType
      * @param array $convertedChildProperties
      * @param PropertyMappingConfigurationInterface $configuration
      * @throws \TYPO3\CMS\Extbase\Property\Exception
-     * @return AbstractFileFolder
-     * @api
+     * @return AbstractFileFolder|Error|null
      */
     public function convertFrom($source, $targetType, array $convertedChildProperties = [], PropertyMappingConfigurationInterface $configuration = null)
     {
         if (!isset($source['error']) || $source['error'] === \UPLOAD_ERR_NO_FILE) {
             if (isset($source['submittedFile']['resourcePointer'])) {
                 try {
+                    // File references use numeric resource pointers, direct
+                    // file relations are using "file:" prefix (e.g. "file:5")
                     $resourcePointer = $this->hashService->validateAndStripHmac($source['submittedFile']['resourcePointer']);
-                    if (strpos($resourcePointer, 'file:') === 0) {
-                        $fileUid = substr($resourcePointer, 5);
+                    if (str_starts_with($resourcePointer, 'file:')) {
+                        $fileUid = (int)substr($resourcePointer, 5);
                         return $this->createFileReferenceFromFalFileObject($this->resourceFactory->getFileObject($fileUid));
                     }
-                    return $this->createFileReferenceFromFalFileReferenceObject($this->resourceFactory->getFileReferenceObject($resourcePointer), $resourcePointer);
+                    return $this->createFileReferenceFromFalFileReferenceObject(
+                        $this->resourceFactory->getFileReferenceObject($resourcePointer),
+                        (int)$resourcePointer
+                    );
                 } catch (\InvalidArgumentException $e) {
                     // Nothing to do. No file is uploaded and resource pointer is invalid. Discard!
                 }
@@ -161,8 +166,14 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
             return $this->convertedResources[$source['tmp_name']];
         }
 
+        if ($configuration === null) {
+            throw new \InvalidArgumentException('Argument $configuration must not be null', 1589183114);
+        }
+
         try {
             $resource = $this->importUploadedResource($source, $configuration);
+        } catch (TypeConverterException $e) {
+            return new Error($e->getMessage(), $e->getCode());
         } catch (\Exception $e) {
             return new Error($e->getMessage(), $e->getCode());
         }
@@ -205,8 +216,8 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
         GeneralUtility::mkdir_deep(Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications');
         $uploadedFile =  $uploadFolder->addUploadedFile($uploadInfo, $conflictMode);
 
-        $resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && strpos($uploadInfo['submittedFile']['resourcePointer'], 'file:') === false
-            ? $this->hashService->validateAndStripHmac($uploadInfo['submittedFile']['resourcePointer'])
+        $resourcePointer = isset($uploadInfo['submittedFile']['resourcePointer']) && !str_contains($uploadInfo['submittedFile']['resourcePointer'], 'file:')
+            ? (int)$this->hashService->validateAndStripHmac($uploadInfo['submittedFile']['resourcePointer'])
             : null;
 
         $fileReferenceModel = $this->createFileReferenceFromFalFileObject($uploadedFile, $resourcePointer);
@@ -215,6 +226,10 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
     }
 
     /**
+     * In case no $resourcePointer is given a new file reference domain object
+     * will be returned. Otherwise the file reference is reconstituted from
+     * storage and will be updated(!) with the provided $falFileReference.
+     *
      * @param FalFile $file
      * @param int $resourcePointer
      * @return \Dan\Jobfair\Domain\Model\FileReference
@@ -224,8 +239,8 @@ class UploadedFileReferenceConverter extends AbstractTypeConverter
         $fileReference = $this->resourceFactory->createFileReferenceObject(
             [
                 'uid_local' => $file->getUid(),
-                'uid_foreign' => uniqid('NEW_', true),
-                'uid' => uniqid('NEW_', true),
+                'uid_foreign' => StringUtility::getUniqueId('NEW_'),
+                'uid' => StringUtility::getUniqueId('NEW_'),
                 'crop' => null,
             ]
         );

@@ -159,7 +159,7 @@ class JobRepository extends Repository
                     $or[] = $query->like('job_benefits', '%' . $searchword . '%');
                     $or[] = $query->like('apply_information', '%' . $searchword . '%');
                     $or[] = $query->like('salary', '%' . $searchword . '%');
-                    $constraints[] = $query->logicalOr($or);
+                    $constraints[] = $query->logicalOr(...$or);
                 }
             }
 
@@ -171,7 +171,7 @@ class JobRepository extends Repository
             }
 
             if (count($constraints) > 0) {
-                $query->matching($query->logicalAnd($constraints));
+                $query->matching($query->logicalAnd(...$constraints));
                 return $query->execute();
             }
         }

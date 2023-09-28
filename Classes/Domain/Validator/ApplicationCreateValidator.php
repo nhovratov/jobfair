@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\Domain\Validator;
 
+use Dan\Jobfair\Domain\Model\Application;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -48,13 +49,12 @@ class ApplicationCreateValidator extends AbstractValidator
     }
 
     /**
-     * @param \Dan\Jobfair\Domain\Model\Application $application
+     * @param Application $application
      * @return bool
      */
-    public function isValid($application)
+    public function isValid($application): void
     {
         $this->settings = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'jobfair');
-        $isValid = true;
 
         if (empty($application->getEmail()) && $this->settings['application']['validation']['email']['required']) {
             $this->addError(
@@ -64,7 +64,6 @@ class ApplicationCreateValidator extends AbstractValidator
                     ),
                 1502963660
             );
-            $isValid = false;
         }
 
         if (!$this->validEmail($application->getEmail()) && $this->settings['application']['validation']['email']['validEmail']) {
@@ -75,7 +74,6 @@ class ApplicationCreateValidator extends AbstractValidator
                     ),
                 1502963661
             );
-            $isValid = false;
         }
 
         if (!is_string($application->getMessage()) && $this->settings['application']['validation']['message']['required']) {
@@ -86,9 +84,7 @@ class ApplicationCreateValidator extends AbstractValidator
                     ),
                 1502963662
             );
-            $isValid = false;
         }
-        return $isValid;
     }
 
     /**

@@ -1,6 +1,7 @@
 <?php
 
-if (!defined('TYPO3_MODE')) {
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+if (!defined('TYPO3')) {
     die('Access denied.');
 }
 $tmp_alumni_columns = [
@@ -21,7 +22,7 @@ $tmp_alumni_columns = [
     ],
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $tmp_alumni_columns);
+ExtensionManagementUtility::addTCAcolumns('fe_users', $tmp_alumni_columns);
 
 $GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'] .= ',--div--;LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job,';
 $GLOBALS['TCA']['fe_users']['types']['Tx_Extbase_Domain_Model_FrontendUser']['showitem'] .= 'jobs';

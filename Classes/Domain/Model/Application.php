@@ -57,10 +57,8 @@ class Application extends AbstractEntity
 
     /**
      * attachment
-     *
-     * @var FileReference
      */
-    protected $attachment;
+    protected ?FileReference $attachment = null;
 
     /**
      * jobs
@@ -171,20 +169,16 @@ class Application extends AbstractEntity
 
     /**
      * Returns the attachment
-     *
-     * @return FileReference $attachment
      */
-    public function getAttachment()
+    public function getAttachment(): ?FileReference
     {
         return $this->attachment;
     }
 
     /**
      * Sets the attachment
-     *
-     * @param FileReference $attachment
      */
-    public function setAttachment($attachment)
+    public function setAttachment(?FileReference $attachment): void
     {
         $this->attachment = $attachment;
     }

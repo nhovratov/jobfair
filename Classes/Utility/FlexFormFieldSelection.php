@@ -40,7 +40,7 @@ class FlexFormFieldSelection
             $options = $tSconfig['tx_femanager.']['flexForm.'][$params['config']['itemsProcFuncTab'] . '.']['addFieldOptions.'];
             foreach ((array)$options as $value => $label) {
                 $params['items'][] = [
-                    GeneralUtility::isFirstPartOfStr($label, 'LLL:') ? $GLOBALS['LANG']->sL($label) : $label,
+                    \str_starts_with($label, 'LLL:') ? $GLOBALS['LANG']->sL($label) : $label,
                     $value
                 ];
             }

@@ -17,10 +17,10 @@ declare(strict_types=1);
 
 namespace Dan\Jobfair\Controller;
 
-use TYPO3\CMS\Core\Resource\ResourceFactory;
+use Psr\Http\Message\ResponseInterface;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Core\Resource\StorageRepository;
-use TYPO3\CMS\Extbase\Object\Container\Container;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use Dan\Jobfair\Domain\Model\Application;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Discipline;
@@ -123,10 +123,8 @@ class JobController extends ActionController
     /**
      * initialize update action
      * allow input of date fields
-     *
-     * @param void
      */
-    public function initializeUpdateAction()
+    public function initializeUpdateAction(): void
     {
         $this->arguments->getArgument('job')
             ->getPropertyMappingConfiguration()
@@ -150,7 +148,7 @@ class JobController extends ActionController
      * initialize create action
      * allow input of date fields
      */
-    public function initializeCreateAction()
+    public function initializeCreateAction(): void
     {
         $this->arguments->getArgument('newJob')
             ->getPropertyMappingConfiguration()
@@ -172,9 +170,9 @@ class JobController extends ActionController
 
     /**
      * initialize list action
-     * Needed to prevent errors from propperty mapper due to empty objects
+     * Needed to prevent errors from property mapper due to empty objects
      */
-    public function initializeListAction()
+    public function initializeListAction(): void
     {
         $arguments = $this->request->getArguments();
         if (((int)($arguments['filter']['categories'][0] ?? 0)) === 0) {
@@ -192,21 +190,17 @@ class JobController extends ActionController
         if (((int)($arguments['filter']['educations'][0] ?? 0)) === 0) {
             unset($arguments['filter']['educations']);
         }
-        $this->request->setArguments($arguments);
+        $this->request = $this->request->withArguments($arguments);
     }
 
     /**
-     * action list
-     *
-     * @param $filter \Dan\Jobfair\Domain\Model\Filter
      * @Extbase\IgnoreValidation("filter")
-     * @var $category Category
      */
-    public function listAction(Filter $filter = null)
+    public function listAction(Filter $filter = null): ResponseInterface
     {
         /* redirect to latest view if enabled in the plugin */
         if ($this->settings['latest']['enableLatest'] ?? false) {
-            $this->forward('latest');
+            return new ForwardResponse('latest');
         }
 
         /* set sorting and ordering for job repository */
@@ -275,12 +269,10 @@ class JobController extends ActionController
             $jobs = $this->jobRepository->findAll();
         }
         $this->view->assign('jobs', $jobs);
+        return $this->htmlResponse();
     }
 
-    /**
-     * action latest
-     */
-    public function latestAction()
+    public function latestAction(): ResponseInterface
     {
         /** @var string $ordering */
         $ordering = $this->settings['latest']['ordering'];
@@ -292,14 +284,10 @@ class JobController extends ActionController
         }
         $jobs = $this->jobRepository->findLatest($ordering, $limit);
         $this->view->assign('jobs', $jobs);
+        return $this->htmlResponse();
     }
 
-    /**
-     * action show
-     *
-     * @param Job $job
-     */
-    public function showAction(Job $job = null)
+    public function showAction(Job $job = null): ResponseInterface
     {
         if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
             $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
@@ -309,33 +297,31 @@ class JobController extends ActionController
             $this->flashMessageService('notFoundMessage', 'notFoundStatus', 'INFO');
         }
         if ($job === null && $this->settings['show']['redirectIfNotFound']) {
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         if ($job instanceof Job) {
             $this->view->assign('job', $job);
         }
+        return $this->htmlResponse();
     }
 
     /**
-     * action new
-     *
-     * @param Job $newJob
      * @Extbase\IgnoreValidation("newJob")
      */
-    public function newAction(Job $newJob = null)
+    public function newAction(Job $newJob = null): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         $this->view->assign('regions', $this->regionRepository->findAll());
         $this->view->assign('sectors', $this->sectorRepository->findAll());
@@ -343,27 +329,24 @@ class JobController extends ActionController
         $this->view->assign('disciplines', $this->disciplineRepository->findAll());
         $this->view->assign('educations', $this->educationRepository->findAll());
         $this->view->assign('newJob', $newJob);
+
+        return $this->htmlResponse();
     }
 
-    /**
-     * action create
-     *
-     * @param Job $newJob
-     */
-    public function createAction(Job $newJob)
+    public function createAction(Job $newJob): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         /** @var $loggedInFeuser \Dan\Jobfair\Domain\Model\User */
         $loggedInFeuser = $this->accessControlService->getFrontendUserObject();
@@ -372,7 +355,8 @@ class JobController extends ActionController
         }
         $newJob->setSorting(9999999);
         $this->jobRepository->add($newJob);
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, ['job' => $newJob]);
+        // @todo Migrate to PSR-14
+//        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, ['job' => $newJob]);
         if ($this->settings['new']['enableAdminNotificaton'] &&
             GeneralUtility::validEmail($this->settings['new']['adminEmail']) &&
             GeneralUtility::validEmail($this->settings['new']['fromEmail'])) {
@@ -409,33 +393,30 @@ class JobController extends ActionController
             );
         }
         $this->flashMessageService('jobAddMessage', 'jobAddStatus', 'OK');
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     /**
-     * action edit
-     *
-     * @param Job $job
      * @Extbase\IgnoreValidation("job")
      */
-    public function editAction(Job $job)
+    public function editAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         if (!$this->accessControlService->isOwner($job)) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         $this->view->assign('regions', $this->regionRepository->findAll());
         $this->view->assign('sectors', $this->sectorRepository->findAll());
@@ -443,102 +424,86 @@ class JobController extends ActionController
         $this->view->assign('disciplines', $this->disciplineRepository->findAll());
         $this->view->assign('educations', $this->educationRepository->findAll());
         $this->view->assign('job', $job);
+        return $this->htmlResponse();
     }
 
-    /**
-     * action update
-     *
-     * @param Job $job
-     */
-    public function updateAction(Job $job)
+    public function updateAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         if (!$this->accessControlService->isOwner($job)) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         $this->flashMessageService('jobEditedMessage', 'jobEditedStatus', 'OK');
         $this->jobRepository->update($job);
-        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, ['job' => $job]);
-        $this->redirect('show', 'Job', null, ['job' => $job]);
+        // @todo Migrate to PSR-14
+//        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, ['job' => $job]);
+        return $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
-    /**
-     * action confirmDelete
-     *
-     * @param Job $job
-     */
-    public function confirmDeleteAction(Job $job)
+    public function confirmDeleteAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         if (!$this->accessControlService->isOwner($job)) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         $this->view->assign('job', $job);
+        return $this->htmlResponse();
     }
 
-    /**
-     * action delete
-     *
-     * @param Job $job
-     */
-    public function deleteAction(Job $job)
+    public function deleteAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         if (!$this->accessControlService->isOwner($job)) {
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
-            $this->redirect('list');
+            return $this->redirect('list');
         }
         $this->flashMessageService('jobRemovedMessage', 'jobRemovedStatus', 'OK');
         $this->jobRepository->remove($job);
-        $this->redirect('list');
+        return $this->redirect('list');
     }
 
     /**
-     * action newApplication
-     *
-     * @param Job $job
-     * @param Application $newApplication
      * @Extbase\IgnoreValidation("newApplication")
      */
-    public function newApplicationAction(Job $job, Application $newApplication = null)
+    public function newApplicationAction(Job $job, Application $newApplication = null): ResponseInterface
     {
         $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
         $defaultStorage = $storageRepository->getDefaultStorage();
@@ -555,21 +520,26 @@ class JobController extends ActionController
                 'newApplication' => $newApplication
             ]
         );
+        return $this->htmlResponse();
     }
 
-    public function initializeCreateApplicationAction()
+    public function initializeCreateApplicationAction(): void
     {
+        // Since TYPO3 v12, application is placed on root-level instead inside newApplication.
+        if ((new Typo3Version())->getMajorVersion() > 11) {
+            $arguments = $this->request->getArguments();
+            $arguments['newApplication']['attachment'] = $arguments['attachment'];
+            unset($arguments['attachment']);
+            $request = $this->request->withArguments($arguments);
+            $this->request = $request;
+        }
         $this->setTypeConverterConfigurationForImageUpload('newApplication');
     }
 
     /**
-     * action createApplication
-     *
-     * @param Application $newApplication
-     * @param Job $job
      * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
      */
-    public function createApplicationAction(Application $newApplication, Job $job)
+    public function createApplicationAction(Application $newApplication, Job $job): ResponseInterface
     {
         $newApplication->setTitle($job->getJobTitle() . ' - ' . $newApplication->getName());
 
@@ -615,16 +585,16 @@ class JobController extends ActionController
 
         if (!count($recipients)) {
             $this->flashMessageService('applicationSendMessageNoRecipients', 'applicationSendMessageNoRecipientsStatus', 'ERROR');
-            $this->redirect('show', 'Job', null, ['job' => $job]);
+            return $this->redirect('show', 'Job', null, ['job' => $job]);
         }
 
         // toCc and toBcc (only relevant if send to contacts)
+        $recipientsCc = [];
+        $recipientsBcc = [];
         if ($contact) {
-            /** @var $toCc array Array to collect all the receipients */
             $toCc = [];
             $toCc [] = ['email' => $contact->getEmailCc(), 'name' => $contact->getNameCc()];
 
-            $recipientsCc = [];
             foreach ($toCc as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
                     if (trim($pair['name'])) {
@@ -635,11 +605,9 @@ class JobController extends ActionController
                 }
             }
 
-            /** @var $toBcc array Array to collect all the receipients */
             $toBcc = [];
             $toBcc [] = ['email' => $contact->getEmailBcc(), 'name' => $contact->getNameBcc()];
 
-            $recipientsBcc = [];
             foreach ($toBcc as $pair) {
                 if (GeneralUtility::validEmail($pair['email'])) {
                     if (trim($pair['name'])) {
@@ -652,30 +620,34 @@ class JobController extends ActionController
         }
 
         // send email to contacts and frontend users
-        /** @var $recipientsCc array Array to collect all the CC receipients */
-        /** @var $recipientsBcc array Array to collect all the BCC receipients */
-        if ($this->div->sendEmail(
+        $subject = LocalizationUtility::translate(
+            'tx_jobfair_domain_model_application.email_subject', 'jobfair',
+            ['jobTitle' => $job->getJobTitle()]
+        );
+        $sentMessageResult = $this->div->sendEmail(
             'MailApplication',
             $recipients,
             $recipientsCc,
             $recipientsBcc,
             $sender,
-            LocalizationUtility::translate('tx_jobfair_domain_model_application.email_subject', 'jobfair', ['jobTitle' => $job->getJobTitle()]),
+            $subject,
             ['newApplication' => $newApplication, 'job' => $job],
             $newApplication->getAttachment()->getOriginalResource()->getName()
-        )) {
+        );
+        if ($sentMessageResult) {
             $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
         } else {
             $this->flashMessageService('applicationSendMessageGeneralError', 'applicationSendStatusGeneralErrorStatus', 'ERROR');
         }
         if ($this->settings['application']['dontSaveAttachment']) {
             $newApplication->setAttachment(null);
+            // @todo hard-coded fileadmin folder: Use FAL API for default storage.
             $filePathAndName = Environment::getPublicPath() . '/fileadmin/user_upload/tx_jobfair/applications' . $newApplication->getAttachment()->getOriginalResource()->getName();
             if (file_exists($filePathAndName)) {
                 @unlink($filePathAndName);
             }
         }
-        $this->redirect('show', 'Job', null, ['job' => $job]);
+        return $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
     /**
@@ -715,20 +687,10 @@ class JobController extends ActionController
 
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
-        /* FileReference alias for TYPO3 v9-v11 */
-        GeneralUtility::makeInstance(Container::class)
-            ->registerImplementation(
-                FileReference::class,
-                \Dan\Jobfair\Domain\Model\FileReference::class
-            );
-
-        /* FileReference alias for TYPO3 v12 */
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][FileReference::class] = [
-            'className' => \Dan\Jobfair\Domain\Model\FileReference::class,
-        ];
-
         $uploadConfiguration = [
-            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS => $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'],
+            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
+                $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed']
+                ?? $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'],
             UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
         ];
         $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();

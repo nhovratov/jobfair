@@ -15,8 +15,8 @@
 
 namespace Dan\Jobfair\ViewHelpers\Security;
 
-use Dan\Jobfair\Domain\Model\Job;
 use Dan\Jobfair\Service\AccessControlService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
 
 /**
@@ -26,17 +26,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractConditionViewHelper;
  */
 class EditLinkViewHelper extends AbstractConditionViewHelper
 {
-
-    /**
-     * @var AccessControlService
-     */
-    protected $accessControlService;
-
-    public function injectAccessControlService(AccessControlService $accessControlService)
-    {
-        $this->accessControlService = $accessControlService;
-    }
-
     /**
      * Register argument "job" so that it can be passed to viewhelper
      */
@@ -47,16 +36,11 @@ class EditLinkViewHelper extends AbstractConditionViewHelper
 
     /**
      * View helper to display edit or delete link if logged in user is owner of the job
-     *
-     * @param Job $job The job to be tested for ownership
-     * @return string The output
      */
-    public function render()
+    protected static function evaluateCondition($arguments = null): bool
     {
-        $job = $this->arguments['job'];
-        if ($this->accessControlService->isOwner($job)) {
-            return $this->renderThenChild();
-        }
-        return $this->renderElseChild();
+        $accessControlService = GeneralUtility::makeInstance(AccessControlService::class);
+        $job = $arguments['job'];
+        return $accessControlService->isOwner($job);
     }
 }

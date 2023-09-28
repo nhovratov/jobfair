@@ -6,6 +6,7 @@
 	"config": {
 		"vendor-dir": ".Build/vendor",
 		"bin-dir": ".Build/bin",
+		"sort-packages": true,
 		"allow-plugins": {
 			"typo3/class-alias-loader": true,
 			"typo3/cms-composer-installers": true
@@ -22,14 +23,16 @@
 		}
 	],
 	"require": {
-		"typo3/cms-core": "^10.4 || ^11.5.3",
-		"typo3/cms-extbase": "^10.4 || ^11.5.3",
-		"typo3/cms-fluid": "^10.4 || ^11.5.3"
+		"typo3/cms-core": "^11.5.3 || ^12.4",
+		"typo3/cms-backend": "^11.5.3 || ^12.4",
+		"typo3/cms-extbase": "^11.5.3 || ^12.4",
+		"typo3/cms-fluid": "^11.5.3 || ^12.4",
+		"typo3/cms-frontend": "^11.5.3 || ^12.4"
 	},
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "jobfair",
-			"web-dir": ".Build/Web"
+			"web-dir": ".Build/public"
 		}
 	},
 	"autoload": {
@@ -38,8 +41,19 @@
 		}
 	},
 	"require-dev": {
-		"rector/rector": "^0.12.4",
 		"friendsofphp/php-cs-fixer": "^3",
-		"typo3/tailor": "^1.3"
+		"ssch/typo3-rector": "^1.3",
+		"typo3/cms-extensionmanager": "^11.5.3 || ^12.4",
+		"typo3/cms-felogin": "^11.5.3 || ^12.4",
+		"typo3/cms-filelist": "^11.5.3 || ^12.4",
+		"typo3/cms-fluid-styled-content": "^11.5.3 || ^12.4",
+		"typo3/cms-install": "^11.5.3 || ^12.4",
+		"typo3/cms-lowlevel": "^11.5.3 || ^12.4",
+		"typo3/cms-tstemplate": "^11.5.3 || ^12.4"
+	},
+	"scripts": {
+		"pre-autoload-dump": [
+			"[ -d \"config\" ] || cp -a ./Build/config.example ./config"
+		]
 	}
 }

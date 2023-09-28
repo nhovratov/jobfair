@@ -6,7 +6,6 @@ $EM_CONF[$_EXTKEY] = [
     'category' => 'plugin',
     'version' => '4.0.0',
     'state' => 'stable',
-    'uploadfolder' => true,
     'author' => 'Dan',
     'author_email' => 'typo3dev@outlook.com',
     'author_company' => '',
