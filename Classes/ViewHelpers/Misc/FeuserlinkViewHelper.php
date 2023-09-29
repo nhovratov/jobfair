@@ -24,7 +24,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class FeuserlinkViewHelper extends AbstractViewHelper
 {
-
     /**
      * View helper to
      *

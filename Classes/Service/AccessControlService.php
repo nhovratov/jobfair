@@ -29,7 +29,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class AccessControlService implements SingletonInterface
 {
-
     /**
      * @var UserRepository
      */

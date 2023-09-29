@@ -25,7 +25,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class FlexFormFieldSelection
 {
-
     /**
      * Add options to FlexForm Selection - Options can be defined in TSConfig
      *

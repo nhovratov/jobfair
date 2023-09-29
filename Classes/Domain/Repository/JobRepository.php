@@ -15,7 +15,6 @@
 
 namespace Dan\Jobfair\Domain\Repository;
 
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Discipline;
 use Dan\Jobfair\Domain\Model\Education;
@@ -25,6 +24,7 @@ use Dan\Jobfair\Domain\Model\Sector;
 use Dan\Jobfair\Service\AccessControlService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -34,7 +34,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class JobRepository extends Repository
 {
-
     /**
      * @var AccessControlService
      */
@@ -51,7 +50,6 @@ class JobRepository extends Repository
         $query = $this->createQuery();
         $constraints = []; //to collect all filter constraints
         if ($filter !== null) {
-
             //jobtype
             $jobType = $filter->getJobType();
             if (($jobType!== null) && ($jobType != 99)) {      // 99 is used as "all" option in hard coded select forms

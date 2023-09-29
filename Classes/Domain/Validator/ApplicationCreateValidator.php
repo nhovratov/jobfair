@@ -59,9 +59,9 @@ class ApplicationCreateValidator extends AbstractValidator
         if (empty($application->getEmail()) && $this->settings['application']['validation']['email']['required']) {
             $this->addError(
                 $this->translateErrorMessage(
-                        'validation.email.required',
-                        'jobfair'
-                    ),
+                    'validation.email.required',
+                    'jobfair'
+                ),
                 1502963660
             );
         }
@@ -69,9 +69,9 @@ class ApplicationCreateValidator extends AbstractValidator
         if (!$this->validEmail($application->getEmail()) && $this->settings['application']['validation']['email']['validEmail']) {
             $this->addError(
                 $this->translateErrorMessage(
-                        'validation.email.validEmail',
-                        'jobfair'
-                    ),
+                    'validation.email.validEmail',
+                    'jobfair'
+                ),
                 1502963661
             );
         }
@@ -79,9 +79,9 @@ class ApplicationCreateValidator extends AbstractValidator
         if (!is_string($application->getMessage()) && $this->settings['application']['validation']['message']['required']) {
             $this->addError(
                 $this->translateErrorMessage(
-                        'validation.message.required',
-                        'jobfair'
-                    ),
+                    'validation.message.required',
+                    'jobfair'
+                ),
                 1502963662
             );
         }

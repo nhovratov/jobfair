@@ -26,7 +26,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Job extends AbstractEntity
 {
-
     /**
      * jobTitle
      *
