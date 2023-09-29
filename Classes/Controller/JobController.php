@@ -17,10 +17,6 @@ declare(strict_types=1);
 
 namespace Dan\Jobfair\Controller;
 
-use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Extbase\Http\ForwardResponse;
-use TYPO3\CMS\Core\Resource\StorageRepository;
 use Dan\Jobfair\Domain\Model\Application;
 use Dan\Jobfair\Domain\Model\Category;
 use Dan\Jobfair\Domain\Model\Discipline;
@@ -39,10 +35,14 @@ use Dan\Jobfair\Domain\Repository\SectorRepository;
 use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
 use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
+use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Http\ForwardResponse;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
@@ -313,10 +313,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -338,10 +340,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -356,7 +360,7 @@ class JobController extends ActionController
         $newJob->setSorting(9999999);
         $this->jobRepository->add($newJob);
         // @todo Migrate to PSR-14
-//        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, ['job' => $newJob]);
+        //        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_CreateActionAfterAdd, ['job' => $newJob]);
         if ($this->settings['new']['enableAdminNotificaton'] &&
             GeneralUtility::validEmail($this->settings['new']['adminEmail']) &&
             GeneralUtility::validEmail($this->settings['new']['fromEmail'])) {
@@ -404,10 +408,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -432,10 +438,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -449,7 +457,7 @@ class JobController extends ActionController
         $this->flashMessageService('jobEditedMessage', 'jobEditedStatus', 'OK');
         $this->jobRepository->update($job);
         // @todo Migrate to PSR-14
-//        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, ['job' => $job]);
+        //        $this->signalSlotDispatcher->dispatch(__CLASS__, self::SIGNAL_UpdateActionAfterUpdate, ['job' => $job]);
         return $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
@@ -458,10 +466,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -481,10 +491,12 @@ class JobController extends ActionController
         if (!$this->settings['feuser']['enableEdit']) {
             $this->flashMessageService('editingDisabledMessage', 'editingDisabledStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif (!$this->accessControlService->hasLoggedInFrontendUser()) {
+        }
+        if (!$this->accessControlService->hasLoggedInFrontendUser()) {
             $this->flashMessageService('editingNotLoggedInMessage', 'editingNotLoggedInStatus', 'ERROR');
             return $this->redirect('list');
-        } elseif ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
+        }
+        if ($this->settings['feuser']['editorUsergroupUid'] && !in_array(
             $this->settings['feuser']['editorUsergroupUid'],
             $this->accessControlService->getFrontendUserGroups()
         )) {
@@ -621,7 +633,8 @@ class JobController extends ActionController
 
         // send email to contacts and frontend users
         $subject = LocalizationUtility::translate(
-            'tx_jobfair_domain_model_application.email_subject', 'jobfair',
+            'tx_jobfair_domain_model_application.email_subject',
+            'jobfair',
             ['jobTitle' => $job->getJobTitle()]
         );
         $sentMessageResult = $this->div->sendEmail(

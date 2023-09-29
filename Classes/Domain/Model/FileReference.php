@@ -16,6 +16,7 @@
 namespace Dan\Jobfair\Domain\Model;
 
 use TYPO3\CMS\Core\Resource\ResourceInterface;
+
 /**
  * Class FileReference
  *
@@ -23,7 +24,6 @@ use TYPO3\CMS\Core\Resource\ResourceInterface;
  */
 class FileReference extends \TYPO3\CMS\Extbase\Domain\Model\FileReference
 {
-
     /**
      * Uid of a sys_file
      *

@@ -25,7 +25,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  */
 class Sector extends AbstractEntity
 {
-
     /**
      * name
      *

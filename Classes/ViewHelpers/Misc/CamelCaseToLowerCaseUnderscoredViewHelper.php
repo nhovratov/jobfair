@@ -25,7 +25,6 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
  */
 class CamelCaseToLowerCaseUnderscoredViewHelper extends AbstractViewHelper
 {
-
     /**
      * View helper to transform a camelCase string to to lower_case_underscored
      *
