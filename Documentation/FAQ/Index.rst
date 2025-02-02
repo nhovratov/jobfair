@@ -355,3 +355,27 @@ in our case: :file:`Configuration/TCA/Overrides/tx_jobfair_domain_model_applicat
     die ('Access denied.');
   }
   $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'] = 'pdf,zip,rar,doc,docx,odt';
+
+How do I set up automatic cleanup of applications from the database?
+--------------------------------------------------------------------
+
+To setup a scheduler based database cleanup job, e.g. for DSGVO conformance, you can add this configuration to your sitepackage.
+
+This way, you can add the two tables to the table garbage collection of the scheduler.
+
+See here for further information: `Scheduler documentation - The base tasks <https://docs.typo3.org/c/typo3/cms-scheduler/main/en-us/Installation/BaseTasks/Index.html>`
+
+.. code-block:: php
+	:caption: EXT:sitepackage/ext_localconf.php
+  
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\TYPO3\CMS\Scheduler\Task\TableGarbageCollectionTask::class]['options']['tables']['tx_jobfair_domain_model_application'] = [
+    'dateField' => 'tstamp',
+    'expirePeriod' => '180',
+  ];
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['scheduler']['tasks'][\TYPO3\CMS\Scheduler\Task\TableGarbageCollectionTask::class]['options']['tables']['tx_formconsent_domain_model_consent'] = [
+    'dateField' => 'tstamp',
+    'expirePeriod' => '180',
+  ];
+;
+
