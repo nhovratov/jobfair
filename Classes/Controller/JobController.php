@@ -540,7 +540,7 @@ class JobController extends ActionController
         // Since TYPO3 v12, application is placed on root-level instead inside newApplication.
         if ((new Typo3Version())->getMajorVersion() > 11) {
             $arguments = $this->request->getArguments();
-            $arguments['newApplication']['attachment'] = $arguments['attachment'];
+            $arguments['newApplication']['attachment'] = $arguments['newApplication']['attachment'];
             unset($arguments['attachment']);
             $request = $this->request->withArguments($arguments);
             $this->request = $request;
@@ -637,6 +637,7 @@ class JobController extends ActionController
             'jobfair',
             ['jobTitle' => $job->getJobTitle()]
         );
+        $attachmentName = $newApplication->getAttachment() ? $newApplication->getAttachment()->getOriginalResource()->getName() : '';
         $sentMessageResult = $this->div->sendEmail(
             'MailApplication',
             $recipients,
@@ -645,7 +646,7 @@ class JobController extends ActionController
             $sender,
             $subject,
             ['newApplication' => $newApplication, 'job' => $job],
-            $newApplication->getAttachment()->getOriginalResource()->getName()
+            $attachmentName
         );
         if ($sentMessageResult) {
             $this->flashMessageService('applicationSendMessage', 'applicationSendStatus', 'OK');
