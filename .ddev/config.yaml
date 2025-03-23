@@ -1,7 +1,7 @@
 name: jobfair
 type: typo3
 docroot: .Build/public
-php_version: "7.4"
+php_version: "8.3"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
