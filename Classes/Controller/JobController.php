@@ -537,14 +537,6 @@ class JobController extends ActionController
 
     public function initializeCreateApplicationAction(): void
     {
-        // Since TYPO3 v12, application is placed on root-level instead inside newApplication.
-        if ((new Typo3Version())->getMajorVersion() > 11) {
-            $arguments = $this->request->getArguments();
-            $arguments['newApplication']['attachment'] = $arguments['attachment'];
-            unset($arguments['attachment']);
-            $request = $this->request->withArguments($arguments);
-            $this->request = $request;
-        }
         $this->setTypeConverterConfigurationForImageUpload('newApplication');
     }
 
