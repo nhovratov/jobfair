@@ -31,6 +31,11 @@ class UploadViewHelper extends AbstractFormFieldViewHelper
      * @var string
      */
     protected $tagName = 'input';
+    public function __construct(\TYPO3\CMS\Extbase\Property\PropertyMapper $propertyMapper, \TYPO3\CMS\Core\Crypto\HashService $hashService)
+    {
+        $this->propertyMapper = $propertyMapper;
+        $this->hashService = $hashService;
+    }
 
     public function initializeArguments(): void
     {
@@ -43,7 +48,7 @@ class UploadViewHelper extends AbstractFormFieldViewHelper
     }
 
     /**
-     * @var HashService
+     * @var \TYPO3\CMS\Core\Crypto\HashService
      */
     protected $hashService;
 
@@ -51,16 +56,6 @@ class UploadViewHelper extends AbstractFormFieldViewHelper
      * @var PropertyMapper
      */
     protected $propertyMapper;
-
-    public function injectPropertyMapper(PropertyMapper $propertyMapper)
-    {
-        $this->propertyMapper = $propertyMapper;
-    }
-
-    public function injectHashService(HashService $hashService)
-    {
-        $this->hashService = $hashService;
-    }
 
     /**
      * Render the upload field including possible resource pointer
@@ -84,7 +79,7 @@ class UploadViewHelper extends AbstractFormFieldViewHelper
                 // Use the file UID instead, but prefix it with "file:" to communicate this to the type converter
                 $resourcePointerValue = 'file:' . $resource->getOriginalResource()->getOriginalFile()->getUid();
             }
-            $output .= '<input type="hidden" name="' . htmlspecialchars($name) . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($this->hashService->appendHmac((string)$resourcePointerValue)) . '"' . $resourcePointerIdAttribute . ' />';
+            $output .= '<input type="hidden" name="' . htmlspecialchars($name) . '[submittedFile][resourcePointer]" value="' . htmlspecialchars($this->hashService->appendHmac((string)$resourcePointerValue, 'changeMe')) . '"' . $resourcePointerIdAttribute . ' />';
 
             $this->templateVariableContainer->add('resource', $resource);
             $output .= $this->renderChildren();

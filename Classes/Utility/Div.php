@@ -30,10 +30,10 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class Div
 {
-    /**
-     * @var ConfigurationManager
-     */
-    protected $configurationManager;
+    public function __construct(
+        protected ConfigurationManagerInterface $configurationManager
+    ) {
+    }
 
     /**
      * Check extension of given filename
@@ -114,40 +114,5 @@ class Div
             $result[] = new Address($email, $name);
         }
         return $result;
-    }
-
-    /**
-     * Return path and filename for a file
-     * 		respect *RootPaths and *RootPath
-     *
-     *@todo Remove this function as soon as StandaloneView supports templaterootpaths ... , maybe TYPO3 6.3 ?
-     *
-     * @param string $relativePathAndFilename e.g. Email/Name.html
-     * @return string
-     */
-    public function getTemplatePath($relativePathAndFilename)
-    {
-        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
-        );
-        if (!empty($extbaseFrameworkConfiguration['view']['templateRootPaths'])) {
-            foreach ($extbaseFrameworkConfiguration['view']['templateRootPaths'] as $path) {
-                $absolutePath = GeneralUtility::getFileAbsFileName($path);
-                if (file_exists($absolutePath . $relativePathAndFilename)) {
-                    $absolutePathAndFilename = $absolutePath . $relativePathAndFilename;
-                }
-            }
-        }
-        if (empty($absolutePathAndFilename)) {
-            $absolutePathAndFilename = GeneralUtility::getFileAbsFileName(
-                'EXT:jobfair/Resources/Private/Templates/' . $relativePathAndFilename
-            );
-        }
-        return $absolutePathAndFilename;
-    }
-
-    public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager): void
-    {
-        $this->configurationManager = $configurationManager;
     }
 }
