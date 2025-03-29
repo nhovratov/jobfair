@@ -1,10 +1,8 @@
 <?php
 
 use Dan\Jobfair\Controller\JobController;
-use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -32,11 +30,6 @@ if (!defined('TYPO3')) {
         BitmapIconProvider::class,
         ['source' => 'EXT:jobfair/Resources/Public/Icons/folder.gif']
     );
-
-    if ((new Typo3Version())->getMajorVersion() < 12) {
-        ExtensionUtility::registerTypeConverter(UploadedFileReferenceConverter::class);
-        ExtensionUtility::registerTypeConverter(\Dan\Jobfair\Property\TypeConverter\ObjectStorageConverter::class);
-    }
 })();
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][FileReference::class] = [
