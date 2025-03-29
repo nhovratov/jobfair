@@ -60,7 +60,7 @@ class FlexFormFieldSelection
     {
         $pid = 0;
         $backUrl = str_replace('?', '&', $GLOBALS['TYPO3_REQUEST']->getParsedBody()['returnUrl'] ?? $GLOBALS['TYPO3_REQUEST']->getQueryParams()['returnUrl'] ?? null);
-        $urlParts = GeneralUtility::trimExplode('&', $backUrl, 1);
+        $urlParts = GeneralUtility::trimExplode('&', $backUrl, true);
         foreach ($urlParts as $part) {
             if (stristr($part, 'id=')) {
                 $pid = str_replace('id=', '', $part);

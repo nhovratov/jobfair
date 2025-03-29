@@ -15,12 +15,14 @@
 
 namespace Dan\Jobfair\Domain\Repository;
 
+use Dan\Jobfair\Domain\Model\User;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
  * The repository for Users
  *
  * @author Dan <typo3dev@outlook.com>
+ * @extends Repository<User>
  */
 class UserRepository extends Repository
 {

@@ -26,67 +26,34 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 class Filter extends AbstractEntity
 {
     /**
-     * categories
-     *
      * @var ObjectStorage<Category>
      */
-    protected $categories;
+    protected ObjectStorage $categories;
 
     /**
-     * regions
-     *
      * @var ObjectStorage<Region>
      */
-    protected $regions;
+    protected ObjectStorage $regions;
 
     /**
-     * sectors
-     *
      * @var ObjectStorage<Sector>
      */
-    protected $sectors;
+    protected ObjectStorage $sectors;
 
     /**
-     * disciplines
-     *
      * @var ObjectStorage<Discipline>
      */
-    protected $disciplines;
+    protected ObjectStorage $disciplines;
 
     /**
-     * educations
-     *
      * @var ObjectStorage<Education>
      */
     protected $educations;
 
-    /**
-     * job type
-     *
-     * @var int
-     */
-    protected $jobType;
-
-    /**
-     * contract types
-     *
-     * @var int
-     */
-    protected $contractType;
-
-    /**
-     * searchword
-     *
-     * @var string
-     */
-    protected $searchword;
-
-    /**
-     * own
-     *
-     * @var int
-     */
-    protected $own;
+    protected int $jobType = 99;
+    protected int $contractType = 0;
+    protected string $searchword = '';
+    protected bool $own = false;
 
     /**
      * __construct
@@ -101,7 +68,7 @@ class Filter extends AbstractEntity
      * Initializes all ObjectStorage properties
      * Do not modify this method!
      */
-    protected function initStorageObjects()
+    protected function initStorageObjects(): void
     {
         $this->categories = new ObjectStorage();
         $this->regions = new ObjectStorage();
@@ -110,29 +77,20 @@ class Filter extends AbstractEntity
         $this->educations = new ObjectStorage();
     }
 
-    /**
-     * Adds a category
-     *
-     * @param Category $category
-     */
     public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
 
     /**
-     * Returns the categories
-     *
      * @return ObjectStorage<Category> $categories
      */
-    public function getCategories()
+    public function getCategories(): ObjectStorage
     {
         return $this->categories;
     }
 
     /**
-     * Sets the categories
-     *
      * @param ObjectStorage<Category> $categories
      */
     public function setCategories(ObjectStorage $categories): void
@@ -140,29 +98,20 @@ class Filter extends AbstractEntity
         $this->categories = $categories;
     }
 
-    /**
-     * Adds a region
-     *
-     * @param Region $region
-     */
     public function addRegion(Region $region): void
     {
         $this->regions->attach($region);
     }
 
     /**
-     * Returns the regions
-     *
      * @return ObjectStorage<Region> $regions
      */
-    public function getRegions()
+    public function getRegions(): ObjectStorage
     {
         return $this->regions;
     }
 
     /**
-     * Sets the regions
-     *
      * @param ObjectStorage<Region> $regions
      */
     public function setRegions(ObjectStorage $regions): void
@@ -170,19 +119,12 @@ class Filter extends AbstractEntity
         $this->regions = $regions;
     }
 
-    /**
-     * Adds a sector
-     *
-     * @param Sector $sector
-     */
     public function addSector(Sector $sector): void
     {
         $this->sectors->attach($sector);
     }
 
     /**
-     * Returns the sectors
-     *
      * @return ObjectStorage<Sector> $sectors
      */
     public function getSectors()
@@ -191,8 +133,6 @@ class Filter extends AbstractEntity
     }
 
     /**
-     * Sets the sectors
-     *
      * @param ObjectStorage<Sector> $sectors
      */
     public function setSectors(ObjectStorage $sectors): void
@@ -200,19 +140,12 @@ class Filter extends AbstractEntity
         $this->sectors = $sectors;
     }
 
-    /**
-     * Adds a discipline
-     *
-     * @param Discipline $discipline
-     */
     public function addDiscipline(Discipline $discipline): void
     {
         $this->disciplines->attach($discipline);
     }
 
     /**
-     * Returns the disciplines
-     *
      * @return ObjectStorage<Discipline> $disciplines
      */
     public function getDisciplines()
@@ -221,8 +154,6 @@ class Filter extends AbstractEntity
     }
 
     /**
-     * Sets the disciplines
-     *
      * @param ObjectStorage<Discipline> $disciplines
      */
     public function setDisciplines(ObjectStorage $disciplines): void
@@ -230,19 +161,12 @@ class Filter extends AbstractEntity
         $this->disciplines = $disciplines;
     }
 
-    /**
-     * Adds a education
-     *
-     * @param Education $education
-     */
     public function addEducation(Education $education): void
     {
         $this->educations->attach($education);
     }
 
     /**
-     * Returns the educations
-     *
      * @return ObjectStorage<Education> $educations
      */
     public function getEducations()
@@ -251,8 +175,6 @@ class Filter extends AbstractEntity
     }
 
     /**
-     * Sets the educations
-     *
      * @param ObjectStorage<Education> $educations
      */
     public function setEducations(ObjectStorage $educations): void
@@ -260,82 +182,42 @@ class Filter extends AbstractEntity
         $this->educations = $educations;
     }
 
-    /**
-     * Returns the jobType
-     *
-     * @return int $jobType
-     */
-    public function getJobType()
+    public function getJobType(): int
     {
         return $this->jobType;
     }
 
-    /**
-     * Sets the jobType
-     *
-     * @param \integer $jobType
-     */
-    public function setJobType($jobType): void
+    public function setJobType(int $jobType): void
     {
         $this->jobType = $jobType;
     }
 
-    /**
-     * Returns the contractType
-     *
-     * @return int $contractType
-     */
-    public function getContractType()
+    public function getContractType(): int
     {
         return $this->contractType;
     }
 
-    /**
-     * Sets the contractType
-     *
-     * @param \integer $contractType
-     */
-    public function setContractType($contractType): void
+    public function setContractType(int $contractType): void
     {
         $this->contractType = $contractType;
     }
 
-    /**
-     * Returns the searchword
-     *
-     * @return string $searchword
-     */
-    public function getSearchword()
+    public function getSearchword(): string
     {
         return $this->searchword;
     }
 
-    /**
-     * Sets the searchword
-     *
-     * @param string $searchword
-     */
-    public function setSearchword($searchword): void
+    public function setSearchword(string $searchword): void
     {
         $this->searchword = $searchword;
     }
 
-    /**
-     * Returns own
-     *
-     * @return int $own
-     */
-    public function getOwn()
+    public function getOwn(): bool
     {
         return $this->own;
     }
 
-    /**
-     * Sets own
-     *
-     * @param \integer $own
-     */
-    public function setOwn($own): void
+    public function setOwn(bool $own): void
     {
         $this->own = $own;
     }

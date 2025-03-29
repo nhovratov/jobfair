@@ -242,7 +242,6 @@ return [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'tx_jobfair_domain_model_contact',
-                'minitems' => 0,
                 'maxitems' => 1,
                 'default' => 0,
                 'fieldControl' => [
@@ -266,7 +265,6 @@ return [
                 'size' => 5,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false
@@ -288,7 +286,6 @@ return [
                 'size' => 5,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false
@@ -310,7 +307,6 @@ return [
                 'size' => 5,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false
@@ -332,7 +328,6 @@ return [
                 'size' => 5,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false
@@ -354,7 +349,6 @@ return [
                 'size' => 5,
                 'autoMaxSize' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'MM' => 'tx_jobfair_job_user_mm',
             ],
         ],
@@ -369,7 +363,6 @@ return [
                 'size' => 5,
                 'autoSizeMax' => 30,
                 'maxitems' => 9999,
-                'multiple' => 0,
                 'fieldControl' => [
                     'editPopup' => [
                         'disabled' => false

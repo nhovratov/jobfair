@@ -47,12 +47,7 @@ class Application extends AbstractEntity
      */
     protected $email = '';
 
-    /**
-     * message
-     *
-     * @var string
-     */
-    protected $message = '';
+    protected string $message = '';
 
     /**
      * attachment
@@ -146,22 +141,12 @@ class Application extends AbstractEntity
         $this->email = $email;
     }
 
-    /**
-       * Returns the message
-       *
-       * @return string $message
-       */
-    public function getMessage()
+    public function getMessage(): string
     {
         return $this->message;
     }
 
-    /**
-     * Sets the message
-     *
-     * @param string $message
-     */
-    public function setMessage($message): void
+    public function setMessage(string $message): void
     {
         $this->message = $message;
     }

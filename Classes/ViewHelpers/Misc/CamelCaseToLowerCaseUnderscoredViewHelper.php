@@ -26,11 +26,9 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 class CamelCaseToLowerCaseUnderscoredViewHelper extends AbstractViewHelper
 {
     /**
-     * View helper to transform a camelCase string to to lower_case_underscored
-     *
-     * @return \string
+     * View helper to transform a camelCase string to lower_case_underscored
      */
-    public function render()
+    public function render(): string
     {
         $string = $this->arguments['string'];
         return  GeneralUtility::camelCaseToLowerCaseUnderscored($string);

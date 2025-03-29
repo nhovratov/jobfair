@@ -61,11 +61,7 @@ class Contact extends AbstractEntity
      */
     protected $www = '';
 
-    /**
-     * contactImage
-     * @var FileReference
-     */
-    protected $contactImage;
+    protected ?FileReference $contactImage = null;
 
     /**
      * nameCc
@@ -195,22 +191,12 @@ class Contact extends AbstractEntity
         $this->www = $www;
     }
 
-    /**
-     * Returns the contactImage
-     *
-     * @return ObjectStorage<FileReference> $contactImage
-     */
-    public function getContactImage()
+    public function getContactImage(): ?FileReference
     {
         return $this->contactImage;
     }
 
-    /**
-     * Sets the contactImage
-     *
-     * @param ObjectStorage<FileReference> $contactImage
-     */
-    public function setContactImage($contactImage): void
+    public function setContactImage(?FileReference $contactImage): void
     {
         $this->contactImage = $contactImage;
     }

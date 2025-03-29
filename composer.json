@@ -42,6 +42,7 @@
 	},
 	"require-dev": {
 		"friendsofphp/php-cs-fixer": "^3",
+		"phpstan/phpstan": "^2.1",
 		"ssch/typo3-rector": "^3",
 		"typo3/cms-extensionmanager": "^13.4",
 		"typo3/cms-felogin": "^13.4",

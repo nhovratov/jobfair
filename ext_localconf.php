@@ -4,7 +4,6 @@ use Dan\Jobfair\Controller\JobController;
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 if (!defined('TYPO3')) {
@@ -31,7 +30,3 @@ if (!defined('TYPO3')) {
         ['source' => 'EXT:jobfair/Resources/Public/Icons/folder.gif']
     );
 })();
-
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][FileReference::class] = [
-    'className' => \Dan\Jobfair\Domain\Model\FileReference::class,
-];

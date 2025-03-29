@@ -33,11 +33,7 @@ class Job extends AbstractEntity
      */
     protected $jobTitle = '';
 
-    /**
-     * jobImage
-     * @var FileReference
-     */
-    protected $jobImage;
+    protected ?FileReference $jobImage;
 
     /**
      * employer
@@ -130,12 +126,7 @@ class Job extends AbstractEntity
      */
     protected $region;
 
-    /**
-     * contact
-     *
-     * @var Contact
-     */
-    protected $contact;
+    protected ?Contact $contact = null;
 
     /**
      * sector
@@ -259,22 +250,12 @@ class Job extends AbstractEntity
         $this->jobTitle = $jobTitle;
     }
 
-    /**
-     * Returns the jobImage
-     *
-     * @return ObjectStorage<FileReference> $jobImage
-     */
-    public function getJobImage()
+    public function getJobImage(): ?FileReference
     {
         return $this->jobImage;
     }
 
-    /**
-     * Sets the jobImage
-     *
-     * @param ObjectStorage<FileReference> $jobImage
-     */
-    public function setJobImage($jobImage): void
+    public function setJobImage(?FileReference $jobImage): void
     {
         $this->jobImage = $jobImage;
     }
@@ -559,22 +540,12 @@ class Job extends AbstractEntity
         $this->region = $region;
     }
 
-    /**
-     * Returns the contact
-     *
-     * @return Contact $contact
-     */
-    public function getContact()
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
 
-    /**
-     * Sets the contact
-     *
-     * @param Contact $contact
-     */
-    public function setContact(Contact $contact): void
+    public function setContact(?Contact $contact): void
     {
         $this->contact = $contact;
     }

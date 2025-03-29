@@ -203,11 +203,11 @@ class JobController extends ActionController
                 $education = $this->educationRepository->findByUid($this->settings['filter']['preselectEducation']);
                 $filter->addEducation($education);
             } elseif ($this->settings['filter']['preselectJobType']) {
-                $filter->setJobType($this->settings['filter']['preselectJobType']);
+                $filter->setJobType((int)($this->settings['filter']['preselectJobType'] ?? 0));
             } elseif ($this->settings['filter']['preselectContractType']) {
-                $filter->setContractType($this->settings['filter']['preselectContractType']);
+                $filter->setContractType((int)($this->settings['filter']['preselectContractType'] ?? 0));
             } elseif ($this->settings['filter']['preselectOwn']) {
-                $filter->setOwn($this->settings['filter']['preselectOwn']);
+                $filter->setOwn((bool)($this->settings['filter']['preselectOwn'] ?? false));
             }
             $jobs = $this->jobRepository->findFiltered($filter);
         } else {
@@ -222,7 +222,6 @@ class JobController extends ActionController
     {
         /** @var string $ordering */
         $ordering = $this->settings['latest']['ordering'];
-        /** @var int $limit */
         if ($this->settings['latest']['limit'] >= 1) {
             $limit = (int)$this->settings['latest']['limit'];
         } else {
@@ -236,8 +235,10 @@ class JobController extends ActionController
     public function showAction(Job $job = null): ResponseInterface
     {
         if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
-            $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
-            $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
+            // @todo Use PageTitle API
+//            $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
+            // @todo Use MetaTag API
+//            $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
         }
         if ($job === null && $this->settings['show']['displayErrorMessageIfNotFound']) {
             $this->flashMessageService('notFoundMessage', 'notFoundStatus', 'INFO');
@@ -296,9 +297,8 @@ class JobController extends ActionController
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             return $this->redirect('list');
         }
-        /** @var $loggedInFeuser \Dan\Jobfair\Domain\Model\User */
         $loggedInFeuser = $this->accessControlService->getFrontendUserObject();
-        if ($loggedInFeuser) {
+        if ($loggedInFeuser !== null) {
             $newJob->addFeuser($loggedInFeuser);
         }
         $newJob->setSorting(9999999);
@@ -308,12 +308,8 @@ class JobController extends ActionController
         if ($this->settings['new']['enableAdminNotificaton'] &&
             GeneralUtility::validEmail($this->settings['new']['adminEmail']) &&
             GeneralUtility::validEmail($this->settings['new']['fromEmail'])) {
-            // from
             $sender = ([$this->settings['new']['fromEmail'] => $this->settings['new']['fromName']]);
-            // to
-            /** @var $to array Array to collect all the receipients */
-            $to = [];
-            $to [] = ['email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']];
+            $to = ['email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']];
 
             $recipients = [];
             foreach ($to as $pair) {
@@ -326,18 +322,15 @@ class JobController extends ActionController
                 }
             }
 
-            /** @var $recipientsCc array Array to collect all CC receipients */
-            /** @var $recipientsBcc array Array to collect all BCC receipients */
-            /** @var $fileName mixed false or file.xyz (name of the attached file) */
             $this->div->sendEmail(
                 'MailAdminNotificationCreate',
                 $recipients,
-                $recipientsCc,
-                $recipientsBcc,
+                [],
+                [],
                 $sender,
                 LocalizationUtility::translate('tx_jobfair_domain_model_job', 'jobfair') . ': ' . $newJob->getJobTitle(),
                 ['job' => $newJob],
-                $fileName
+                ''
             );
         }
         $this->flashMessageService('jobAddMessage', 'jobAddStatus', 'OK');
@@ -492,35 +485,29 @@ class JobController extends ActionController
         $job->addApplication($newApplication);
         $this->jobRepository->update($job);
 
-        // from
         $sender = [];
         if ($this->settings['application']['fromEmail']) {
             $sender = ([$this->settings['application']['fromEmail'] => $this->settings['application']['fromName']]);
         }
 
-        /** @var $to array Array to collect all the receipients */
         $to = [];
-
         $contact = $job->getContact();
-        if ($contact) {
-            $to [] = ['email' => $contact->getEmail(), 'name' => $contact->getName()];
+        if ($contact !== null) {
+            $to[] = ['email' => $contact->getEmail(), 'name' => $contact->getName()];
         }
 
         $feusers = $job->getFeuser();
-        /** @var $feuser \Dan\Jobfair\Domain\Model\User */
         foreach ($feusers as $feuser) {
             $to [] = ['email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . ' ' . $feuser->getLastName()];
         }
 
         $recipients = [];
-        if (is_array($to)) {
-            foreach ($to as $pair) {
-                if (GeneralUtility::validEmail($pair['email'])) {
-                    if (trim($pair['name'])) {
-                        $recipients[$pair['email']] = $pair['name'];
-                    } else {
-                        $recipients[] = $pair['email'];
-                    }
+        foreach ($to as $pair) {
+            if (GeneralUtility::validEmail($pair['email'])) {
+                if (trim($pair['name'])) {
+                    $recipients[$pair['email']] = $pair['name'];
+                } else {
+                    $recipients[] = $pair['email'];
                 }
             }
         }
@@ -612,17 +599,17 @@ class JobController extends ActionController
 
     protected function setTypeConverterConfigurationForImageUpload($argumentName)
     {
-        $uploadConfiguration = [
-            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
-                $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed']
-                ?? $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'],
-            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
-        ];
-        $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-        $configuration->forProperty('attachment')
-            ->setTypeConverterOptions(
-                UploadedFileReferenceConverter::class,
-                $uploadConfiguration
-            );
+//        $uploadConfiguration = [
+//            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
+//                $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed']
+//                ?? $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'],
+//            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
+//        ];
+//        $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
+//        $configuration->forProperty('attachment')
+//            ->setTypeConverterOptions(
+//                UploadedFileReferenceConverter::class,
+//                $uploadConfiguration
+//            );
     }
 }

@@ -54,99 +54,49 @@ class JobRepository extends Repository
         if ($filter !== null) {
             //jobtype
             $jobType = $filter->getJobType();
-            if (($jobType!== null) && ($jobType != 99)) {      // 99 is used as "all" option in hard coded select forms
+            if ($jobType !== 99) {      // 99 is used as "all" option in hard coded select forms
                 $constraints[] = $query->equals('job_type', $jobType);
             }
 
             //contracttype
             $contractType = $filter->getContractType();
-            if (($contractType!== null) && ($contractType != 99)) {      // 99 is used as "all" option in hard coded select forms
+            if ($contractType !== 99) {      // 99 is used as "all" option in hard coded select forms
                 $constraints[] = $query->equals('contract_type', $contractType);
             }
 
             //category
-            if ($filter->getCategories() !== null) {
-                $allOptionSelected = false;
-                $categories = $filter->getCategories();
-
-                foreach ($categories as $category) {
-                    if (!$category instanceof Category) {
-                        $allOptionSelected = true;
-                    }
-                    //Only add constraints if the "all" option is not selected
-                    if (!$allOptionSelected) {
-                        $constraints[] = $query->contains('category', $category);
-                    }
-                }
+            $categories = $filter->getCategories();
+            foreach ($categories as $category) {
+                $constraints[] = $query->contains('category', $category);
             }
 
             //region
-            if ($filter->getRegions() !== null) {
-                $allOptionSelected = false;
-                $regions = $filter->getRegions();
-
-                foreach ($regions as $region) {
-                    if (!$region instanceof Region) {
-                        $allOptionSelected = true;
-                    }
-                    //Only add constraints if the "all" option is not selected
-                    if (!$allOptionSelected) {
-                        $constraints[] = $query->contains('region', $region);
-                    }
-                }
+            $regions = $filter->getRegions();
+            foreach ($regions as $region) {
+                $constraints[] = $query->contains('region', $region);
             }
 
             //sector
-            if ($filter->getSectors() !== null) {
-                $allOptionSelected = false;
-                $sectors = $filter->getSectors();
-
-                foreach ($sectors as $sector) {
-                    if (!$sector instanceof Sector) {
-                        $allOptionSelected = true;
-                    }
-                    //Only add constraints if the "all" option is not selected
-                    if (!$allOptionSelected) {
-                        $constraints[] = $query->contains('sector', $sector);
-                    }
-                }
+            $sectors = $filter->getSectors();
+            foreach ($sectors as $sector) {
+                $constraints[] = $query->contains('sector', $sector);
             }
 
             //discipline
-            if ($filter->getDisciplines() !== null) {
-                $allOptionSelected = false;
-                $disciplines = $filter->getDisciplines();
-
-                foreach ($disciplines as $discipline) {
-                    if (!$discipline instanceof Discipline) {
-                        $allOptionSelected = true;
-                    }
-                    //Only add constraints if the "all" option is not selected
-                    if (!$allOptionSelected) {
-                        $constraints[] = $query->contains('discipline', $discipline);
-                    }
-                }
+            $disciplines = $filter->getDisciplines();
+            foreach ($disciplines as $discipline) {
+                $constraints[] = $query->contains('discipline', $discipline);
             }
 
             //education
-            if ($filter->getEducations() !== null) {
-                $allOptionSelected = false;
-                $educations = $filter->getEducations();
-
-                foreach ($educations as $education) {
-                    if (!$education instanceof Education) {
-                        $allOptionSelected = true;
-                    }
-                    //Only add constraints if the "all" option is not selected
-                    if (!$allOptionSelected) {
-                        $constraints[] = $query->contains('education', $education);
-                    }
-                }
+            $educations = $filter->getEducations();
+            foreach ($educations as $education) {
+                $constraints[] = $query->contains('education', $education);
             }
 
-            if ($filter->getSearchword() !== null) {
+            if ($filter->getSearchword() !== '') {
                 $or = [];
-                $searchwords = GeneralUtility::trimExplode(' ', $filter->getSearchword(), 1);
+                $searchwords = GeneralUtility::trimExplode(' ', $filter->getSearchword(), true);
                 foreach ($searchwords as $searchword) {
                     $or[] = $query->like('job_title', '%' . $searchword . '%');
                     $or[] = $query->like('employer', '%' . $searchword . '%');
@@ -165,7 +115,7 @@ class JobRepository extends Repository
 
             //own
             $own = $filter->getOwn();
-            if ($own == 1) {
+            if ($own) {
                 $loggedInFeuser = $this->accessControlService->getFrontendUserObject();
                 $constraints[] = $query->contains('feuser', $loggedInFeuser);
             }

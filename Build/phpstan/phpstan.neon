@@ -1,0 +1,10 @@
+parameters:
+  # Use local .cache dir instead of /tmp
+  tmpDir: ../../.cache/phpstan
+
+  level: 5
+
+  paths:
+    - ../../Classes
+    - ../../Configuration
+    - ../../ext_localconf.php
