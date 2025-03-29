@@ -10,7 +10,7 @@ if (!defined('TYPO3')) {
     die('Access denied.');
 }
 
-(function() {
+(function () {
     ExtensionUtility::configurePlugin(
         'jobfair',
         'Pi1',
