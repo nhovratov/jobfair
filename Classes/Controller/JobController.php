@@ -32,7 +32,7 @@ use Dan\Jobfair\Domain\Repository\EducationRepository;
 use Dan\Jobfair\Domain\Repository\JobRepository;
 use Dan\Jobfair\Domain\Repository\RegionRepository;
 use Dan\Jobfair\Domain\Repository\SectorRepository;
-use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
+use Dan\Jobfair\Domain\Validator\ApplicationCreateValidator;
 use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
 use Psr\Http\Message\ResponseInterface;
@@ -468,12 +468,7 @@ class JobController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function initializeCreateApplicationAction(): void
-    {
-        $this->setTypeConverterConfigurationForImageUpload('newApplication');
-    }
-
-    #[Extbase\Validate(['validator' => \Dan\Jobfair\Domain\Validator\ApplicationCreateValidator::class, 'param' => 'newApplication'])]
+    #[Extbase\Validate(['validator' => ApplicationCreateValidator::class, 'param' => 'newApplication'])]
     public function createApplicationAction(Application $newApplication, Job $job): ResponseInterface
     {
         $newApplication->setTitle($job->getJobTitle() . ' - ' . $newApplication->getName());
@@ -595,21 +590,5 @@ class JobController extends ActionController
             LocalizationUtility::translate($statusKey, 'jobfair'),
             $level,
         );
-    }
-
-    protected function setTypeConverterConfigurationForImageUpload($argumentName)
-    {
-//        $uploadConfiguration = [
-//            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
-//                $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed']
-//                ?? $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'],
-//            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
-//        ];
-//        $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-//        $configuration->forProperty('attachment')
-//            ->setTypeConverterOptions(
-//                UploadedFileReferenceConverter::class,
-//                $uploadConfiguration
-//            );
     }
 }

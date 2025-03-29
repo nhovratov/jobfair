@@ -15,6 +15,7 @@
 
 namespace Dan\Jobfair\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation\FileUpload;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -49,9 +50,15 @@ class Application extends AbstractEntity
 
     protected string $message = '';
 
-    /**
-     * attachment
-     */
+    #[FileUpload([
+        'validation' => [
+            'required' => false,
+            'maxFiles' => 6,
+            'fileSize' => ['minimum' => '0K', 'maximum' => '20M'],
+            'mimeType' => ['allowedMimeTypes' => ['application/pdf', 'application/zip', 'application/rar']],
+        ],
+        'uploadFolder' => '1:/user_upload/tx_jobfair/applications',
+    ])]
     protected ?FileReference $attachment = null;
 
     /**
