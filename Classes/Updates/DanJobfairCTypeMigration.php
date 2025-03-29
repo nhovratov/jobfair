@@ -48,7 +48,7 @@ final class DanJobfairCTypeMigration extends AbstractListTypeToCTypeUpdate
     protected function getListTypeToCTypeMapping(): array
     {
         return [
-            // TODO: Add this mapping yourself!
+            'jobfair_pi1' => 'jobfair_pi1',
         ];
     }
 }

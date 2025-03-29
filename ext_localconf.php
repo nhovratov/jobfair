@@ -20,7 +20,7 @@ if (!defined('TYPO3')) {
         [
             JobController::class => 'list, latest, show, new, create, edit, update, confirmDelete, delete, newApplication, createApplication',
         ],
-//        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
 
     $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
