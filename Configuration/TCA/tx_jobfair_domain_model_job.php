@@ -1,6 +1,5 @@
 <?php
 
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 if (!defined('TYPO3')) {
     die('Access denied.');
 }
@@ -11,11 +10,8 @@ return [
         'label' => 'job_title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'sortby' => 'sorting',
-
         'versioningWS' => true,
-
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -27,7 +23,10 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'job_title,employer,employer_description,location,short_job_description,job_description,experience,job_requirements,job_benefits,apply_information,salary,job_type,contract_type,region,contact,sector,category,discipline,education,feuser,',
-        'iconfile' => 'EXT:jobfair/Resources/Public/Icons/tx_jobfair_domain_model_job.gif'
+        'iconfile' => 'EXT:jobfair/Resources/Public/Icons/tx_jobfair_domain_model_job.gif',
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ],
     ],
     'types' => [
         '1' => [
@@ -35,94 +34,6 @@ return [
         ],
     ],
     'columns' => [
-        'sys_language_uid' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => ['type' => 'language']
-        ],
-        'l10n_parent' => [
-            'displayCond' => 'FIELD:sys_language_uid:>:0',
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'items' => [
-                    [
-                        '',
-                        0
-                    ]
-                ],
-                'foreign_table' => 'tx_jobfair_domain_model_job',
-                // no sys_language_uid = -1 allowed explicitly!
-                'foreign_table_where' => 'AND tx_jobfair_domain_model_job.pid=###CURRENT_PID### AND tx_jobfair_domain_model_job.sys_language_uid IN (-1,0)',
-                'default' => 0
-            ]
-        ],
-        'l10n_diffsource' => [
-            'config' => [
-                'type' => 'passthrough',
-                'default' => ''
-            ]
-        ],
-        'l10n_source' => [
-            'config' => [
-                'type' => 'passthrough'
-            ]
-        ],
-
-        't3ver_label' => [
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.versionLabel',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'max' => 255,
-            ]
-        ],
-
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        0 => '',
-                        1 => '',
-                        'invertStateDisplay' => true
-                    ]
-                ],
-            ]
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ]
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'input',
-                'renderType' => 'inputDateTime',
-                'eval' => 'datetime,int',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038)
-                ],
-                'behaviour' => [
-                    'allowLanguageSynchronization' => true
-                ]
-            ]
-        ],
         'sorting' => [
             'config' => [
                 'type' => 'passthrough',
@@ -152,23 +63,21 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required'
+                'eval' => 'trim',
+                'required' => true
             ],
         ],
         'job_image' => [
             'exclude' => 1,
             'label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image',
-            'config' => ExtensionManagementUtility::getFileFieldTCAConfig(
-                'job_image',
-                [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
-                    ],
-                    'minitems' => 0,
-                    'maxitems' => 1,
+            'config' => [
+                'type' => 'file',
+                'allowed' => 'common-image-types',
+                'appearance' => [
+                    'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
                 ],
-                $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
-            ),
+                'maxitems' => 1,
+            ],
         ],
         'employer' => [
             'exclude' => 1,
@@ -277,8 +186,8 @@ return [
             'config' => [
                 'type' => 'select',
                 'items' => [
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type.0', 0],
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type.1', 1],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type.0', 'value' => 0],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type.1', 'value' => 1],
                 ],
                 'size' => 1,
                 'maxitems' => 1,
@@ -293,10 +202,10 @@ return [
             'config' => [
                 'type' => 'select',
                 'items' => [
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.0', 0],
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.1', 1],
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.2', 2],
-                    ['LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.3', 3],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.0', 'value' => 0],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.1', 'value' => 1],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.2', 'value' => 2],
+                    ['label' => 'LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type.3', 'value' => 3],
                 ],
                 'size' => 1,
                 'maxitems' => 1,

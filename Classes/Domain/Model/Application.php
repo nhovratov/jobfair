@@ -101,7 +101,7 @@ class Application extends AbstractEntity
      *
      * @param string $title
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -121,7 +121,7 @@ class Application extends AbstractEntity
      *
      * @param string $name
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -141,7 +141,7 @@ class Application extends AbstractEntity
      *
      * @param string $email
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -161,7 +161,7 @@ class Application extends AbstractEntity
      *
      * @param string $message
      */
-    public function setMessage($message)
+    public function setMessage($message): void
     {
         $this->message = $message;
     }
@@ -187,7 +187,7 @@ class Application extends AbstractEntity
      *
      * @param Job $job
      */
-    public function addJob(Job $job)
+    public function addJob(Job $job): void
     {
         $this->jobs->attach($job);
     }
@@ -197,7 +197,7 @@ class Application extends AbstractEntity
      *
      * @param Job $jobToRemove The Job to be removed
      */
-    public function removeJob(Job $jobToRemove)
+    public function removeJob(Job $jobToRemove): void
     {
         $this->jobs->detach($jobToRemove);
     }
@@ -217,7 +217,7 @@ class Application extends AbstractEntity
      *
      * @param ObjectStorage<Job> $jobs
      */
-    public function setJobs(ObjectStorage $jobs)
+    public function setJobs(ObjectStorage $jobs): void
     {
         $this->jobs = $jobs;
     }

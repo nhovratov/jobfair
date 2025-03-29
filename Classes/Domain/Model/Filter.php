@@ -115,7 +115,7 @@ class Filter extends AbstractEntity
      *
      * @param Category $category
      */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
@@ -135,7 +135,7 @@ class Filter extends AbstractEntity
      *
      * @param ObjectStorage<Category> $categories
      */
-    public function setCategories(ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
@@ -145,7 +145,7 @@ class Filter extends AbstractEntity
      *
      * @param Region $region
      */
-    public function addRegion(Region $region)
+    public function addRegion(Region $region): void
     {
         $this->regions->attach($region);
     }
@@ -165,7 +165,7 @@ class Filter extends AbstractEntity
      *
      * @param ObjectStorage<Region> $regions
      */
-    public function setRegions(ObjectStorage $regions)
+    public function setRegions(ObjectStorage $regions): void
     {
         $this->regions = $regions;
     }
@@ -175,7 +175,7 @@ class Filter extends AbstractEntity
      *
      * @param Sector $sector
      */
-    public function addSector(Sector $sector)
+    public function addSector(Sector $sector): void
     {
         $this->sectors->attach($sector);
     }
@@ -195,7 +195,7 @@ class Filter extends AbstractEntity
      *
      * @param ObjectStorage<Sector> $sectors
      */
-    public function setSectors(ObjectStorage $sectors)
+    public function setSectors(ObjectStorage $sectors): void
     {
         $this->sectors = $sectors;
     }
@@ -205,7 +205,7 @@ class Filter extends AbstractEntity
      *
      * @param Discipline $discipline
      */
-    public function addDiscipline(Discipline $discipline)
+    public function addDiscipline(Discipline $discipline): void
     {
         $this->disciplines->attach($discipline);
     }
@@ -225,7 +225,7 @@ class Filter extends AbstractEntity
      *
      * @param ObjectStorage<Discipline> $disciplines
      */
-    public function setDisciplines(ObjectStorage $disciplines)
+    public function setDisciplines(ObjectStorage $disciplines): void
     {
         $this->disciplines = $disciplines;
     }
@@ -235,7 +235,7 @@ class Filter extends AbstractEntity
      *
      * @param Education $education
      */
-    public function addEducation(Education $education)
+    public function addEducation(Education $education): void
     {
         $this->educations->attach($education);
     }
@@ -255,7 +255,7 @@ class Filter extends AbstractEntity
      *
      * @param ObjectStorage<Education> $educations
      */
-    public function setEducations(ObjectStorage $educations)
+    public function setEducations(ObjectStorage $educations): void
     {
         $this->educations = $educations;
     }
@@ -275,7 +275,7 @@ class Filter extends AbstractEntity
      *
      * @param \integer $jobType
      */
-    public function setJobType($jobType)
+    public function setJobType($jobType): void
     {
         $this->jobType = $jobType;
     }
@@ -295,7 +295,7 @@ class Filter extends AbstractEntity
      *
      * @param \integer $contractType
      */
-    public function setContractType($contractType)
+    public function setContractType($contractType): void
     {
         $this->contractType = $contractType;
     }
@@ -315,7 +315,7 @@ class Filter extends AbstractEntity
      *
      * @param string $searchword
      */
-    public function setSearchword($searchword)
+    public function setSearchword($searchword): void
     {
         $this->searchword = $searchword;
     }
@@ -335,7 +335,7 @@ class Filter extends AbstractEntity
      *
      * @param \integer $own
      */
-    public function setOwn($own)
+    public function setOwn($own): void
     {
         $this->own = $own;
     }

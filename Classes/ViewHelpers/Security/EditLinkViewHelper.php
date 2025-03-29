@@ -29,7 +29,7 @@ class EditLinkViewHelper extends AbstractConditionViewHelper
     /**
      * Register argument "job" so that it can be passed to viewhelper
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         $this->registerArgument('job', 'Dan\Jobfair\Domain\Model\Job', 'Object of the job', true);
     }

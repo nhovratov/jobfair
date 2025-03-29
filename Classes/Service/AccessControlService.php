@@ -29,10 +29,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class AccessControlService implements SingletonInterface
 {
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
+    public function __construct(
+        protected UserRepository $userRepository
+    ) {
+    }
 
     /**
      * Tests, if the given person is owner of a job
@@ -96,10 +96,5 @@ class AccessControlService implements SingletonInterface
             return $user;
         }
         return null;
-    }
-
-    public function injectUserRepository(UserRepository $userRepository): void
-    {
-        $this->userRepository = $userRepository;
     }
 }

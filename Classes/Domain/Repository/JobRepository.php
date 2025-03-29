@@ -34,10 +34,12 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class JobRepository extends Repository
 {
-    /**
-     * @var AccessControlService
-     */
-    protected $accessControlService;
+    protected AccessControlService $accessControlService;
+
+    public function injectAccessControlService(AccessControlService $accessControlService): void
+    {
+        $this->accessControlService = $accessControlService;
+    }
 
     /**
      * Find by filter in front end
@@ -193,10 +195,5 @@ class JobRepository extends Repository
         }
         $query->setLimit($limit);
         return $query->execute();
-    }
-
-    public function injectAccessControlService(AccessControlService $accessControlService): void
-    {
-        $this->accessControlService = $accessControlService;
     }
 }

@@ -33,14 +33,9 @@ class ApplicationCreateValidator extends AbstractValidator
      */
     protected $settings = [];
 
-    /**
-     * @var ConfigurationManager
-     */
-    protected $configurationManager;
-
-    public function injectConfigurationManager(ConfigurationManager $configurationManager)
-    {
-        $this->configurationManager = $configurationManager;
+    public function __construct(
+        protected ConfigurationManager $configurationManager
+    ) {
     }
 
     public function setOptions(array $options): void

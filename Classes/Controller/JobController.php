@@ -37,9 +37,8 @@ use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
 use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
@@ -56,69 +55,18 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class JobController extends ActionController
 {
-    const SIGNAL_CreateActionAfterAdd = 'createActionAfterAdd';
-    const SIGNAL_UpdateActionAfterUpdate = 'updateActionAfterUpdate';
-
-    /**
-     * jobRepository
-     *
-     * @var JobRepository
-     */
-    protected $jobRepository;
-
-    /**
-     * applicationRepository
-     *
-     * @var ApplicationRepository
-     */
-    protected $applicationRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var RegionRepository
-     */
-    protected $regionRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var SectorRepository
-     */
-    protected $sectorRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var DisciplineRepository
-     */
-    protected $disciplineRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var EducationRepository
-     */
-    protected $educationRepository;
-
-    /**
-     * Misc Functions
-     *
-     * @var Div
-     */
-    protected $div;
-
-    /**
-     * @var AccessControlService
-     */
-    protected $accessControlService;
+    public function __construct(
+        protected ApplicationRepository $applicationRepository,
+        protected JobRepository $jobRepository,
+        protected RegionRepository $regionRepository,
+        protected SectorRepository $sectorRepository,
+        protected CategoryRepository $categoryRepository,
+        protected DisciplineRepository $disciplineRepository,
+        protected EducationRepository $educationRepository,
+        protected Div $div,
+        protected AccessControlService $accessControlService,
+    ) {
+    }
 
     /**
      * initialize update action
@@ -193,9 +141,7 @@ class JobController extends ActionController
         $this->request = $this->request->withArguments($arguments);
     }
 
-    /**
-     * @Extbase\IgnoreValidation("filter")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'filter'])]
     public function listAction(Filter $filter = null): ResponseInterface
     {
         /* redirect to latest view if enabled in the plugin */
@@ -305,9 +251,7 @@ class JobController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @Extbase\IgnoreValidation("newJob")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'newJob'])]
     public function newAction(Job $newJob = null): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
@@ -400,9 +344,7 @@ class JobController extends ActionController
         return $this->redirect('list');
     }
 
-    /**
-     * @Extbase\IgnoreValidation("job")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'job'])]
     public function editAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
@@ -512,9 +454,7 @@ class JobController extends ActionController
         return $this->redirect('list');
     }
 
-    /**
-     * @Extbase\IgnoreValidation("newApplication")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'newApplication'])]
     public function newApplicationAction(Job $job, Application $newApplication = null): ResponseInterface
     {
         $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
@@ -540,9 +480,7 @@ class JobController extends ActionController
         $this->setTypeConverterConfigurationForImageUpload('newApplication');
     }
 
-    /**
-     * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
-     */
+    #[Extbase\Validate(['validator' => \Dan\Jobfair\Domain\Validator\ApplicationCreateValidator::class, 'param' => 'newApplication'])]
     public function createApplicationAction(Application $newApplication, Job $job): ResponseInterface
     {
         $newApplication->setTitle($job->getJobTitle() . ' - ' . $newApplication->getName());
@@ -655,38 +593,20 @@ class JobController extends ActionController
         return $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
-    /**
-     * @param \string $messageKey
-     * @param \string $statusKey
-     * @param \string $level
-     */
-    protected function flashMessageService($messageKey, $statusKey, $levelString)
+    protected function flashMessageService(string $messageKey, string $statusKey, string $levelString): void
     {
-        switch ($levelString) {
-            case 'NOTICE':
-                $level = AbstractMessage::NOTICE;
-                break;
-            case 'INFO':
-                $level = AbstractMessage::INFO;
-                break;
-            case 'OK':
-                $level = AbstractMessage::OK;
-                break;
-            case 'WARNING':
-                $level = AbstractMessage::WARNING;
-                break;
-            case 'ERROR':
-                $level = AbstractMessage::ERROR;
-                break;
-            default:
-                $level = AbstractMessage::OK;
-        }
+        $level = match ($levelString) {
+            'NOTICE' => ContextualFeedbackSeverity::NOTICE,
+            'INFO' => ContextualFeedbackSeverity::INFO,
+            'WARNING' => ContextualFeedbackSeverity::WARNING,
+            'ERROR' => ContextualFeedbackSeverity::ERROR,
+            default => ContextualFeedbackSeverity::OK,
+        };
 
         $this->addFlashMessage(
             LocalizationUtility::translate($messageKey, 'jobfair'),
             LocalizationUtility::translate($statusKey, 'jobfair'),
             $level,
-            true
         );
     }
 
@@ -704,50 +624,5 @@ class JobController extends ActionController
                 UploadedFileReferenceConverter::class,
                 $uploadConfiguration
             );
-    }
-
-    public function injectJobRepository(JobRepository $jobRepository): void
-    {
-        $this->jobRepository = $jobRepository;
-    }
-
-    public function injectApplicationRepository(ApplicationRepository $applicationRepository): void
-    {
-        $this->applicationRepository = $applicationRepository;
-    }
-
-    public function injectRegionRepository(RegionRepository $regionRepository): void
-    {
-        $this->regionRepository = $regionRepository;
-    }
-
-    public function injectSectorRepository(SectorRepository $sectorRepository): void
-    {
-        $this->sectorRepository = $sectorRepository;
-    }
-
-    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
-    {
-        $this->categoryRepository = $categoryRepository;
-    }
-
-    public function injectDisciplineRepository(DisciplineRepository $disciplineRepository): void
-    {
-        $this->disciplineRepository = $disciplineRepository;
-    }
-
-    public function injectEducationRepository(EducationRepository $educationRepository): void
-    {
-        $this->educationRepository = $educationRepository;
-    }
-
-    public function injectDiv(Div $div): void
-    {
-        $this->div = $div;
-    }
-
-    public function injectAccessControlService(AccessControlService $accessControlService): void
-    {
-        $this->accessControlService = $accessControlService;
     }
 }
