@@ -17,7 +17,6 @@ namespace Dan\Jobfair\Domain\Model;
 
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * The model for Contact
@@ -61,11 +60,7 @@ class Contact extends AbstractEntity
      */
     protected $www = '';
 
-    /**
-     * contactImage
-     * @var FileReference
-     */
-    protected $contactImage;
+    protected ?FileReference $contactImage = null;
 
     /**
      * nameCc
@@ -110,7 +105,7 @@ class Contact extends AbstractEntity
      *
      * @param string $name
      */
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
@@ -130,7 +125,7 @@ class Contact extends AbstractEntity
      *
      * @param string $address
      */
-    public function setAddress($address)
+    public function setAddress($address): void
     {
         $this->address = $address;
     }
@@ -150,7 +145,7 @@ class Contact extends AbstractEntity
      *
      * @param string $phone
      */
-    public function setPhone($phone)
+    public function setPhone($phone): void
     {
         $this->phone = $phone;
     }
@@ -170,7 +165,7 @@ class Contact extends AbstractEntity
      *
      * @param string $email
      */
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
@@ -190,27 +185,17 @@ class Contact extends AbstractEntity
      *
      * @param string $www
      */
-    public function setWww($www)
+    public function setWww($www): void
     {
         $this->www = $www;
     }
 
-    /**
-     * Returns the contactImage
-     *
-     * @return ObjectStorage<FileReference> $contactImage
-     */
-    public function getContactImage()
+    public function getContactImage(): ?FileReference
     {
         return $this->contactImage;
     }
 
-    /**
-     * Sets the contactImage
-     *
-     * @param ObjectStorage<FileReference> $contactImage
-     */
-    public function setContactImage($contactImage)
+    public function setContactImage(?FileReference $contactImage): void
     {
         $this->contactImage = $contactImage;
     }
@@ -230,7 +215,7 @@ class Contact extends AbstractEntity
      *
      * @param string $nameCc
      */
-    public function setNameCc($nameCc)
+    public function setNameCc($nameCc): void
     {
         $this->nameCc = $nameCc;
     }
@@ -250,7 +235,7 @@ class Contact extends AbstractEntity
      *
      * @param string $emailCc
      */
-    public function setEmailCc($emailCc)
+    public function setEmailCc($emailCc): void
     {
         $this->emailCc = $emailCc;
     }
@@ -270,7 +255,7 @@ class Contact extends AbstractEntity
      *
      * @param string $nameBcc
      */
-    public function setNameBcc($nameBcc)
+    public function setNameBcc($nameBcc): void
     {
         $this->nameBcc = $nameBcc;
     }
@@ -290,7 +275,7 @@ class Contact extends AbstractEntity
      *
      * @param string $emailBcc
      */
-    public function setEmailBcc($emailBcc)
+    public function setEmailBcc($emailBcc): void
     {
         $this->emailBcc = $emailBcc;
     }

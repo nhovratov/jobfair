@@ -29,10 +29,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class AccessControlService implements SingletonInterface
 {
-    /**
-     * @var UserRepository
-     */
-    protected $userRepository;
+    public function __construct(
+        protected UserRepository $userRepository
+    ) {
+    }
 
     /**
      * Tests, if the given person is owner of a job
@@ -84,22 +84,13 @@ class AccessControlService implements SingletonInterface
         return null;
     }
 
-    /**
-     * @return User|null
-     */
-    public function getFrontendUserObject()
+    public function getFrontendUserObject(): ?User
     {
         if ($this->hasLoggedInFrontendUser()) {
             $frontendUserId = GeneralUtility::makeInstance(Context::class)->getPropertyFromAspect('frontend.user', 'id');
-            /** @var User $user */
             $user = $this->userRepository->findByUid($frontendUserId);
             return $user;
         }
         return null;
-    }
-
-    public function injectUserRepository(UserRepository $userRepository): void
-    {
-        $this->userRepository = $userRepository;
     }
 }

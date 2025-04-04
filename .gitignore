@@ -6,3 +6,4 @@ composer.lock
 Documentation-GENERATED-temp
 var
 config
+.cache

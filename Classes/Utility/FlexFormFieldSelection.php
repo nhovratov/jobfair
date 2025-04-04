@@ -30,7 +30,7 @@ class FlexFormFieldSelection
      *
      * @param $params
      */
-    public function addOptions(&$params)
+    public function addOptions(&$params): void
     {
         $tSconfig = BackendUtility::getPagesTSconfig($this->getPid());
 
@@ -59,8 +59,8 @@ class FlexFormFieldSelection
     protected function getPid()
     {
         $pid = 0;
-        $backUrl = str_replace('?', '&', GeneralUtility::_GP('returnUrl'));
-        $urlParts = GeneralUtility::trimExplode('&', $backUrl, 1);
+        $backUrl = str_replace('?', '&', $GLOBALS['TYPO3_REQUEST']->getParsedBody()['returnUrl'] ?? $GLOBALS['TYPO3_REQUEST']->getQueryParams()['returnUrl'] ?? null);
+        $urlParts = GeneralUtility::trimExplode('&', $backUrl, true);
         foreach ($urlParts as $part) {
             if (stristr($part, 'id=')) {
                 $pid = str_replace('id=', '', $part);

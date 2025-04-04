@@ -1,7 +1,8 @@
 <?php
 
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+
 if (!defined('TYPO3')) {
     die('Access denied.');
 }
@@ -12,6 +13,14 @@ ExtensionUtility::registerPlugin(
     'Job Fair'
 );
 
-$pluginSignature = str_replace('_', '', 'jobfair') . '_pi1';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . 'jobfair' . '/Configuration/FlexForms/flexform_jobfair.xml');
+ExtensionManagementUtility::addToAllTCAtypes(
+    'tt_content',
+    '--div--;Configuration,pi_flexform,',
+    'jobfair_pi1',
+    'after:subheader'
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:jobfair/Configuration/FlexForms/flexform_jobfair.xml',
+    'jobfair_pi1'
+);

@@ -19,9 +19,7 @@ use Symfony\Component\Mime\Address;
 use TYPO3\CMS\Core\Mail\FluidEmail;
 use TYPO3\CMS\Core\Mail\Mailer;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
  * This class provides misc functions (mostly file related) for the jobfair extension.
@@ -30,20 +28,14 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  */
 class Div
 {
-    /**
-     * @var ConfigurationManager
-     */
-    protected $configurationManager;
+    public function __construct(
+        protected ConfigurationManagerInterface $configurationManager
+    ) {
+    }
 
-    /**
-     * Check extension of given filename
-     *
-     * @param \string		Filename like (upload.png)
-     * @return \bool		If Extension is allowed
-     */
-    public static function checkExtension($filename)
+    public static function checkExtension(string $filename): bool
     {
-        $extensionList = $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed'];
+        $extensionList = $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'];
         $fileInfo = pathinfo($filename);
         if (!empty($fileInfo['extension']) && GeneralUtility::inList($extensionList, strtolower($fileInfo['extension']))) {
             return true;
@@ -51,20 +43,7 @@ class Div
         return false;
     }
 
-    /**
-     * Generate and send Email
-     *
-     * @param \string Template file in Templates/Email/
-     * @param \array $receiver Combination of Email => Name
-     * @param \array $receiverCc Combination of Email => Name
-     * @param \array $receiverBcc Combination of Email => Name
-     * @param \array $sender Combination of Email => Name
-     * @param \string $subject Mail subject
-     * @param \array $variables Variables for assignMultiple
-     * @param \string $fileName
-     * @return \bool Mail was sent?
-     */
-    public function sendEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName)
+    public function sendEmail(string $template, array $receiver, array $receiverCc, array $receiverBcc, array $sender, string $subject, array $variables, string $fileName): bool
     {
         return $this->sendFluidEmail($template, $receiver, $receiverCc, $receiverBcc, $sender, $subject, $variables, $fileName);
     }
@@ -114,40 +93,5 @@ class Div
             $result[] = new Address($email, $name);
         }
         return $result;
-    }
-
-    /**
-     * Return path and filename for a file
-     * 		respect *RootPaths and *RootPath
-     *
-     *@todo Remove this function as soon as StandaloneView supports templaterootpaths ... , maybe TYPO3 6.3 ?
-     *
-     * @param string $relativePathAndFilename e.g. Email/Name.html
-     * @return string
-     */
-    public function getTemplatePath($relativePathAndFilename)
-    {
-        $extbaseFrameworkConfiguration = $this->configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
-        );
-        if (!empty($extbaseFrameworkConfiguration['view']['templateRootPaths'])) {
-            foreach ($extbaseFrameworkConfiguration['view']['templateRootPaths'] as $path) {
-                $absolutePath = GeneralUtility::getFileAbsFileName($path);
-                if (file_exists($absolutePath . $relativePathAndFilename)) {
-                    $absolutePathAndFilename = $absolutePath . $relativePathAndFilename;
-                }
-            }
-        }
-        if (empty($absolutePathAndFilename)) {
-            $absolutePathAndFilename = GeneralUtility::getFileAbsFileName(
-                'EXT:jobfair/Resources/Private/Templates/' . $relativePathAndFilename
-            );
-        }
-        return $absolutePathAndFilename;
-    }
-
-    public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager): void
-    {
-        $this->configurationManager = $configurationManager;
     }
 }

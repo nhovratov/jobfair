@@ -30,3 +30,12 @@ plugin.tx_jobfair {
 		noTrimWrap = | | |
 	}
 }
+
+config {
+    pageTitleProviders {
+        jobfair {
+            provider = Dan\Jobfair\PageTitle\JobPageTitleProvider
+            before = record
+        }
+    }
+}

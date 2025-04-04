@@ -33,11 +33,7 @@ class Job extends AbstractEntity
      */
     protected $jobTitle = '';
 
-    /**
-     * jobImage
-     * @var FileReference
-     */
-    protected $jobImage;
+    protected ?FileReference $jobImage;
 
     /**
      * employer
@@ -130,12 +126,7 @@ class Job extends AbstractEntity
      */
     protected $region;
 
-    /**
-     * contact
-     *
-     * @var Contact
-     */
-    protected $contact;
+    protected ?Contact $contact = null;
 
     /**
      * sector
@@ -254,27 +245,17 @@ class Job extends AbstractEntity
      *
      * @param string $jobTitle
      */
-    public function setJobTitle($jobTitle)
+    public function setJobTitle($jobTitle): void
     {
         $this->jobTitle = $jobTitle;
     }
 
-    /**
-     * Returns the jobImage
-     *
-     * @return ObjectStorage<FileReference> $jobImage
-     */
-    public function getJobImage()
+    public function getJobImage(): ?FileReference
     {
         return $this->jobImage;
     }
 
-    /**
-     * Sets the jobImage
-     *
-     * @param ObjectStorage<FileReference> $jobImage
-     */
-    public function setJobImage($jobImage)
+    public function setJobImage(?FileReference $jobImage): void
     {
         $this->jobImage = $jobImage;
     }
@@ -294,7 +275,7 @@ class Job extends AbstractEntity
      *
      * @param string $employer
      */
-    public function setEmployer($employer)
+    public function setEmployer($employer): void
     {
         $this->employer = $employer;
     }
@@ -314,7 +295,7 @@ class Job extends AbstractEntity
      *
      * @param string $employerDescription
      */
-    public function setEmployerDescription($employerDescription)
+    public function setEmployerDescription($employerDescription): void
     {
         $this->employerDescription = $employerDescription;
     }
@@ -334,7 +315,7 @@ class Job extends AbstractEntity
      *
      * @param string $location
      */
-    public function setLocation($location)
+    public function setLocation($location): void
     {
         $this->location = $location;
     }
@@ -354,7 +335,7 @@ class Job extends AbstractEntity
      *
      * @param string $shortJobDescription
      */
-    public function setShortJobDescription($shortJobDescription)
+    public function setShortJobDescription($shortJobDescription): void
     {
         $this->shortJobDescription = $shortJobDescription;
     }
@@ -374,7 +355,7 @@ class Job extends AbstractEntity
      *
      * @param string $jobDescription
      */
-    public function setJobDescription($jobDescription)
+    public function setJobDescription($jobDescription): void
     {
         $this->jobDescription = $jobDescription;
     }
@@ -394,7 +375,7 @@ class Job extends AbstractEntity
      *
      * @param string $experience
      */
-    public function setExperience($experience)
+    public function setExperience($experience): void
     {
         $this->experience = $experience;
     }
@@ -414,7 +395,7 @@ class Job extends AbstractEntity
      *
      * @param string $jobRequirements
      */
-    public function setJobRequirements($jobRequirements)
+    public function setJobRequirements($jobRequirements): void
     {
         $this->jobRequirements = $jobRequirements;
     }
@@ -434,7 +415,7 @@ class Job extends AbstractEntity
      *
      * @param string $jobBenefits
      */
-    public function setJobBenefits($jobBenefits)
+    public function setJobBenefits($jobBenefits): void
     {
         $this->jobBenefits = $jobBenefits;
     }
@@ -454,7 +435,7 @@ class Job extends AbstractEntity
      *
      * @param string $applyInformation
      */
-    public function setApplyInformation($applyInformation)
+    public function setApplyInformation($applyInformation): void
     {
         $this->applyInformation = $applyInformation;
     }
@@ -474,7 +455,7 @@ class Job extends AbstractEntity
      *
      * @param string $salary
      */
-    public function setSalary($salary)
+    public function setSalary($salary): void
     {
         $this->salary = $salary;
     }
@@ -494,7 +475,7 @@ class Job extends AbstractEntity
      *
      * @param int $jobType
      */
-    public function setJobType($jobType)
+    public function setJobType($jobType): void
     {
         $this->jobType = $jobType;
     }
@@ -514,7 +495,7 @@ class Job extends AbstractEntity
      *
      * @param int $contractType
      */
-    public function setContractType($contractType)
+    public function setContractType($contractType): void
     {
         $this->contractType = $contractType;
     }
@@ -524,7 +505,7 @@ class Job extends AbstractEntity
      *
      * @param Region $region
      */
-    public function addRegion(Region $region)
+    public function addRegion(Region $region): void
     {
         $this->region->attach($region);
     }
@@ -534,7 +515,7 @@ class Job extends AbstractEntity
      *
      * @param Region $regionToRemove
      */
-    public function removeRegion(Region $regionToRemove)
+    public function removeRegion(Region $regionToRemove): void
     {
         $this->region->detach($regionToRemove);
     }
@@ -554,27 +535,17 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Region> $region
      */
-    public function setRegion(ObjectStorage $region)
+    public function setRegion(ObjectStorage $region): void
     {
         $this->region = $region;
     }
 
-    /**
-     * Returns the contact
-     *
-     * @return Contact $contact
-     */
-    public function getContact()
+    public function getContact(): ?Contact
     {
         return $this->contact;
     }
 
-    /**
-     * Sets the contact
-     *
-     * @param Contact $contact
-     */
-    public function setContact(Contact $contact)
+    public function setContact(?Contact $contact): void
     {
         $this->contact = $contact;
     }
@@ -584,7 +555,7 @@ class Job extends AbstractEntity
      *
      * @param Sector $sector
      */
-    public function addSector(Sector $sector)
+    public function addSector(Sector $sector): void
     {
         $this->sector->attach($sector);
     }
@@ -594,7 +565,7 @@ class Job extends AbstractEntity
      *
      * @param Sector $sectorToRemove The Sector to be removed
      */
-    public function removeSector(Sector $sectorToRemove)
+    public function removeSector(Sector $sectorToRemove): void
     {
         $this->sector->detach($sectorToRemove);
     }
@@ -614,7 +585,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Sector> $sector
      */
-    public function setSector(ObjectStorage $sector)
+    public function setSector(ObjectStorage $sector): void
     {
         $this->sector = $sector;
     }
@@ -624,7 +595,7 @@ class Job extends AbstractEntity
      *
      * @param Category $category
      */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         $this->category->attach($category);
     }
@@ -634,7 +605,7 @@ class Job extends AbstractEntity
      *
      * @param Category $categoryToRemove The Category to be removed
      */
-    public function removeCategory(Category $categoryToRemove)
+    public function removeCategory(Category $categoryToRemove): void
     {
         $this->category->detach($categoryToRemove);
     }
@@ -654,7 +625,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Category> $category
      */
-    public function setCategory(ObjectStorage $category)
+    public function setCategory(ObjectStorage $category): void
     {
         $this->category = $category;
     }
@@ -664,7 +635,7 @@ class Job extends AbstractEntity
      *
      * @param Discipline $discipline
      */
-    public function addDiscipline(Discipline $discipline)
+    public function addDiscipline(Discipline $discipline): void
     {
         $this->discipline->attach($discipline);
     }
@@ -674,7 +645,7 @@ class Job extends AbstractEntity
      *
      * @param Discipline $disciplineToRemove The Discipline to be removed
      */
-    public function removeDiscipline(Discipline $disciplineToRemove)
+    public function removeDiscipline(Discipline $disciplineToRemove): void
     {
         $this->discipline->detach($disciplineToRemove);
     }
@@ -694,7 +665,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Discipline> $discipline
      */
-    public function setDiscipline(ObjectStorage $discipline)
+    public function setDiscipline(ObjectStorage $discipline): void
     {
         $this->discipline = $discipline;
     }
@@ -704,7 +675,7 @@ class Job extends AbstractEntity
      *
      * @param Education $education
      */
-    public function addEducation(Education $education)
+    public function addEducation(Education $education): void
     {
         $this->education->attach($education);
     }
@@ -714,7 +685,7 @@ class Job extends AbstractEntity
      *
      * @param Education $educationToRemove The Education to be removed
      */
-    public function removeEducation(Education $educationToRemove)
+    public function removeEducation(Education $educationToRemove): void
     {
         $this->education->detach($educationToRemove);
     }
@@ -734,7 +705,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Education> $education
      */
-    public function setEducation(ObjectStorage $education)
+    public function setEducation(ObjectStorage $education): void
     {
         $this->education = $education;
     }
@@ -744,7 +715,7 @@ class Job extends AbstractEntity
      *
      * @param User $feuser
      */
-    public function addFeuser(User $feuser)
+    public function addFeuser(User $feuser): void
     {
         $this->feuser->attach($feuser);
     }
@@ -754,7 +725,7 @@ class Job extends AbstractEntity
      *
      * @param User $feuserToRemove The User to be removed
      */
-    public function removeFeuser(User $feuserToRemove)
+    public function removeFeuser(User $feuserToRemove): void
     {
         $this->feuser->detach($feuserToRemove);
     }
@@ -774,7 +745,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<User> $feuser
      */
-    public function setFeuser(ObjectStorage $feuser)
+    public function setFeuser(ObjectStorage $feuser): void
     {
         $this->feuser = $feuser;
     }
@@ -784,7 +755,7 @@ class Job extends AbstractEntity
      *
      * @param Application $application
      */
-    public function addApplication(Application $application)
+    public function addApplication(Application $application): void
     {
         $this->application->attach($application);
     }
@@ -794,7 +765,7 @@ class Job extends AbstractEntity
      *
      * @param Application $applicationToRemove The Application to be removed
      */
-    public function removeApplication(Application $applicationToRemove)
+    public function removeApplication(Application $applicationToRemove): void
     {
         $this->application->detach($applicationToRemove);
     }
@@ -814,7 +785,7 @@ class Job extends AbstractEntity
      *
      * @param ObjectStorage<Application> $application
      */
-    public function setApplication(ObjectStorage $application)
+    public function setApplication(ObjectStorage $application): void
     {
         $this->application = $application;
     }
@@ -822,7 +793,7 @@ class Job extends AbstractEntity
     /**
      * @param \DateTime $starttime
      */
-    public function setStarttime($starttime)
+    public function setStarttime($starttime): void
     {
         $this->starttime = $starttime;
     }
@@ -838,7 +809,7 @@ class Job extends AbstractEntity
     /**
      * @param \DateTime $endtime
      */
-    public function setEndtime($endtime)
+    public function setEndtime($endtime): void
     {
         $this->endtime = $endtime;
     }
@@ -866,7 +837,7 @@ class Job extends AbstractEntity
      *
      * @param int $hidden hidden flag
      */
-    public function setHidden($hidden)
+    public function setHidden($hidden): void
     {
         $this->hidden = $hidden;
     }
@@ -874,7 +845,7 @@ class Job extends AbstractEntity
     /**
      * @param \DateTime $crdate
      */
-    public function setCrdate($crdate)
+    public function setCrdate($crdate): void
     {
         $this->crdate = $crdate;
     }
@@ -890,7 +861,7 @@ class Job extends AbstractEntity
     /**
      * @param \DateTime $tstamp
      */
-    public function setTstamp($tstamp)
+    public function setTstamp($tstamp): void
     {
         $this->tstamp = $tstamp;
     }
@@ -906,7 +877,7 @@ class Job extends AbstractEntity
     /**
      * @param int $sorting
      */
-    public function setSorting($sorting)
+    public function setSorting($sorting): void
     {
         $this->sorting = $sorting;
     }

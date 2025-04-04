@@ -32,14 +32,15 @@ use Dan\Jobfair\Domain\Repository\EducationRepository;
 use Dan\Jobfair\Domain\Repository\JobRepository;
 use Dan\Jobfair\Domain\Repository\RegionRepository;
 use Dan\Jobfair\Domain\Repository\SectorRepository;
-use Dan\Jobfair\Property\TypeConverter\UploadedFileReferenceConverter;
+use Dan\Jobfair\Domain\Validator\ApplicationCreateValidator;
+use Dan\Jobfair\PageTitle\JobPageTitleProvider;
 use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Information\Typo3Version;
-use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Resource\StorageRepository;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\Http\ForwardResponse;
@@ -56,69 +57,20 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  */
 class JobController extends ActionController
 {
-    const SIGNAL_CreateActionAfterAdd = 'createActionAfterAdd';
-    const SIGNAL_UpdateActionAfterUpdate = 'updateActionAfterUpdate';
-
-    /**
-     * jobRepository
-     *
-     * @var JobRepository
-     */
-    protected $jobRepository;
-
-    /**
-     * applicationRepository
-     *
-     * @var ApplicationRepository
-     */
-    protected $applicationRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var RegionRepository
-     */
-    protected $regionRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var SectorRepository
-     */
-    protected $sectorRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var DisciplineRepository
-     */
-    protected $disciplineRepository;
-
-    /**
-     * categoryRepository
-     *
-     * @var EducationRepository
-     */
-    protected $educationRepository;
-
-    /**
-     * Misc Functions
-     *
-     * @var Div
-     */
-    protected $div;
-
-    /**
-     * @var AccessControlService
-     */
-    protected $accessControlService;
+    public function __construct(
+        protected ApplicationRepository $applicationRepository,
+        protected JobRepository $jobRepository,
+        protected RegionRepository $regionRepository,
+        protected SectorRepository $sectorRepository,
+        protected CategoryRepository $categoryRepository,
+        protected DisciplineRepository $disciplineRepository,
+        protected EducationRepository $educationRepository,
+        protected Div $div,
+        protected AccessControlService $accessControlService,
+        protected JobPageTitleProvider $jobPageTitleProvider,
+        protected MetaTagManagerRegistry $metaTagManagerRegistry,
+    ) {
+    }
 
     /**
      * initialize update action
@@ -193,9 +145,7 @@ class JobController extends ActionController
         $this->request = $this->request->withArguments($arguments);
     }
 
-    /**
-     * @Extbase\IgnoreValidation("filter")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'filter'])]
     public function listAction(Filter $filter = null): ResponseInterface
     {
         /* redirect to latest view if enabled in the plugin */
@@ -257,11 +207,11 @@ class JobController extends ActionController
                 $education = $this->educationRepository->findByUid($this->settings['filter']['preselectEducation']);
                 $filter->addEducation($education);
             } elseif ($this->settings['filter']['preselectJobType']) {
-                $filter->setJobType($this->settings['filter']['preselectJobType']);
+                $filter->setJobType((int)($this->settings['filter']['preselectJobType'] ?? 0));
             } elseif ($this->settings['filter']['preselectContractType']) {
-                $filter->setContractType($this->settings['filter']['preselectContractType']);
+                $filter->setContractType((int)($this->settings['filter']['preselectContractType'] ?? 0));
             } elseif ($this->settings['filter']['preselectOwn']) {
-                $filter->setOwn($this->settings['filter']['preselectOwn']);
+                $filter->setOwn((bool)($this->settings['filter']['preselectOwn'] ?? false));
             }
             $jobs = $this->jobRepository->findFiltered($filter);
         } else {
@@ -276,7 +226,6 @@ class JobController extends ActionController
     {
         /** @var string $ordering */
         $ordering = $this->settings['latest']['ordering'];
-        /** @var int $limit */
         if ($this->settings['latest']['limit'] >= 1) {
             $limit = (int)$this->settings['latest']['limit'];
         } else {
@@ -290,8 +239,9 @@ class JobController extends ActionController
     public function showAction(Job $job = null): ResponseInterface
     {
         if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
-            $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
-            $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
+            $this->jobPageTitleProvider->setTitle($job->getJobTitle());
+            $metaTagManager = $this->metaTagManagerRegistry->getManagerForProperty('description');
+            $metaTagManager->addProperty('description', $job->getShortJobDescription());
         }
         if ($job === null && $this->settings['show']['displayErrorMessageIfNotFound']) {
             $this->flashMessageService('notFoundMessage', 'notFoundStatus', 'INFO');
@@ -305,9 +255,7 @@ class JobController extends ActionController
         return $this->htmlResponse();
     }
 
-    /**
-     * @Extbase\IgnoreValidation("newJob")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'newJob'])]
     public function newAction(Job $newJob = null): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
@@ -352,9 +300,8 @@ class JobController extends ActionController
             $this->flashMessageService('editingNoPermissionMessage', 'editingNoPermissionStatus', 'ERROR');
             return $this->redirect('list');
         }
-        /** @var $loggedInFeuser \Dan\Jobfair\Domain\Model\User */
         $loggedInFeuser = $this->accessControlService->getFrontendUserObject();
-        if ($loggedInFeuser) {
+        if ($loggedInFeuser !== null) {
             $newJob->addFeuser($loggedInFeuser);
         }
         $newJob->setSorting(9999999);
@@ -364,12 +311,8 @@ class JobController extends ActionController
         if ($this->settings['new']['enableAdminNotificaton'] &&
             GeneralUtility::validEmail($this->settings['new']['adminEmail']) &&
             GeneralUtility::validEmail($this->settings['new']['fromEmail'])) {
-            // from
             $sender = ([$this->settings['new']['fromEmail'] => $this->settings['new']['fromName']]);
-            // to
-            /** @var $to array Array to collect all the receipients */
-            $to = [];
-            $to [] = ['email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']];
+            $to = ['email' => $this->settings['new']['adminEmail'], 'name' => $this->settings['new']['adminName']];
 
             $recipients = [];
             foreach ($to as $pair) {
@@ -382,27 +325,22 @@ class JobController extends ActionController
                 }
             }
 
-            /** @var $recipientsCc array Array to collect all CC receipients */
-            /** @var $recipientsBcc array Array to collect all BCC receipients */
-            /** @var $fileName mixed false or file.xyz (name of the attached file) */
             $this->div->sendEmail(
                 'MailAdminNotificationCreate',
                 $recipients,
-                $recipientsCc,
-                $recipientsBcc,
+                [],
+                [],
                 $sender,
                 LocalizationUtility::translate('tx_jobfair_domain_model_job', 'jobfair') . ': ' . $newJob->getJobTitle(),
                 ['job' => $newJob],
-                $fileName
+                ''
             );
         }
         $this->flashMessageService('jobAddMessage', 'jobAddStatus', 'OK');
         return $this->redirect('list');
     }
 
-    /**
-     * @Extbase\IgnoreValidation("job")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'job'])]
     public function editAction(Job $job): ResponseInterface
     {
         if (!$this->settings['feuser']['enableEdit']) {
@@ -512,9 +450,7 @@ class JobController extends ActionController
         return $this->redirect('list');
     }
 
-    /**
-     * @Extbase\IgnoreValidation("newApplication")
-     */
+    #[Extbase\IgnoreValidation(['argumentName' => 'newApplication'])]
     public function newApplicationAction(Job $job, Application $newApplication = null): ResponseInterface
     {
         $storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
@@ -535,14 +471,7 @@ class JobController extends ActionController
         return $this->htmlResponse();
     }
 
-    public function initializeCreateApplicationAction(): void
-    {
-        $this->setTypeConverterConfigurationForImageUpload('newApplication');
-    }
-
-    /**
-     * @Extbase\Validate("\Dan\Jobfair\Domain\Validator\ApplicationCreateValidator", param="newApplication")
-     */
+    #[Extbase\Validate(['validator' => ApplicationCreateValidator::class, 'param' => 'newApplication'])]
     public function createApplicationAction(Application $newApplication, Job $job): ResponseInterface
     {
         $newApplication->setTitle($job->getJobTitle() . ' - ' . $newApplication->getName());
@@ -554,35 +483,29 @@ class JobController extends ActionController
         $job->addApplication($newApplication);
         $this->jobRepository->update($job);
 
-        // from
         $sender = [];
         if ($this->settings['application']['fromEmail']) {
             $sender = ([$this->settings['application']['fromEmail'] => $this->settings['application']['fromName']]);
         }
 
-        /** @var $to array Array to collect all the receipients */
         $to = [];
-
         $contact = $job->getContact();
-        if ($contact) {
-            $to [] = ['email' => $contact->getEmail(), 'name' => $contact->getName()];
+        if ($contact !== null) {
+            $to[] = ['email' => $contact->getEmail(), 'name' => $contact->getName()];
         }
 
         $feusers = $job->getFeuser();
-        /** @var $feuser \Dan\Jobfair\Domain\Model\User */
         foreach ($feusers as $feuser) {
             $to [] = ['email' => $feuser->getEmail(), 'name' => $feuser->getFirstName() . ' ' . $feuser->getLastName()];
         }
 
         $recipients = [];
-        if (is_array($to)) {
-            foreach ($to as $pair) {
-                if (GeneralUtility::validEmail($pair['email'])) {
-                    if (trim($pair['name'])) {
-                        $recipients[$pair['email']] = $pair['name'];
-                    } else {
-                        $recipients[] = $pair['email'];
-                    }
+        foreach ($to as $pair) {
+            if (GeneralUtility::validEmail($pair['email'])) {
+                if (trim($pair['name'])) {
+                    $recipients[$pair['email']] = $pair['name'];
+                } else {
+                    $recipients[] = $pair['email'];
                 }
             }
         }
@@ -655,99 +578,20 @@ class JobController extends ActionController
         return $this->redirect('show', 'Job', null, ['job' => $job]);
     }
 
-    /**
-     * @param \string $messageKey
-     * @param \string $statusKey
-     * @param \string $level
-     */
-    protected function flashMessageService($messageKey, $statusKey, $levelString)
+    protected function flashMessageService(string $messageKey, string $statusKey, string $levelString): void
     {
-        switch ($levelString) {
-            case 'NOTICE':
-                $level = AbstractMessage::NOTICE;
-                break;
-            case 'INFO':
-                $level = AbstractMessage::INFO;
-                break;
-            case 'OK':
-                $level = AbstractMessage::OK;
-                break;
-            case 'WARNING':
-                $level = AbstractMessage::WARNING;
-                break;
-            case 'ERROR':
-                $level = AbstractMessage::ERROR;
-                break;
-            default:
-                $level = AbstractMessage::OK;
-        }
+        $level = match ($levelString) {
+            'NOTICE' => ContextualFeedbackSeverity::NOTICE,
+            'INFO' => ContextualFeedbackSeverity::INFO,
+            'WARNING' => ContextualFeedbackSeverity::WARNING,
+            'ERROR' => ContextualFeedbackSeverity::ERROR,
+            default => ContextualFeedbackSeverity::OK,
+        };
 
         $this->addFlashMessage(
             LocalizationUtility::translate($messageKey, 'jobfair'),
             LocalizationUtility::translate($statusKey, 'jobfair'),
             $level,
-            true
         );
-    }
-
-    protected function setTypeConverterConfigurationForImageUpload($argumentName)
-    {
-        $uploadConfiguration = [
-            UploadedFileReferenceConverter::CONFIGURATION_ALLOWED_FILE_EXTENSIONS =>
-                $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['overrideChildTca']['columns']['uid_local']['config']['appearance']['elementBrowserAllowed']
-                ?? $GLOBALS['TCA']['tx_jobfair_domain_model_application']['columns']['attachment']['config']['allowed'],
-            UploadedFileReferenceConverter::CONFIGURATION_UPLOAD_FOLDER => '1:/user_upload/tx_jobfair/applications',
-        ];
-        $configuration = $this->arguments[$argumentName]->getPropertyMappingConfiguration();
-        $configuration->forProperty('attachment')
-            ->setTypeConverterOptions(
-                UploadedFileReferenceConverter::class,
-                $uploadConfiguration
-            );
-    }
-
-    public function injectJobRepository(JobRepository $jobRepository): void
-    {
-        $this->jobRepository = $jobRepository;
-    }
-
-    public function injectApplicationRepository(ApplicationRepository $applicationRepository): void
-    {
-        $this->applicationRepository = $applicationRepository;
-    }
-
-    public function injectRegionRepository(RegionRepository $regionRepository): void
-    {
-        $this->regionRepository = $regionRepository;
-    }
-
-    public function injectSectorRepository(SectorRepository $sectorRepository): void
-    {
-        $this->sectorRepository = $sectorRepository;
-    }
-
-    public function injectCategoryRepository(CategoryRepository $categoryRepository): void
-    {
-        $this->categoryRepository = $categoryRepository;
-    }
-
-    public function injectDisciplineRepository(DisciplineRepository $disciplineRepository): void
-    {
-        $this->disciplineRepository = $disciplineRepository;
-    }
-
-    public function injectEducationRepository(EducationRepository $educationRepository): void
-    {
-        $this->educationRepository = $educationRepository;
-    }
-
-    public function injectDiv(Div $div): void
-    {
-        $this->div = $div;
-    }
-
-    public function injectAccessControlService(AccessControlService $accessControlService): void
-    {
-        $this->accessControlService = $accessControlService;
     }
 }

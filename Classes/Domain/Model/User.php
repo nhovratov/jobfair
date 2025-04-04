@@ -61,7 +61,7 @@ class User extends AbstractEntity
      *
      * @param Job $job
      */
-    public function addJob(Job $job)
+    public function addJob(Job $job): void
     {
         $this->jobs->attach($job);
     }
@@ -71,7 +71,7 @@ class User extends AbstractEntity
      *
      * @param Job $jobToRemove The Job to be removed
      */
-    public function removeJob(Job $jobToRemove)
+    public function removeJob(Job $jobToRemove): void
     {
         $this->jobs->detach($jobToRemove);
     }
@@ -91,7 +91,7 @@ class User extends AbstractEntity
      *
      * @param ObjectStorage<Job> $jobs
      */
-    public function setJobs(ObjectStorage $jobs)
+    public function setJobs(ObjectStorage $jobs): void
     {
         $this->jobs = $jobs;
     }

@@ -33,14 +33,9 @@ class ApplicationCreateValidator extends AbstractValidator
      */
     protected $settings = [];
 
-    /**
-     * @var ConfigurationManager
-     */
-    protected $configurationManager;
-
-    public function injectConfigurationManager(ConfigurationManager $configurationManager)
-    {
-        $this->configurationManager = $configurationManager;
+    public function __construct(
+        protected ConfigurationManager $configurationManager
+    ) {
     }
 
     public function setOptions(array $options): void
@@ -48,15 +43,14 @@ class ApplicationCreateValidator extends AbstractValidator
         $this->initializeDefaultOptions($options);
     }
 
-    /**
-     * @param Application $application
-     * @return bool
-     */
-    public function isValid($application): void
+    public function isValid(mixed $value): void
     {
+        if (!$value instanceof Application) {
+            return;
+        }
         $this->settings = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS, 'jobfair');
 
-        if (empty($application->getEmail()) && $this->settings['application']['validation']['email']['required']) {
+        if (empty($value->getEmail()) && $this->settings['application']['validation']['email']['required']) {
             $this->addError(
                 $this->translateErrorMessage(
                     'validation.email.required',
@@ -66,7 +60,7 @@ class ApplicationCreateValidator extends AbstractValidator
             );
         }
 
-        if (!$this->validEmail($application->getEmail()) && $this->settings['application']['validation']['email']['validEmail']) {
+        if (!$this->validEmail($value->getEmail()) && $this->settings['application']['validation']['email']['validEmail']) {
             $this->addError(
                 $this->translateErrorMessage(
                     'validation.email.validEmail',
@@ -76,7 +70,7 @@ class ApplicationCreateValidator extends AbstractValidator
             );
         }
 
-        if (!is_string($application->getMessage()) && $this->settings['application']['validation']['message']['required']) {
+        if ($value->getMessage() === '' && $this->settings['application']['validation']['message']['required']) {
             $this->addError(
                 $this->translateErrorMessage(
                     'validation.message.required',

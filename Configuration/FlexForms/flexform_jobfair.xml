@@ -1,1375 +1,1503 @@
+<?xml version="1.0"?>
 <T3DataStructure>
-    <meta>
-        <langDisable>1</langDisable>
-    </meta>
     <sheets>
         <list>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.list.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title</numIndex>
-                                        <numIndex index="1">jobTitle</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description</numIndex>
-                                        <numIndex index="1">employerDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description</numIndex>
-                                        <numIndex index="1">shortJobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description</numIndex>
-                                        <numIndex index="1">jobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements</numIndex>
-                                        <numIndex index="1">jobRequirements</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits</numIndex>
-                                        <numIndex index="1">jobBenefits</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information</numIndex>
-                                        <numIndex index="1">applyInformation</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact</numIndex>
-                                        <numIndex index="1">contact</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="19" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser</numIndex>
-                                        <numIndex index="1">feuser</numIndex>
-                                    </numIndex>
-                                    <numIndex index="20" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="21" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="22" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image</numIndex>
-                                        <numIndex index="1">jobImage</numIndex>
-                                    </numIndex>
-                                    <numIndex index="23" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime</numIndex>
-                                        <numIndex index="1">starttime</numIndex>
-                                    </numIndex>
-                                    <numIndex index="24" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime</numIndex>
-                                        <numIndex index="1">endtime</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>list</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.fieldsnotice</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title
+                                    </label>
+                                    <value>jobTitle</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer
+                                    </label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description
+                                    </label>
+                                    <value>employerDescription</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location
+                                    </label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description
+                                    </label>
+                                    <value>shortJobDescription</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description
+                                    </label>
+                                    <value>jobDescription</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience
+                                    </label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements
+                                    </label>
+                                    <value>jobRequirements</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits
+                                    </label>
+                                    <value>jobBenefits</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information
+                                    </label>
+                                    <value>applyInformation</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary
+                                    </label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact
+                                    </label>
+                                    <value>contact</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="19" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser
+                                    </label>
+                                    <value>feuser</value>
+                                </numIndex>
+                                <numIndex index="20" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp
+                                    </label>
+                                    <value>tstamp</value>
+                                </numIndex>
+                                <numIndex index="21" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate
+                                    </label>
+                                    <value>crdate</value>
+                                </numIndex>
+                                <numIndex index="22" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image
+                                    </label>
+                                    <value>jobImage</value>
+                                </numIndex>
+                                <numIndex index="23" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime
+                                    </label>
+                                    <value>starttime</value>
+                                </numIndex>
+                                <numIndex index="24" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime
+                                    </label>
+                                    <value>endtime</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>list</itemsProcFuncTab>
+                        </config>
                     </settings.list.fields>
                     <settings.list.imageMaxWidth>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.imageMaxWidth</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>50</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.imageMaxWidth</label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>50</default>
+                        </config>
                     </settings.list.imageMaxWidth>
                     <settings.list.imageMaxHeight>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.imageMaxHeight</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>100</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.imageMaxHeight
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>100</default>
+                        </config>
                     </settings.list.imageMaxHeight>
                     <settings.list.ordering>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.ordering</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Created (crdate)</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">Last edited (tstamp)</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">Job title (job_title)</numIndex>
-                                        <numIndex index="1">job_title</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">User defined in Backend (sorting)</numIndex>
-                                        <numIndex index="1">sorting</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">Employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">Location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">Experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">Salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">Job type</numIndex>
-                                        <numIndex index="1">job_type</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">Contract type</numIndex>
-                                        <numIndex index="1">contract_type</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">Region</numIndex>
-                                        <numIndex index="1">region.name</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">Contact</numIndex>
-                                        <numIndex index="1">contact.name</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">Sector</numIndex>
-                                        <numIndex index="1">sector.name</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">Category</numIndex>
-                                        <numIndex index="1">category.name</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">Discipline</numIndex>
-                                        <numIndex index="1">discipline.name</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">Education</numIndex>
-                                        <numIndex index="1">education.name</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.ordering</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                    </label>
+                                    <value>
+                                    </value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Created (crdate)</label>
+                                    <value>crdate</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>Last edited (tstamp)</label>
+                                    <value>tstamp</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>Job title (job_title)</label>
+                                    <value>job_title</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>User defined in Backend (sorting)</label>
+                                    <value>sorting</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>Employer</label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>Location</label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>Experience</label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>Salary</label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>Job type</label>
+                                    <value>job_type</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>Contract type</label>
+                                    <value>contract_type</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>Region</label>
+                                    <value>region.name</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>Contact</label>
+                                    <value>contact.name</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>Sector</label>
+                                    <value>sector.name</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>Category</label>
+                                    <value>category.name</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>Discipline</label>
+                                    <value>discipline.name</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>Education</label>
+                                    <value>education.name</value>
+                                </numIndex>
+                            </items>
+                            <allowNonIdValues>1</allowNonIdValues>
+                        </config>
                     </settings.list.ordering>
                     <settings.list.sorting>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.sorting</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">Descending</numIndex>
-                                        <numIndex index="1">DESC</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Ascending</numIndex>
-                                        <numIndex index="1">ASC</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.sorting</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>Descending</label>
+                                    <value>DESC</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Ascending</label>
+                                    <value>ASC</value>
+                                </numIndex>
+                            </items>
+                            <allowNonIdValues>1</allowNonIdValues>
+                        </config>
                     </settings.list.sorting>
                     <settings.list.pageIdDetail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.page_id_detail</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.page_id_detail
+                        </label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.list.pageIdDetail>
                 </el>
             </ROOT>
         </list>
         <filter>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.filter.hideFilter>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.hideFilter</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.hideFilter</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.filter.hideFilter>
                     <settings.filter.filterlimit>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.filterlimit</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.filterlimit</label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.filter.filterlimit>
                     <settings.filter.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="22" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:searchword</numIndex>
-                                        <numIndex index="1">searchword</numIndex>
-                                    </numIndex>
-                                    <numIndex index="23" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:own</numIndex>
-                                        <numIndex index="1">own</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>filter</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.list.fieldsnotice
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="22" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:searchword
+                                    </label>
+                                    <value>searchword</value>
+                                </numIndex>
+                                <numIndex index="23" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:own
+                                    </label>
+                                    <value>own</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <minitems>0</minitems>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>filter</itemsProcFuncTab>
+                        </config>
                     </settings.filter.fields>
-                    
                     <settings.filter.enablePreselect>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.enablePreselect</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.enablePreselect
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.filter.enablePreselect>
-                    
                     <settings.filter.preselectCategory>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectCategory</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                </items>
-                                <foreign_table>tx_jobfair_domain_model_category</foreign_table>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectCategory
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value/>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_jobfair_domain_model_category</foreign_table>
+                        </config>
                     </settings.filter.preselectCategory>
                     <settings.filter.preselectRegion>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectRegion</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                </items>
-                                <foreign_table>tx_jobfair_domain_model_region</foreign_table>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectRegion
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value/>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_jobfair_domain_model_region</foreign_table>
+                        </config>
                     </settings.filter.preselectRegion>
                     <settings.filter.preselectSector>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectSector</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                </items>
-                                <foreign_table>tx_jobfair_domain_model_sector</foreign_table>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectSector
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value>
+                                    </value>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_jobfair_domain_model_sector</foreign_table>
+                        </config>
                     </settings.filter.preselectSector>
                     <settings.filter.preselectDiscipline>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectDiscipline</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                </items>
-                                <foreign_table>tx_jobfair_domain_model_discipline</foreign_table>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectDiscipline
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value>
+                                    </value>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_jobfair_domain_model_discipline</foreign_table>
+                        </config>
                     </settings.filter.preselectDiscipline>
                     <settings.filter.preselectEducation>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectEducation</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                </items>
-                                <foreign_table>tx_jobfair_domain_model_education</foreign_table>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectEducation
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value/>
+                                </numIndex>
+                            </items>
+                            <foreign_table>tx_jobfair_domain_model_education</foreign_table>
+                        </config>
                     </settings.filter.preselectEducation>
                     <settings.filter.preselectJobType>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectJobType</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Parttime</numIndex>
-                                        <numIndex index="1">0</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">Fulltime</numIndex>
-                                        <numIndex index="1">1</numIndex>
-                                    </numIndex>
-                                </items>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectJobType
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value/>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Parttime</label>
+                                    <value>0</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>Fulltime</label>
+                                    <value>1</value>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.filter.preselectJobType>
                     <settings.filter.preselectContractType>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectContractType</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">
-                                        </numIndex>
-                                        <numIndex index="1">
-                                        </numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Temporary</numIndex>
-                                        <numIndex index="1">0</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">Permanent</numIndex>
-                                        <numIndex index="1">1</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">Project</numIndex>
-                                        <numIndex index="1">0</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">Contract</numIndex>
-                                        <numIndex index="1">1</numIndex>
-                                    </numIndex>
-                                </items>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectContractType
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label/>
+                                    <value/>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Temporary</label>
+                                    <value>0</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>Permanent</label>
+                                    <value>1</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>Project</label>
+                                    <value>0</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>Contract</label>
+                                    <value>1</value>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.filter.preselectContractType>
                     <settings.filter.preselectOwn>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectOwn</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">No</numIndex>
-                                        <numIndex index="1">0</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Yes</numIndex>
-                                        <numIndex index="1">1</numIndex>
-                                    </numIndex>
-                                </items>
-                                <minitems>0</minitems>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.filter.preselectOwn
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>No</label>
+                                    <value>0</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Yes</label>
+                                    <value>1</value>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.filter.preselectOwn>
                 </el>
             </ROOT>
         </filter>
         <show>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.show.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title</numIndex>
-                                        <numIndex index="1">jobTitle</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description</numIndex>
-                                        <numIndex index="1">employerDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description</numIndex>
-                                        <numIndex index="1">shortJobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description</numIndex>
-                                        <numIndex index="1">jobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements</numIndex>
-                                        <numIndex index="1">jobRequirements</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits</numIndex>
-                                        <numIndex index="1">jobBenefits</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information</numIndex>
-                                        <numIndex index="1">applyInformation</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact</numIndex>
-                                        <numIndex index="1">contact</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="19" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser</numIndex>
-                                        <numIndex index="1">feuser</numIndex>
-                                    </numIndex>
-                                    <numIndex index="20" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="21" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="22" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image</numIndex>
-                                        <numIndex index="1">jobImage</numIndex>
-                                    </numIndex>
-                                    <numIndex index="23" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime</numIndex>
-                                        <numIndex index="1">starttime</numIndex>
-                                    </numIndex>
-                                    <numIndex index="24" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime</numIndex>
-                                        <numIndex index="1">endtime</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>show</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.fieldsnotice</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title
+                                    </label>
+                                    <value>jobTitle</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer
+                                    </label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description
+                                    </label>
+                                    <value>employerDescription</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location
+                                    </label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description
+                                    </label>
+                                    <value>shortJobDescription</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description
+                                    </label>
+                                    <value>jobDescription</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience
+                                    </label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements
+                                    </label>
+                                    <value>jobRequirements</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits
+                                    </label>
+                                    <value>jobBenefits</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information
+                                    </label>
+                                    <value>applyInformation</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary
+                                    </label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact
+                                    </label>
+                                    <value>contact</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="19" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser
+                                    </label>
+                                    <value>feuser</value>
+                                </numIndex>
+                                <numIndex index="20" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp
+                                    </label>
+                                    <value>tstamp</value>
+                                </numIndex>
+                                <numIndex index="21" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate
+                                    </label>
+                                    <value>crdate</value>
+                                </numIndex>
+                                <numIndex index="22" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image
+                                    </label>
+                                    <value>jobImage</value>
+                                </numIndex>
+                                <numIndex index="23" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime
+                                    </label>
+                                    <value>starttime</value>
+                                </numIndex>
+                                <numIndex index="24" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime
+                                    </label>
+                                    <value>endtime</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>show</itemsProcFuncTab>
+                        </config>
                     </settings.show.fields>
                     <settings.show.hideEmpty>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.hideEmpty</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.hideEmpty</label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.show.hideEmpty>
                     <settings.show.imageMaxWidth>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageMaxWidth</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>100</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageMaxWidth</label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>100</default>
+                        </config>
                     </settings.show.imageMaxWidth>
                     <settings.show.imageMaxHeight>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageMaxHeight</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>200</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageMaxHeight
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>200</default>
+                        </config>
                     </settings.show.imageMaxHeight>
                     <settings.show.imageContactMaxWidth>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageContactMaxWidth</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>100</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageContactMaxWidth
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>100</default>
+                        </config>
                     </settings.show.imageContactMaxWidth>
                     <settings.show.imageContactMaxHeight>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageContactMaxHeight</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>200</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.imageContactMaxHeight
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>200</default>
+                        </config>
                     </settings.show.imageContactMaxHeight>
                     <settings.show.pageIdList>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.page_id_list</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.page_id_list</label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.show.pageIdList>
                     <settings.show.displayErrorMessageIfNotFound>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.displayErrorMessageIfNotFound</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.displayErrorMessageIfNotFound
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.show.displayErrorMessageIfNotFound>
                     <settings.show.rediectIfNotFound>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.redirectIfNotFound</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.show.redirectIfNotFound
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.show.rediectIfNotFound>
                 </el>
             </ROOT>
         </show>
         <application>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.application.disable>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.disable</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.disable
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.application.disable>
                     <settings.application.fromName>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.fromName</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.fromName
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.application.fromName>
                     <settings.application.fromEmail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.fromEmail</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.fromEmail
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.application.fromEmail>
                     <settings.application.validation.email.required>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.email.required</label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.email.required
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </settings.application.validation.email.required>
                     <settings.application.validation.email.validEmail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.email.validEmail</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.email.validEmail
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.application.validation.email.validEmail>
                     <settings.application.validation.attachment.required>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.attachment.required</label>
-                            <config>
-                                <type>check</type>
-                                <default>1</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.validation.attachment.required
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>1</default>
+                        </config>
                     </settings.application.validation.attachment.required>
                     <settings.application.dontSaveAttachment>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.dontSaveAttachment</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.application.dontSaveAttachment
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.application.dontSaveAttachment>
                 </el>
             </ROOT>
         </application>
         <feuser>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.feuser.enableEdit>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.enableEdit</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.enableEdit
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.feuser.enableEdit>
                     <settings.feuser.editorUsergroupUid>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.editorUsergroupUid</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.editorUsergroupUid
+                        </label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.feuser.editorUsergroupUid>
                     <settings.feuser.pageId>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.page_id</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.page_id
+                        </label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.feuser.pageId>
                     <settings.feuser.pluginName>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.plugin_name</label>
-                            <config>
-                                <type>input</type>
-                                <size>20</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.plugin_name
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>20</size>
+                        </config>
                     </settings.feuser.pluginName>
                     <settings.feuser.pluginField>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.plugin_field</label>
-                            <config>
-                                <type>input</type>
-                                <size>20</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.feuser.plugin_field
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>20</size>
+                        </config>
                     </settings.feuser.pluginField>
                 </el>
             </ROOT>
         </feuser>
         <new>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.new.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title</numIndex>
-                                        <numIndex index="1">jobTitle</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description</numIndex>
-                                        <numIndex index="1">employerDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description</numIndex>
-                                        <numIndex index="1">shortJobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description</numIndex>
-                                        <numIndex index="1">jobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements</numIndex>
-                                        <numIndex index="1">jobRequirements</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits</numIndex>
-                                        <numIndex index="1">jobBenefits</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information</numIndex>
-                                        <numIndex index="1">applyInformation</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact</numIndex>
-                                        <numIndex index="1">contact</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="19" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime</numIndex>
-                                        <numIndex index="1">starttime</numIndex>
-                                    </numIndex>
-                                    <numIndex index="20" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime</numIndex>
-                                        <numIndex index="1">endtime</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>new</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.fieldsnotice</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title
+                                    </label>
+                                    <value>jobTitle</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer
+                                    </label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description
+                                    </label>
+                                    <value>employerDescription</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location
+                                    </label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description
+                                    </label>
+                                    <value>shortJobDescription</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description
+                                    </label>
+                                    <value>jobDescription</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience
+                                    </label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements
+                                    </label>
+                                    <value>jobRequirements</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits
+                                    </label>
+                                    <value>jobBenefits</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information
+                                    </label>
+                                    <value>applyInformation</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary
+                                    </label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact
+                                    </label>
+                                    <value>contact</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="19" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime
+                                    </label>
+                                    <value>starttime</value>
+                                </numIndex>
+                                <numIndex index="20" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime
+                                    </label>
+                                    <value>endtime</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>new</itemsProcFuncTab>
+                        </config>
                     </settings.new.fields>
                     <settings.new.enableAdminNotificaton>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.enable_admin_notificaton</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.enable_admin_notificaton
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.new.enableAdminNotificaton>
                     <settings.new.fromName>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_name</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_name</label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.new.fromName>
                     <settings.new.fromEmail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_email</label>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_email</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_email</label>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.from_email</label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.new.fromEmail>
                     <settings.new.adminName>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.admin_name</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.admin_name</label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.new.adminName>
                     <settings.new.adminEmail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.admin_email</label>
-                            <config>
-                                <type>input</type>
-                                <size>30</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.new.admin_email</label>
+                        <config>
+                            <type>input</type>
+                            <size>30</size>
+                        </config>
                     </settings.new.adminEmail>
                 </el>
             </ROOT>
         </new>
         <edit>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.edit.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.edit.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.edit.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.edit.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title</numIndex>
-                                        <numIndex index="1">jobTitle</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description</numIndex>
-                                        <numIndex index="1">employerDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description</numIndex>
-                                        <numIndex index="1">shortJobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description</numIndex>
-                                        <numIndex index="1">jobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements</numIndex>
-                                        <numIndex index="1">jobRequirements</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits</numIndex>
-                                        <numIndex index="1">jobBenefits</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information</numIndex>
-                                        <numIndex index="1">applyInformation</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact</numIndex>
-                                        <numIndex index="1">contact</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="19" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime</numIndex>
-                                        <numIndex index="1">starttime</numIndex>
-                                    </numIndex>
-                                    <numIndex index="20" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime</numIndex>
-                                        <numIndex index="1">endtime</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>edit</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.edit.fieldsnotice</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title
+                                    </label>
+                                    <value>jobTitle</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer
+                                    </label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description
+                                    </label>
+                                    <value>employerDescription</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location
+                                    </label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description
+                                    </label>
+                                    <value>shortJobDescription</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description
+                                    </label>
+                                    <value>jobDescription</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience
+                                    </label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements
+                                    </label>
+                                    <value>jobRequirements</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits
+                                    </label>
+                                    <value>jobBenefits</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information
+                                    </label>
+                                    <value>applyInformation</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary
+                                    </label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact
+                                    </label>
+                                    <value>contact</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="19" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime
+                                    </label>
+                                    <value>starttime</value>
+                                </numIndex>
+                                <numIndex index="20" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime
+                                    </label>
+                                    <value>endtime</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>edit</itemsProcFuncTab>
+                        </config>
                     </settings.edit.fields>
-                    
                 </el>
             </ROOT>
         </edit>
         <latest>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.title</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.title</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.latest.enableLatest>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.enableLatest</label>
-                            <config>
-                                <type>check</type>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.enableLatest
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <default>0</default>
+                        </config>
                     </settings.latest.enableLatest>
                     <settings.latest.limit>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.limit</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.limit</label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.latest.limit>
                     <settings.latest.ordering>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.ordering</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">Created (crdate)</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Last edited (tstamp)</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">User defined in Backend (sorting)</numIndex>
-                                        <numIndex index="1">sorting</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>1</maxitems>
-                                <size>1</size>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.ordering</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>Created (crdate)</label>
+                                    <value>crdate</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>Last edited (tstamp)</label>
+                                    <value>tstamp</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>User defined in Backend (sorting)</label>
+                                    <value>sorting</value>
+                                </numIndex>
+                            </items>
+                            <allowNonIdValues>1</allowNonIdValues>
+                        </config>
                     </settings.latest.ordering>
                     <settings.latest.pageIdDetail>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.page_id_detail</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.page_id_detail
+                        </label>
+                        <config>
+                            <type>number</type>
+                            <eval>trim</eval>
+                            <size>4</size>
+                        </config>
                     </settings.latest.pageIdDetail>
                     <settings.latest.pageIdList>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.page_id_list</label>
-                            <config>
-                                <type>input</type>
-                                <eval>trim,int</eval>
-                                <size>4</size>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.page_id_list</label>
+                        <config>
+                            <type>number</type>
+                            <size>4</size>
+                        </config>
                     </settings.latest.pageIdList>
                     <settings.latest.fields>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.fieldsnotice</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title</numIndex>
-                                        <numIndex index="1">jobTitle</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer</numIndex>
-                                        <numIndex index="1">employer</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description</numIndex>
-                                        <numIndex index="1">employerDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location</numIndex>
-                                        <numIndex index="1">location</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description</numIndex>
-                                        <numIndex index="1">shortJobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description</numIndex>
-                                        <numIndex index="1">jobDescription</numIndex>
-                                    </numIndex>
-                                    <numIndex index="6" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience</numIndex>
-                                        <numIndex index="1">experience</numIndex>
-                                    </numIndex>
-                                    <numIndex index="7" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements</numIndex>
-                                        <numIndex index="1">jobRequirements</numIndex>
-                                    </numIndex>
-                                    <numIndex index="8" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits</numIndex>
-                                        <numIndex index="1">jobBenefits</numIndex>
-                                    </numIndex>
-                                    <numIndex index="9" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information</numIndex>
-                                        <numIndex index="1">applyInformation</numIndex>
-                                    </numIndex>
-                                    <numIndex index="10" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary</numIndex>
-                                        <numIndex index="1">salary</numIndex>
-                                    </numIndex>
-                                    <numIndex index="11" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type</numIndex>
-                                        <numIndex index="1">jobType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="12" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type</numIndex>
-                                        <numIndex index="1">contractType</numIndex>
-                                    </numIndex>
-                                    <numIndex index="13" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region</numIndex>
-                                        <numIndex index="1">region</numIndex>
-                                    </numIndex>
-                                    <numIndex index="14" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact</numIndex>
-                                        <numIndex index="1">contact</numIndex>
-                                    </numIndex>
-                                    <numIndex index="15" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector</numIndex>
-                                        <numIndex index="1">sector</numIndex>
-                                    </numIndex>
-                                    <numIndex index="16" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category</numIndex>
-                                        <numIndex index="1">category</numIndex>
-                                    </numIndex>
-                                    <numIndex index="17" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline</numIndex>
-                                        <numIndex index="1">discipline</numIndex>
-                                    </numIndex>
-                                    <numIndex index="18" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education</numIndex>
-                                        <numIndex index="1">education</numIndex>
-                                    </numIndex>
-                                    <numIndex index="19" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser</numIndex>
-                                        <numIndex index="1">feuser</numIndex>
-                                    </numIndex>
-                                    <numIndex index="20" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="21" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="22" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image</numIndex>
-                                        <numIndex index="1">jobImage</numIndex>
-                                    </numIndex>
-                                    <numIndex index="23" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime</numIndex>
-                                        <numIndex index="1">starttime</numIndex>
-                                    </numIndex>
-                                    <numIndex index="24" type="array">
-                                        <numIndex index="0">LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime</numIndex>
-                                        <numIndex index="1">endtime</numIndex>
-                                    </numIndex>
-                                </items>
-                                <maxitems>100</maxitems>
-                                <size>10</size>
-                                <autoSizeMax>20</autoSizeMax>
-                                <minitems>0</minitems>
-                                <allowNonIdValues>1</allowNonIdValues>
-                                <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection->addOptions</itemsProcFunc>
-                                <itemsProcFuncTab>latest</itemsProcFuncTab>
-                            </config>
-                        </TCEforms>
+                        <label>
+                            LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.fieldsnotice
+                        </label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_title
+                                    </label>
+                                    <value>jobTitle</value>
+                                </numIndex>
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer
+                                    </label>
+                                    <value>employer</value>
+                                </numIndex>
+                                <numIndex index="2" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.employer_description
+                                    </label>
+                                    <value>employerDescription</value>
+                                </numIndex>
+                                <numIndex index="3" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.location
+                                    </label>
+                                    <value>location</value>
+                                </numIndex>
+                                <numIndex index="4" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.short_job_description
+                                    </label>
+                                    <value>shortJobDescription</value>
+                                </numIndex>
+                                <numIndex index="5" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_description
+                                    </label>
+                                    <value>jobDescription</value>
+                                </numIndex>
+                                <numIndex index="6" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.experience
+                                    </label>
+                                    <value>experience</value>
+                                </numIndex>
+                                <numIndex index="7" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_requirements
+                                    </label>
+                                    <value>jobRequirements</value>
+                                </numIndex>
+                                <numIndex index="8" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_benefits
+                                    </label>
+                                    <value>jobBenefits</value>
+                                </numIndex>
+                                <numIndex index="9" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.apply_information
+                                    </label>
+                                    <value>applyInformation</value>
+                                </numIndex>
+                                <numIndex index="10" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.salary
+                                    </label>
+                                    <value>salary</value>
+                                </numIndex>
+                                <numIndex index="11" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_type
+                                    </label>
+                                    <value>jobType</value>
+                                </numIndex>
+                                <numIndex index="12" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contract_type
+                                    </label>
+                                    <value>contractType</value>
+                                </numIndex>
+                                <numIndex index="13" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.region
+                                    </label>
+                                    <value>region</value>
+                                </numIndex>
+                                <numIndex index="14" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.contact
+                                    </label>
+                                    <value>contact</value>
+                                </numIndex>
+                                <numIndex index="15" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.sector
+                                    </label>
+                                    <value>sector</value>
+                                </numIndex>
+                                <numIndex index="16" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.category
+                                    </label>
+                                    <value>category</value>
+                                </numIndex>
+                                <numIndex index="17" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.discipline
+                                    </label>
+                                    <value>discipline</value>
+                                </numIndex>
+                                <numIndex index="18" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.education
+                                    </label>
+                                    <value>education</value>
+                                </numIndex>
+                                <numIndex index="19" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.feuser
+                                    </label>
+                                    <value>feuser</value>
+                                </numIndex>
+                                <numIndex index="20" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.tstamp
+                                    </label>
+                                    <value>tstamp</value>
+                                </numIndex>
+                                <numIndex index="21" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.crdate
+                                    </label>
+                                    <value>crdate</value>
+                                </numIndex>
+                                <numIndex index="22" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.job_image
+                                    </label>
+                                    <value>jobImage</value>
+                                </numIndex>
+                                <numIndex index="23" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.starttime
+                                    </label>
+                                    <value>starttime</value>
+                                </numIndex>
+                                <numIndex index="24" type="array">
+                                    <label>
+                                        LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:tx_jobfair_domain_model_job.endtime
+                                    </label>
+                                    <value>endtime</value>
+                                </numIndex>
+                            </items>
+                            <maxitems>100</maxitems>
+                            <size>10</size>
+                            <autoSizeMax>20</autoSizeMax>
+                            <allowNonIdValues>1</allowNonIdValues>
+                            <itemsProcFunc>Dan\Jobfair\Utility\FlexFormFieldSelection-&gt;addOptions</itemsProcFunc>
+                            <itemsProcFuncTab>latest</itemsProcFuncTab>
+                        </config>
                     </settings.latest.fields>
                     <settings.latest.imageMaxWidth>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.imageMaxWidth</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>50</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.imageMaxWidth</label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>50</default>
+                        </config>
                     </settings.latest.imageMaxWidth>
                     <settings.latest.imageMaxHeight>
-                        <TCEforms>
-                            <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.imageMaxHeight</label>
-                            <config>
-                                <type>input</type>
-                                <size>10</size>
-                                <default>100</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:jobfair/Resources/Private/Language/locallang_db.xlf:flexform.latest.imageMaxHeight</label>
+                        <config>
+                            <type>input</type>
+                            <size>10</size>
+                            <default>100</default>
+                        </config>
                     </settings.latest.imageMaxHeight>
                 </el>
             </ROOT>
