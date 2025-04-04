@@ -33,6 +33,7 @@ use Dan\Jobfair\Domain\Repository\JobRepository;
 use Dan\Jobfair\Domain\Repository\RegionRepository;
 use Dan\Jobfair\Domain\Repository\SectorRepository;
 use Dan\Jobfair\Domain\Validator\ApplicationCreateValidator;
+use Dan\Jobfair\PageTitle\JobPageTitleProvider;
 use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
 use Psr\Http\Message\ResponseInterface;
@@ -65,6 +66,7 @@ class JobController extends ActionController
         protected EducationRepository $educationRepository,
         protected Div $div,
         protected AccessControlService $accessControlService,
+        protected JobPageTitleProvider $jobPageTitleProvider,
     ) {
     }
 
@@ -235,8 +237,7 @@ class JobController extends ActionController
     public function showAction(Job $job = null): ResponseInterface
     {
         if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
-            // @todo Use PageTitle API
-//            $this->response->addAdditionalHeaderData('<title>' . $job->getJobTitle() . '</title>');
+            $this->jobPageTitleProvider->setTitle($job->getJobTitle());
             // @todo Use MetaTag API
 //            $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
         }
