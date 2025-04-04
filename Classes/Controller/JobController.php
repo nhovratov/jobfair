@@ -38,6 +38,7 @@ use Dan\Jobfair\Service\AccessControlService;
 use Dan\Jobfair\Utility\Div;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -67,6 +68,7 @@ class JobController extends ActionController
         protected Div $div,
         protected AccessControlService $accessControlService,
         protected JobPageTitleProvider $jobPageTitleProvider,
+        protected MetaTagManagerRegistry $metaTagManagerRegistry,
     ) {
     }
 
@@ -238,8 +240,8 @@ class JobController extends ActionController
     {
         if ($this->settings['seoOptimizationLevel'] && $job instanceof Job) {
             $this->jobPageTitleProvider->setTitle($job->getJobTitle());
-            // @todo Use MetaTag API
-//            $this->response->addAdditionalHeaderData('<meta name="description" content="' . $job->getShortJobDescription() . '"/>');
+            $metaTagManager = $this->metaTagManagerRegistry->getManagerForProperty('description');
+            $metaTagManager->addProperty('description', $job->getShortJobDescription());
         }
         if ($job === null && $this->settings['show']['displayErrorMessageIfNotFound']) {
             $this->flashMessageService('notFoundMessage', 'notFoundStatus', 'INFO');
