@@ -51,7 +51,7 @@ class Filter extends AbstractEntity
     protected $educations;
 
     protected int $jobType = 99;
-    protected int $contractType = 0;
+    protected int $contractType = 99;
     protected string $searchword = '';
     protected bool $own = false;
 
